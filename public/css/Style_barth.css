@@ -1,0 +1,28 @@
+
+.zoom-img{
+  height: 300px;
+  width: 200px;
+  transition: transform .1s;
+  margin-bottom: 20px;
+}
+
+.zoom-img:hover{
+  -ms-transform: scale(1.10); /* IE 9 */
+  -webkit-transform: scale(1.10); /* Safari 3-8 */
+  transform: scale(1.10);
+}
+
+.TitreJeu{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.TitreJeu:hover{
+  color: gray;
+}
+
+body {
+  background: linear-gradient(to bottom, #942600, #212529);
+  color: white;
+}

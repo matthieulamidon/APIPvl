@@ -1,0 +1,31 @@
+// Chargement des modules nécessaires
+const express = require('express');
+const path = require('path');
+
+// Initialisation des objets principaux
+const app = express();
+
+// Middleware pour analyser le corps des requêtes
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+
+// Import du middleware de gestion des erreurs
+const errorHandler = require('./middlewares/errorHandler'); 
+
+//importation des routes d'autentification
+const authRoutes = require('./routes/authRoutes');
+//importation des routes pour table route
+const testRoutes = require('./routes/tabletestRoutes');
+
+// Utilisation des routes
+app.use(authRoutes); // Routes d'authentification
+app.use(testRoutes); // Routes pour TableTest
+// Middleware de gestion des erreurs (doit être monté **après** les routes)
+app.use(errorHandler);
+
+// Démarrer le serveur
+const PORT = 3000;
+app.listen(PORT, () => {
+ console.log(`Serveur démarré sur http://localhost:${PORT}`);
+});
