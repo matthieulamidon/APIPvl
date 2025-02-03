@@ -4,6 +4,7 @@
   width: 200px;
   transition: transform .1s;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .zoom-img:hover{
