@@ -1,0 +1,176 @@
+-- CreateTable
+CREATE TABLE `Utilisateur` (
+    `id_utilisateur` INTEGER NOT NULL AUTO_INCREMENT,
+    `pseudo` VARCHAR(191) NOT NULL,
+    `nom` VARCHAR(191) NULL,
+    `prenom` VARCHAR(191) NULL,
+    `date_naissance` DATETIME(3) NULL,
+    `adresse_email` VARCHAR(191) NOT NULL,
+    `mot_de_passe` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NULL,
+    `date_inscription` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `icone_profil` ENUM('Ico1', 'Ico2', 'Ico3', 'Ico4', 'Ico5', 'Ico6', 'Ico7', 'Ico8') NOT NULL DEFAULT 'Ico1',
+
+    UNIQUE INDEX `Utilisateur_pseudo_key`(`pseudo`),
+    UNIQUE INDEX `Utilisateur_adresse_email_key`(`adresse_email`),
+    PRIMARY KEY (`id_utilisateur`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Ami` (
+    `id_utilisateur1` INTEGER NOT NULL,
+    `id_utilisateur2` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id_utilisateur1`, `id_utilisateur2`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Jeux` (
+    `id_jeux` INTEGER NOT NULL AUTO_INCREMENT,
+    `nom` VARCHAR(191) NOT NULL,
+    `src_image` VARCHAR(191) NOT NULL,
+    `date_publication` DATETIME(3) NOT NULL,
+    `note` DOUBLE NOT NULL,
+    `any_pourcent` DOUBLE NOT NULL,
+    `main_plus_extra` DOUBLE NOT NULL,
+    `completionniste` DOUBLE NOT NULL,
+    `allStyle` DOUBLE NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `nb_favoris` INTEGER NOT NULL,
+
+    UNIQUE INDEX `Jeux_nom_key`(`nom`),
+    PRIMARY KEY (`id_jeux`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Forum` (
+    `id_utilisateur` INTEGER NOT NULL,
+    `id_jeux` INTEGER NOT NULL,
+    `commentaire` VARCHAR(191) NOT NULL,
+    `titre` VARCHAR(191) NOT NULL,
+    `date_publication` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id_utilisateur`, `id_jeux`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Ludotheque` (
+    `id_utilisateur` INTEGER NOT NULL,
+    `id_jeux` INTEGER NOT NULL,
+    `statut` ENUM('NON_DEFINI', 'EN_COURS', 'ABANDON', 'PREVU', 'COMPLETE') NOT NULL DEFAULT 'NON_DEFINI',
+    `Type_completion` ENUM('NON_DEFINI', 'any_pourcent', 'main_plus_extra', 'completionniste', 'allStyle') NOT NULL DEFAULT 'NON_DEFINI',
+    `commentaire` VARCHAR(191) NOT NULL,
+    `note` DOUBLE NOT NULL,
+
+    PRIMARY KEY (`id_utilisateur`, `id_jeux`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Tag` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` ENUM('NON_DEFINI', 'ACTION', 'RPG', 'PLATEFORMES', 'FPS', 'TPS', 'RTS', 'HACK_N_SLASH', 'BEAT_THEM_UP', 'OPEN_WORLD', 'METROIDVANIA', 'POINT_AND_CLICK', 'TOUR_PAR_TOUR', 'ROGUE_LIKE', 'ROGUE_LITE', 'GESTION', 'COURSE', 'SPORT', 'COMBAT', 'QUATREX', 'MOBA', 'MUSOU', 'NARRATIF', 'VISUAL_NOVEL', 'SURVIE', 'BAC_A_SABLE', 'MMORPG', 'TACTICAL', 'VR', 'ENIGMES', 'TOWER_DEFENSE', 'CITY_BUILDER', 'FARMING', 'IDLE', 'SIMULATION', 'HORREUR', 'RETRO', 'NEO_RETRO', 'INDEPENDANT', 'RYTHME', 'BATTLE_ROYALE', 'SHOOT_THEM_UP', 'ANIME', 'JEU_DE_CARTES', 'INFILTRATION', 'HUMOUR', 'LICENSE', 'PARTY_GAME', 'RAIL_SHOOTER', 'GUERRE', 'JRPG', 'SOULS_LIKE') NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `TagJeu` (
+    `tagId` INTEGER NOT NULL,
+    `jeuId` INTEGER NOT NULL,
+
+    PRIMARY KEY (`tagId`, `jeuId`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Studio` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` ENUM('NON_DEFINI', 'ROCKSTAR', 'NAUGHTY_DOG', 'SANTA_MONICA_STUDIO', 'CD_PROJEKT_RED', 'UBISOFT', 'BETHESDA', 'FROM_SOFTWARE', 'SQUARE_ENIX', 'CAPCOM', 'BANDAI_NAMCO', 'ELECTRONIC_ART', 'DICE', 'BIOWARE', 'INFINITY_YARD', 'TREYARCH', 'SUTDIO_343_INDUSTRIES', 'BUNGIE', 'INSOMNIAC_GAMES', 'REMEDY_INTERTAINMENT', 'LARIAN_STUDIOS', 'OBSIDIAN_ENTERTAINMENT', 'MOJANG', 'TEAM_CHERRY', 'DONTNOD_ENTERTAINMENT', 'TANGO_GAMEWORKS', 'PLATINUM_GAMES', 'KOJIMA_PRODUCTIONS', 'ARKANE_STUDIOS', 'REBELLION', 'BOHEMIA_INTERACTIVE', 'CROTEAM', 'HOUSEMARQUE', 'THE_CHINESE_ROOM', 'CONCERNEDAPE', 'TOBY_FOX', 'PSYONIX', 'KLEI_ENTERTAINMENT', 'MOTION_TWIN', 'FACEPUNCH_STUDIOS', 'GIANT_SQUID', 'PLAYDEAD', 'ANNAPURNA_INTERACTIVE', 'VLAMBEER', 'NO_BRAKES_GAMES', 'GHOST_SHIP_GAMES', 'IRON_GATE_STUDIO', 'INNERSLOTH', 'NINTENDO', 'HAL_LABORATORY', 'INTELLIGENT_SYSTEMS', 'MONOLITH_SOFT', 'RARE', 'RETRO_STUDIOS', 'NEXT_LEVEL_GAMES', 'NDCUBE', 'THE_1_UP_STUDIO', 'GAME_FREAK', 'CREATURES_INC', 'GREZZO', 'CAMELOT_SOFTWARE_PLANNING', 'SORA_LTD', 'VANPOOL', 'SEGA', 'WAYGORWARD', 'KOEI_TECMO_OMEGA_FORCE', 'KONAMI', 'SNK', 'ATARI', 'ID_SOFTWARE', 'ATLUS', 'VALVE', 'INFOGRAMES', 'LUCASARTS', 'THQ') NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `StudioJeu` (
+    `studioId` INTEGER NOT NULL,
+    `jeuId` INTEGER NOT NULL,
+
+    PRIMARY KEY (`studioId`, `jeuId`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Plateforme` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` ENUM('NON_DEFINI', 'NES', 'SUPER_NES', 'NINTENDO_64', 'GAMECUBE', 'WII', 'WII_U', 'NINTENDO_SWITCH', 'NINTENDO_SWITCH_2', 'GAME_AND_WATCH', 'GAME_BOY', 'GAME_BOY_COLOR', 'GAME_BOY_ADVANCE', 'NINTENDO_DS', 'NINTENDO_3DS', 'PLAYSTATION', 'PLAYSTATION_2', 'PLAYSTATION_3', 'PLAYSTATION_4', 'PLAYSTATION_5', 'PSP', 'PSVITA', 'PC', 'MAC', 'LINUX', 'XBOX', 'XBOX_360', 'XBOX_ONE', 'XBOX_X', 'SG_1000', 'MASTERSYSTEM', 'MEGADRIVE', 'SATURN', 'DREAMCAST', 'GAMEGEAR', 'NEO_GEO_POCKET', 'ATARI_LYNXS', 'MAJHONG_3DO', 'NEO_GEO', 'ATARI_2600', 'PHILIPS_CD_I', 'GIZMONDO', 'GAMESPY', 'ONLIVE', 'GOOGLE_STADIA', 'GEFORCE_NOW', 'STEAM_DECK', 'COMMODORE_64') NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `PlateformeJeu` (
+    `plateformeId` INTEGER NOT NULL,
+    `jeuId` INTEGER NOT NULL,
+    `editeurId` INTEGER NULL,
+
+    PRIMARY KEY (`plateformeId`, `jeuId`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Editeur` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` ENUM('NON_DEFINI', 'NINTENDO', 'SONY', 'MICROSOFT', 'EA', 'UBISOFT', 'ACTIVISION_BLIZZARD', 'TAKE_TWO_INTERACTIVE', 'SQUARE_ENIX', 'BANDAI_NAMCO', 'CAPCOM', 'SEGA', 'EMBRACER_GROUP', 'WARNER_BROS_GAMES', 'KOEI_TECMO', 'DEVOLVER_DIGITAL', 'ANNAPURNA_INTERACTIVE', 'STUDIO_505_GAMES', 'PARADOX_INTERACTIVE', 'TEAM17', 'FOCUS_ENTERTAINMENT', 'PRIVATE_DIVISION', 'LARIAN_STUDIOS', 'RAW_FURY', 'HUMBLE_GAMES', 'INFOGRAMES', 'LUCASARTS', 'EIDOS_INTERACTIVE', 'VIRGIN_INTERACTIVE', 'BULLFROG_PRODUCTIONS', 'PSYGNOSIS') NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `EditeurJeu` (
+    `EditeurId` INTEGER NOT NULL,
+    `jeuId` INTEGER NOT NULL,
+
+    PRIMARY KEY (`EditeurId`, `jeuId`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Ami` ADD CONSTRAINT `Ami_id_utilisateur1_fkey` FOREIGN KEY (`id_utilisateur1`) REFERENCES `Utilisateur`(`id_utilisateur`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Ami` ADD CONSTRAINT `Ami_id_utilisateur2_fkey` FOREIGN KEY (`id_utilisateur2`) REFERENCES `Utilisateur`(`id_utilisateur`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Forum` ADD CONSTRAINT `Forum_id_utilisateur_fkey` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Forum` ADD CONSTRAINT `Forum_id_jeux_fkey` FOREIGN KEY (`id_jeux`) REFERENCES `Jeux`(`id_jeux`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Ludotheque` ADD CONSTRAINT `Ludotheque_id_utilisateur_fkey` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur`(`id_utilisateur`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Ludotheque` ADD CONSTRAINT `Ludotheque_id_jeux_fkey` FOREIGN KEY (`id_jeux`) REFERENCES `Jeux`(`id_jeux`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `TagJeu` ADD CONSTRAINT `TagJeu_tagId_fkey` FOREIGN KEY (`tagId`) REFERENCES `Tag`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `TagJeu` ADD CONSTRAINT `TagJeu_jeuId_fkey` FOREIGN KEY (`jeuId`) REFERENCES `Jeux`(`id_jeux`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `StudioJeu` ADD CONSTRAINT `StudioJeu_studioId_fkey` FOREIGN KEY (`studioId`) REFERENCES `Studio`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `StudioJeu` ADD CONSTRAINT `StudioJeu_jeuId_fkey` FOREIGN KEY (`jeuId`) REFERENCES `Jeux`(`id_jeux`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `PlateformeJeu` ADD CONSTRAINT `PlateformeJeu_plateformeId_fkey` FOREIGN KEY (`plateformeId`) REFERENCES `Plateforme`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `PlateformeJeu` ADD CONSTRAINT `PlateformeJeu_jeuId_fkey` FOREIGN KEY (`jeuId`) REFERENCES `Jeux`(`id_jeux`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `PlateformeJeu` ADD CONSTRAINT `PlateformeJeu_editeurId_fkey` FOREIGN KEY (`editeurId`) REFERENCES `Editeur`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `EditeurJeu` ADD CONSTRAINT `EditeurJeu_EditeurId_fkey` FOREIGN KEY (`EditeurId`) REFERENCES `Editeur`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `EditeurJeu` ADD CONSTRAINT `EditeurJeu_jeuId_fkey` FOREIGN KEY (`jeuId`) REFERENCES `Jeux`(`id_jeux`) ON DELETE RESTRICT ON UPDATE CASCADE;

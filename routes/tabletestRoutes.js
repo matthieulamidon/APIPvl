@@ -63,7 +63,7 @@ router.post(
 		});
   
 		// Création de l'utilisateur dans la base de données
-		const utilisateur = await prisma.utilisateur.create({ data });
+		const utilisateur = await prisma.Utilisateur.create({ data });
   
 		res.status(201).json(utilisateur);
 	  } catch (err) {

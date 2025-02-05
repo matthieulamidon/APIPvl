@@ -261,14 +261,14 @@ enum Icone_profilEnum {
 model Utilisateur {
   id_utilisateur   Int              @id @default(autoincrement())
   pseudo           String           @unique
-  nom              String
-  prenom           String
-  date_naissance   DateTime
+  nom              String?
+  prenom           String?
+  date_naissance   DateTime?
   adresse_email    String           @unique
   mot_de_passe     String
-  description      String
-  date_inscription DateTime         @default(now())
-  icone_profil     Icone_profilEnum @default(Ico1)
+  description      String?
+  date_inscription DateTime?        @default(now())
+  icone_profil    Icone_profilEnum @default(Ico1)
 
   amitiesEnvoyees Ami[]        @relation(name: "AmitieUtilisateur1")
   amitiesRecues   Ami[]        @relation(name: "AmitieUtilisateur2")
