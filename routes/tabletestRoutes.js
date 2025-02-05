@@ -73,9 +73,9 @@ router.post(
   );
 
 // Exemple : route pour récupérer le contenu d'un TableTest
-router.get('/Titi', async (req, res, next) => {
+router.get('/TestGetUser', async (req, res, next) => {
 	try {
-		const tests = await prisma.tableTest.findMany();
+		const tests = await prisma.Utilisateur.findMany();
 		res.json(tests);
 	} catch (err) {
 		next(err); // Passe l'erreur au gestionnaire centralisé
