@@ -12,7 +12,7 @@ const userDeTest = { username: "test", password: "12345" };
 
 // Route pour la création d'un token
 router.post('/login', (req, res) => {
-const { username, password } = req.body;
+const { username, password } = req.body;    
 // Vérifie les identifiants
 
 if (username === userDeTest.username && password === userDeTest.password) {
