@@ -13,9 +13,323 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model TableTest {
- idTest Int @id @default(autoincrement())
- nameTest String
- emailTest String @unique
- createdAt DateTime @default(now())
+enum Tag {
+NON_DEFINI
+ACTION
+RPG
+PLATEFORMES
+FPS
+TPS
+RTS
+HACK_N_SLASH
+BEAT_THEM_UP
+OPEN_WORLD
+METROIDVANIA
+POINT_AND_CLICK
+TOUR_PAR_TOUR
+ROGUE_LIKE
+ROGUE_LITE
+GESTION
+COURSE
+SPORT
+COMBAT
+QUATREX
+MOBA
+MUSOU
+NARRATIF
+VISUAL_NOVEL
+SURVIE
+BAC_A_SABLE
+MMORPG
+TACTICAL
+VR
+ENIGMES
+TOWER_DEFENSE
+CITY_BUILDER
+FARMING
+IDLE
+SIMULATION
+HORREUR
+RETRO
+NEO_RETRO
+INDEPENDANT
+RYTHME
+BATTLE_ROYALE
+SHOOT_THEM_UP
+ANIME
+JEU_DE_CARTES
+INFILTRATION
+HUMOUR
+LICENSE
+PARTY_GAME
+RAIL_SHOOTER
+GUERRE
+JRPG
+SOULS_LIKE
+}
+
+enum Studio{
+NON_DEFINI
+ROCKSTAR
+NAUGHTY_DOG
+SANTA_MONICA_STUDIO
+CD_PROJEKT_RED
+UBISOFT
+BETHESDA
+FROM_SOFTWARE
+SQUARE_ENIX
+CAPCOM
+BANDAI_NAMCO
+ELECTRONIC_ART
+DICE
+BIOWARE
+INFINITY_YARD
+TREYARCH
+SUTDIO_343_INDUSTRIES
+BUNGIE
+INSOMNIAC_GAMES
+REMEDY_INTERTAINMENT
+LARIAN_STUDIOS
+OBSIDIAN_ENTERTAINMENT
+MOJANG
+TEAM_CHERRY
+DONTNOD_ENTERTAINMENT
+TANGO_GAMEWORKS
+PLATINUM_GAMES
+KOJIMA_PRODUCTIONS
+ARKANE_STUDIOS
+REBELLION
+BOHEMIA_INTERACTIVE
+CROTEAM
+HOUSEMARQUE
+THE_CHINESE_ROOM
+CONCERNEDAPE
+TOBY_FOX
+PSYONIX
+KLEI_ENTERTAINMENT
+MOTION_TWIN
+FACEPUNCH_STUDIOS
+GIANT_SQUID
+PLAYDEAD
+ANNAPURNA_INTERACTIVE 
+VLAMBEER
+NO_BRAKES_GAMES
+GHOST_SHIP_GAMES
+IRON_GATE_STUDIO
+INNERSLOTH
+NINTENDO
+HAL_LABORATORY
+INTELLIGENT_SYSTEMS
+MONOLITH_SOFT
+RARE
+RETRO_STUDIOS
+NEXT_LEVEL_GAMES
+NDCUBE
+THE_1_UP_STUDIO
+GAME_FREAK
+CREATURES_INC
+GREZZO
+CAMELOT_SOFTWARE_PLANNING
+SORA_LTD
+VANPOOL
+SEGA
+WAYGORWARD
+KOEI_TECMO_OMEGA_FORCE
+KONAMI
+SNK
+ATARI
+ID_SOFTWARE
+ATLUS
+VALVE
+INFOGRAMES
+LUCASARTS
+THQ
+}
+
+enum Editeur{
+NON_DEFINI
+NINTENDO
+SONY
+MICROSOFT
+EA
+UBISOFT
+ACTIVISION_BLIZZARD
+TAKE_TWO_INTERACTIVE
+SQUARE_ENIX
+BANDAI_NAMCO
+CAPCOM
+SEGA
+EMBRACER_GROUP
+WARNER_BROS_GAMES
+KOEI_TECMO
+DEVOLVER_DIGITAL
+ANNAPURNA_INTERACTIVE
+STUDIO_505_GAMES
+PARADOX_INTERACTIVE
+TEAM17
+FOCUS_ENTERTAINMENT
+PRIVATE_DIVISION
+LARIAN_STUDIOS
+RAW_FURY
+HUMBLE_GAMES
+INFOGRAMES
+LUCASARTS
+EIDOS_INTERACTIVE
+VIRGIN_INTERACTIVE
+BULLFROG_PRODUCTIONS
+PSYGNOSIS
+}
+
+enum Plateforme{
+  NON_DEFINI
+  NES
+  SUPER_NES
+  NINTENDO_64
+  GAMECUBE
+  WII
+  WII_U
+  NINTENDO_SWITCH
+  NINTENDO_SWITCH_2
+  GAME_AND_WATCH
+  GAME_BOY
+  GAME_BOY_COLOR
+  GAME_BOY_ADVANCE
+  NINTENDO_DS
+  NINTENDO_3DS
+  PLAYSTATION
+  PLAYSTATION_2
+  PLAYSTATION_3
+  PLAYSTATION_4
+  PLAYSTATION_5
+  PSP
+  PSVITA
+  PC
+  MAC
+  LINUX
+  XBOX
+  XBOX_360
+  XBOX_ONE
+  XBOX_X
+  SG_1000
+  MASTERSYSTEM
+  MEGADRIVE
+  SATURN
+  DREAMCAST
+  GAMEGEAR
+  NEO_GEO_POCKET
+  ATARI_LYNXS
+  MAJHONG_3DO
+  NEO_GEO
+  ATARI_2600
+  PHILIPS_CD_I
+  GIZMONDO
+  GAMESPY
+  ONLIVE
+  GOOGLE_STADIA
+  GEFORCE_NOW
+  STEAM_DECK
+  COMMODORE_64
+}
+
+enum Statut{
+  NON_DEFINI
+  EN_COURS
+  ABANDON
+  PREVU
+  COMPLETE
+}
+
+enum Type_completion{
+  NON_DEFINI
+  any_pourcent
+  main_plus_extra
+  completionniste
+  allStyle
+}
+
+enum Icone_profil{
+  Ico1
+  Ico2
+  Ico3
+  Ico4
+  Ico5
+  Ico6
+  Ico7
+  Ico8
+}
+
+model Utilisateur{
+id_utilisateur Int @id @default(autoincrement())
+pseudo String @unique
+nom String 
+prenom String
+date_naissance DateTime
+adresse_email String @unique
+mot_de_passe String
+description String
+date_inscription DateTime @default(now())
+icone_profil Icone_profil @default(Ico1)
+
+amitiesEnvoyees Ami[] @relation(name: "AmitieUtilisateur1")
+amitiesRecues Ami[] @relation(name: "AmitieUtilisateur2")
+forums Forum[]
+ludotheques Ludotheque[]
+}
+
+model Ami{
+ utilisateur_1 Utilisateur @relation(name: "AmitieUtilisateur1", fields: [id_utilisateur1], references: [id_utilisateur])
+  id_utilisateur1 Int 
+
+  utilisateur_2 Utilisateur @relation(name: "AmitieUtilisateur2", fields: [id_utilisateur2], references: [id_utilisateur])
+  id_utilisateur2 Int
+
+  @@id([id_utilisateur1, id_utilisateur2]) // Clé primaire composite
+}
+
+model Jeux{
+id_jeux Int @id @default(autoincrement())
+nom String @unique
+src_image String
+date_publication DateTime
+tag Tag[]
+studio Studio[]
+editeur Editeur[]
+plateforme Plateforme[]
+note Float
+any_pourcent Float
+main_plus_extra Float
+completionniste Float
+allStyle Float
+description String
+nb_favoris Int
+
+forums Forum[]
+ludotheques Ludotheque[]
+}
+
+model Forum{
+  utilisateur Utilisateur @relation(fields : [id_utilisateur], references : [id_utilisateur])
+  id_utilisateur Int 
+  jeux Jeux @relation(fields : [id_jeux], references : [id_jeux])
+  id_jeux Int 
+  commentaire String
+  titre String
+  date_publication DateTime @default(now())
+
+  @@id([id_utilisateur, id_jeux]) // Clé primaire composite
+}
+
+model Ludotheque {
+  id_utilisateur Int
+  id_jeux Int
+
+  utilisateur Utilisateur @relation(fields: [id_utilisateur], references: [id_utilisateur])
+  jeux Jeux @relation(fields: [id_jeux], references: [id_jeux])
+
+  statut Statut @default(NON_DEFINI)
+  type_completion Type_completion @default(NON_DEFINI)
+  commentaire String
+  note Float
+
+  @@id([id_utilisateur, id_jeux]) // Clé primaire composite
 }
