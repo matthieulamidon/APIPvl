@@ -25,4 +25,4 @@ if (username === userDeTest.username && password === userDeTest.password) {
 }
 });
 
-module.exports = router;
+//module.exports = router;
