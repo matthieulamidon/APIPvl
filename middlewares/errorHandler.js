@@ -1,18 +1,13 @@
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.SECRET_KEY || "MaCléSecrète"; // Utilisation du fichier .env pour stocker la clé
-function authenticateJWT(req, res, next) {
-const authHeader = req.headers.authorization;
-if (authHeader) {
-const token = authHeader.split(' ')[1]; // Récupère le token après "Bearer "
-jwt.verify(token, SECRET_KEY, (err, user) => {
-if (err) {
-return res.status(403).json({ message: "Accès interdit : Token invalide" });
-}
-req.user = user; // Ajoute les données du token décrypté à req
-next(); // Passe au middleware suivant ou à la route
-});
-} else {
-res.status(401).json({ message: "Authentification requise" });
-}
-}
-module.exports = authenticateJWT;
+// middlewares/errorHandler.js
+function errorHandler(err, req, res, next) {
+    console.error(err); // Affiche l'erreur dans la console pour le débogage
+    // Format de la réponse
+    const statusCode = err.statusCode || 500; // Définit le code de statut HTTP (par défaut : 500)
+    const message = err.message || "Erreur interne du serveur"; // Définit le message d'erreur
+    res.status(statusCode).json({
+    success: false,
+    message,
+    details: err.details || null, // Ajoute des détails supplémentaires si disponibles
+    });
+   }
+   module.exports = errorHandler;
