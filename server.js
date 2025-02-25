@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 
+
 // Initialisation des objets principaux
 const app = express();
 

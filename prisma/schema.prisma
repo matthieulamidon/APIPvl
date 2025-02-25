@@ -290,7 +290,7 @@ model Jeux {
   id_jeux          Int             @id @default(autoincrement())
   nom              String          @unique
   src_image        String
-  date_publication DateTime
+  date_publication DateTime        
   tags             TagJeu[] // Utilisation de la table de relation
   studio           StudioJeu[]
   plateformes      PlateformeJeu[]
