@@ -89,24 +89,26 @@ router.post(
 	  body('nom')
 		.isLength({ min: 3, max: 40 })
 		.withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
+
+		body('src_image')
+		.isString(),
 		
 	  body('date_publication')
 	  	.isISO8601() // Valide un datetime au format ISO 8601
       	.withMessage('Date invalide')
       	.toDate(), // Convertit automatiquement en objet Date valide si possible
 	  // Champs optionnels
-	  body('src_image').optional().isString(),
-	  body('tags').optional(),
+	  body('tags').optional().isArray(),
 	  body('studio').optional(),
-	  body('plateformes').optional(),
+	  body('plateformes').optional().isArray(),
 	  body('editeur').optional(),
-	  body('note').optional(),
-	  body('any_pourcent').optional(),
-	  body('main_plus_extra').optional(),
-	  body('completionniste').optional(),
-	  body('allStyle').optional(),
-	  body('description').optional(),
-	  body('nb_favoris').optional()
+	  body('note').optional().isFloat(),
+	  body('any_pourcent').optional().isFloat(),
+	  body('main_plus_extra').optional().isFloat(),
+	  body('completionniste').optional().isFloat(),
+	  body('allStyle').optional().isFloat(),
+	  body('description').optional().isString(),
+	  body('nb_favoris').optional().isInt()
 	],
 	async (req, res, next) => {
 	  try {
@@ -117,18 +119,18 @@ router.post(
 		}
   
 		// Extraction des champs obligatoires
-		const { nom, date_publication } = req.body;
+		const { nom, date_publication, src_image } = req.body;
   
 		// Vérification stricte des champs obligatoires
-		if (!nom || !date_publication) {
+		if (!nom || !date_publication || !src_image) {
 		  return res.status(400).json({ error: 'Nom et date de publication sont obligatoires.' });
 		}
   
 		// Construction de l'objet data avec les champs obligatoires
-		const data = { nom, date_publication };
+		const data = { nom, date_publication, src_image};
   
 		// Ajout des champs optionnels s'ils existent dans req.body
-		const optionalFields = ['src_image', 'tags', 'studio', 'plateformes', 'editeur','note','any_pourcent','main_plus_extra','completionniste','allStyle','description','nb_favoris'];
+		const optionalFields = ['tags', 'studio', 'plateformes', 'editeur','note','any_pourcent','main_plus_extra','completionniste','allStyle','description','nb_favoris'];
 		optionalFields.forEach((field) => {
 		  if (req.body[field] !== undefined) {
 			data[field] = req.body[field];
@@ -144,6 +146,16 @@ router.post(
 	  }
 	}
   );
+
+  // Exemple : route pour récupérer le contenu d'un TableTest
+router.get('/TestGetJeux', async (req, res, next) => {
+	try {
+		const tests = await prisma.Jeux.findMany();
+		res.json(tests);
+	} catch (err) {
+		next(err); // Passe l'erreur au gestionnaire centralisé
+	}
+});
 
 // Exemple : route pour récupérer le contenu d'un TableTest
 router.get('/private', async (req, res, next) => {

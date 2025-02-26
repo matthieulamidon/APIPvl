@@ -3,7 +3,7 @@ const searchBox = document.getElementById('search-box');
 const gameBody = document.querySelector('#resultat-jeux');
 
 // Récupérer les données depuis un fichier JSON (ou une URL)
-fetch('http://localhost:3000/Titi') // Remplace par l'URL où se trouve ton fichier JSON
+fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve ton fichier JSON
     .then(response => response.json()) // Convertir la réponse en JSON
     .then(data => {
 
@@ -14,7 +14,7 @@ fetch('http://localhost:3000/Titi') // Remplace par l'URL où se trouve ton fich
             if (query.length >= 3) {
                 // Filtrer les données en fonction de la requête
                 const filteredData = data.filter(item => 
-                    item.nameTest.toLowerCase().includes(query) //Include permet de comparer le nom dans la BDD avec la requête
+                    item.nom.toLowerCase().includes(query) //Include permet de comparer le nom dans la BDD avec la requête
                 );
 
                 // Afficher les résultats filtrés
@@ -26,9 +26,9 @@ fetch('http://localhost:3000/Titi') // Remplace par l'URL où se trouve ton fich
                         row.style.marginTop = '20px';
                         row.innerHTML = `
 							 <a href="page_du_jeu.html">
-                            <img class="zoom-img" src="${item.srcTest}" style="height:300px" alt="${item.nameTest}">
+                            <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
 							</a>
-                            <h6 class="TitreJeu">${item.nameTest}</h6>
+                            <h6 class="TitreJeu">${item.nom}</h6>
                         `;
                         gameBody.appendChild(row);
                     });
