@@ -286,25 +286,25 @@ model Ami {
   @@id([id_utilisateur1, id_utilisateur2]) // Clé primaire composite
 }
 
-model Jeux {
-  id_jeux          Int             @id @default(autoincrement())
-  nom              String          @unique
-  src_image        String
-  date_publication DateTime        
-  tags             TagJeu[] // Utilisation de la table de relation
-  studio           StudioJeu[]
-  plateformes      PlateformeJeu[]
-  editeur          EditeurJeu[]
-  note             Float
-  any_pourcent     Float
-  main_plus_extra  Float
-  completionniste  Float
-  allStyle         Float
-  description      String
-  nb_favoris       Int
+  model Jeux {
+    id_jeux          Int             @id @default(autoincrement())
+    nom              String          @unique
+    src_image        String
+    date_publication DateTime        @db.Date 
+    tags             TagJeu[]      // Utilisation de la table de relation
+    studio           StudioEnum?       @default(NON_DEFINI)
+    plateformes      PlateformeJeu[]
+    editeur          EditeurEnum?     @default(NON_DEFINI)
+    note             Float?
+    any_pourcent     Float?
+    main_plus_extra  Float?
+    completionniste  Float?
+    allStyle         Float?
+    description      String?
+    nb_favoris       Int?
 
-  forums      Forum[]
-  ludotheques Ludotheque[]
+    forums      Forum[]
+    ludotheques Ludotheque[]
 }
 
 model Forum {
@@ -343,26 +343,12 @@ model Tag {
 model TagJeu {
   tagId Int
   jeuId Int
-  tag   Tag  @relation(fields: [tagId], references: [id])
+  tags   Tag  @relation(fields: [tagId], references: [id])
   jeu   Jeux @relation(fields: [jeuId], references: [id_jeux])
 
   @@id([tagId, jeuId]) // Définir la relation many-to-many
 }
 
-model Studio {
-  id   Int         @id @default(autoincrement())
-  name StudioEnum
-  jeux StudioJeu[]
-}
-
-model StudioJeu {
-  studioId Int
-  jeuId    Int
-  studio   Studio @relation(fields: [studioId], references: [id])
-  jeu      Jeux   @relation(fields: [jeuId], references: [id_jeux])
-
-  @@id([studioId, jeuId])
-}
 
 model Plateforme {
   id   Int             @id @default(autoincrement())
@@ -375,24 +361,8 @@ model PlateformeJeu {
   jeuId        Int
   plateforme   Plateforme @relation(fields: [plateformeId], references: [id])
   jeu          Jeux       @relation(fields: [jeuId], references: [id_jeux])
-  Editeur      Editeur?   @relation(fields: [editeurId], references: [id])
-  editeurId    Int?
 
   @@id([plateformeId, jeuId])
 }
 
-model Editeur {
-  id         Int             @id @default(autoincrement())
-  name       EditeurEnum
-  jeux       PlateformeJeu[]
-  EditeurJeu EditeurJeu[]
-}
 
-model EditeurJeu {
-  EditeurId Int
-  jeuId     Int
-  editeur   Editeur @relation(fields: [EditeurId], references: [id])
-  jeu       Jeux    @relation(fields: [jeuId], references: [id_jeux])
-
-  @@id([EditeurId, jeuId])
-}

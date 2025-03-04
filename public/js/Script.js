@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    fetch('http://localhost:3000/Titi')
+    fetch('http://localhost:3000/TestGetJeux')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.style.marginBottom = '20px';
 					
 				row.innerHTML = `
-						<img class="zoom-img" src="${item.srcTest}" style="height:300px" alt="${item.nameTest}">
-						<h6 class="TitreJeu">${item.nameTest}</h6>
+						<img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+						<h6 class="TitreJeu">${item.nom}</h6>
 				`;
                 gameBody.appendChild(row);
             });
