@@ -42,8 +42,8 @@
           </li>
         </ul>
         <form class="d-flex me-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Rechercher" id="gsearch-box">
+          <button id="search-button" class="btn btn-outline-success" type="submit">Rechercher</button>
         </form>
 
         <!-- Menu déroulant aligné à droite -->
@@ -53,15 +53,15 @@
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
               <img src="img/image_de_profile_par_default.png" alt="Icône de Persona ludique" width="70" height="70" class="me-0">
-              Persona ludique
+            <a id="nomUtilisateur" >...</a>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#connectionProfile" >Connexion</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#creeUnProfile">Créer un nouveau profil</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><button id="btnDeconnexion" class="dropdown-item btn btn-outline-success ">Déconnexion</button></li>
             </ul>
           </li>
         </ul>
@@ -163,6 +163,71 @@
 
 </body>
 
+<!-- Modal -->
+<div class="modal fade" id="connectionProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabel" >Connection</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body conecction-profile">
+        <form>
+          <div class="mb-3 ">
+            <label for="recuperePseudo" class="col-form-label">Pseudo :</label>
+            <input type="text" class="form-control" id="recuperePseudo">
+          </div>
+          <div class="mb-3">
+            <label for="recupereMotsDePasse" class="col-form-label">Mots de passe:</label>
+            <input type="text" class="form-control" id="recupereMotsDePasse">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creeUnProfile">créée un compte</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+        <button type="button" id="btnConnexion" class="btn btn-primary">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="creeUnProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Connection</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body conecction-profile">
+        <form>
+          <div class="mb-3 ">
+            <label for="recuperePseudoCreeUnProfile" class="col-form-label">Pseudo :</label>
+            <input type="text" class="form-control" id="recuperePseudoCreeUnProfile">
+          </div>
+          <div class="mb-3 ">
+            <label for="recupereEmailCreeUnProfile" class="col-form-label">Couriel :</label>
+            <input type="text" class="form-control" id="recupereEmailCreeUnProfile">
+          </div>
+          <div class="mb-3">
+            <label for="recupereMotsDePasseCreeUnProfile" class="col-form-label">Mots de passe:</label>
+            <input type="text" class="form-control" id="recupereMotsDePasseCreeUnProfile">
+          </div>
+          <div class="mb-3">
+            <label for="recupereMotsDePasseCreeUnProfileVerif" class="col-form-label">Confirmer le mot de passe:</label>
+            <input type="text" class="form-control" id="recupereMotsDePasseCreeUnProfileVerif">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btnValider">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <footer class="bg-dark text-white py-4">
   <div class="container">
     <div class="row">
@@ -218,6 +283,9 @@
     thumb.classList.add("active");
   }
  </script>
+
+<script src="js/scriptConnectionUtilisateur.js"></script>
+
  <script src="js/scriptPageDeJeu.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

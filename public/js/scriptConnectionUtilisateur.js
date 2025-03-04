@@ -85,6 +85,7 @@ document.getElementById("btnConnexion").addEventListener("click", async function
         // Sauvegarde le token dans localStorage 
         const token = data.token;  // Assurez-vous que la réponse contient le token
         localStorage.setItem('token', token);
+        localStorage.setItem('pseudo', data.pseudo);
 
         window.location.reload();
 
@@ -116,6 +117,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const userData = await response.json();
         console.log("Utilisateur connecté :", userData);
+        localStorage.setItem('pseudo', userData.pseudo);
         document.getElementById("nomUtilisateur").textContent = `Bienvenue, ${userData.pseudo} !`;
 
     } catch (error) {
@@ -131,7 +133,7 @@ document.getElementById("btnDeconnexion").addEventListener("click", async functi
         localStorage.removeItem('token');
         
         alert("Déconnexion réussie !");
-        window.location.reload(); // Recharge la page
+        window.location.reload(); // Recharge la page 
 
     } catch (error) {
         console.error("Erreur de déconnexion :", error);
