@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
         res.status(401).json({ message: "Identifiants invalides" });
     }
 });
-*/
+
 
 router.post("/loginMdp", async (req, res) => {
     const { email, motDePasse } = req.body;
@@ -57,6 +57,7 @@ router.post("/loginMdp", async (req, res) => {
         return res.status(500).json({ error: "Erreur lors de la connexion" });
     }
 });
+*/
 
 
 module.exports = router;
