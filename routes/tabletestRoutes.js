@@ -4,6 +4,7 @@ const { body, validationResult } = require('express-validator');
 
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
+const { TagEnum, PlateformeEnum } = require('@prisma/client'); // Import de l'enum Prisma
 
 const authenticateJWT = require('../middlewares/authenticateJWT');
 
@@ -85,18 +86,10 @@ router.get('/TestGetUser', async (req, res, next) => {
 router.post(
 	'/TestPostJeu',
 	[
-	  // Champs obligatoires
-	  body('nom')
-		.isLength({ min: 3, max: 40 })
-		.withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
+	  body('nom').isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
+	  body('src_image').isString(),
+	  body('date_publication').isISO8601().withMessage('Date invalide').toDate(),
 
-		body('src_image')
-		.isString(),
-		
-	  body('date_publication')
-	  	.isISO8601() // Valide un datetime au format ISO 8601
-      	.withMessage('Date invalide')
-      	.toDate(), // Convertit automatiquement en objet Date valide si possible
 	  // Champs optionnels
 	  body('tags').optional().isArray(),
 	  body('studio').optional(),
@@ -111,41 +104,59 @@ router.post(
 	  body('nb_favoris').optional().isInt()
 	],
 	async (req, res, next) => {
-	  try {
-		// Vérification des erreurs de validation
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-		  return res.status(400).json({ errors: errors.array() });
-		}
-  
-		// Extraction des champs obligatoires
-		const { nom, date_publication, src_image } = req.body;
-  
-		// Vérification stricte des champs obligatoires
-		if (!nom || !date_publication || !src_image) {
-		  return res.status(400).json({ error: 'Nom et date de publication sont obligatoires.' });
-		}
-  
-		// Construction de l'objet data avec les champs obligatoires
-		const data = { nom, date_publication, src_image};
-  
-		// Ajout des champs optionnels s'ils existent dans req.body
-		const optionalFields = ['tags', 'studio', 'plateformes', 'editeur','note','any_pourcent','main_plus_extra','completionniste','allStyle','description','nb_favoris'];
-		optionalFields.forEach((field) => {
-		  if (req.body[field] !== undefined) {
-			data[field] = req.body[field];
+		try {
+		  const { nom, date_publication, src_image, tags } = req.body;
+	
+		  if (!nom || !date_publication || !src_image) {
+			return res.status(400).json({ error: 'Nom, date de publication et src_image sont obligatoires.' });
 		  }
-		});
-  
-		// Création de l'utilisateur dans la base de données
-		const jeu = await prisma.Jeux.create({ data });
-  
-		res.status(201).json(jeu);
-	  } catch (err) {
-		next(err); // Gestion des erreurs
+	
+		  // Vérifier si le jeu existe déjà
+		  const existingGame = await prisma.jeux.findUnique({ where: { nom } });
+	
+		  if (existingGame) {
+			return res.status(400).json({ error: 'Un jeu avec ce nom existe déjà !' });
+		  }
+	
+		  // Création du jeu
+		  const jeu = await prisma.jeux.create({
+			data: {
+			  nom,
+			  date_publication,
+			  src_image
+			}
+		  });
+	
+		  // Associer les tags existants
+		  if (tags && Array.isArray(tags)) {
+			// Convertir les tags en valeurs de `TagEnum`
+			console.log('Tags reçus:', tags);
+			console.log('Valeurs enum:', Object.values(TagEnum));
+
+			const tagEnumValues = tags.map(tag => TagEnum[tag.toUpperCase()]).filter(Boolean);
+	
+			if (tagEnumValues.length === 0) {
+			  return res.status(400).json({ error: 'Aucun tag valide trouvé.' });
+			}
+	
+			const existingTags = await prisma.tag.findMany({
+			  where: { name: { in: tagEnumValues } }
+			});
+	
+			await prisma.tagJeu.createMany({
+			  data: existingTags.map(tag => ({
+				tagId: tag.id,
+				jeuId: jeu.id_jeux
+			  }))
+			});
+		  }
+	
+		  res.status(201).json({ success: true, jeu });
+		} catch (err) {
+		  next(err);
+		}
 	  }
-	}
-  );
+	);
 
   // Exemple : route pour récupérer le contenu d'un TableTest
 router.get('/TestGetJeux', async (req, res, next) => {
@@ -165,6 +176,38 @@ res.json(tests);
 } catch (err) {
 next(err); // Passe l'erreur au gestionnaire centralisé
 }
+});
+
+// Route pour mettre à jour l'image d'un Jeu
+router.patch('/PatchImg/:id', async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const { src_image } = req.body;
+		const updatedTest = await prisma.Jeux.update({
+		where: { id_jeux: parseInt(id) },
+		data: { src_image },
+		});
+		res.status(200).json({ message: 'Enregistrement mis à jour avec succès',
+		data: updatedTest });
+		} catch (err) {
+	next(err); // Passe l'erreur au gestionnaire centralisé
+ }
+});
+
+// Route pour mettre à jour le studio
+router.patch('/PatchStudio/:id', async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const { studio } = req.body;
+		const updatedTest = await prisma.Jeux.update({
+		where: { id_jeux: parseInt(id) },
+		data: { studio },
+		});
+		res.status(200).json({ message: 'Enregistrement mis à jour avec succès',
+		data: updatedTest });
+		} catch (err) {
+	next(err); // Passe l'erreur au gestionnaire centralisé
+ }
 });
 
 // Exemple : route pour mettre à jour un TableTest
