@@ -22,11 +22,17 @@ const authRoutes = require('./routes/authRoutes');
 const testRoutes = require('./routes/tabletestRoutes');
 //la route du mots de passe securiser
 const utilisateursRoutes = require('./routes/utilisateursRoutes');
+//la route des jeux
+const jeuxRoutes = require('./routes/jeuxRoutes');
+
+const ludoRoutes = require('./routes/ludothequeRoutes')
 
 // Utilisation des routes
 app.use(authRoutes); // Routes d'authentification
 app.use(testRoutes); // Routes pour TableTest
 app.use(utilisateursRoutes); // Routes pour utilisateurs
+app.use(jeuxRoutes); // Routes pour jeux
+app.use(ludoRoutes); // Routes pour jeux
 
 // Middleware de gestion des erreurs (doit être monté **après** les routes)
 app.use(errorHandler);
