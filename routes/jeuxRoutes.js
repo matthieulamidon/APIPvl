@@ -144,8 +144,6 @@ router.post('/addTag',
 ],
 async (req, res) => {
 try {
-	
-	console.log("Bonjour");
 
 	const { id_jeux, nom } = req.body; // Récupérer l'ID du jeu et le nom du tag depuis le corps de la requête
 
@@ -167,18 +165,33 @@ try {
 }
 });
 
-router.post('/AjoutPlateformes', async (req, res) => {
-    try {
-        const plateformes = req.body; // [ {nom: "Nintendo Switch", jeuId: 1}, {nom: "Playstation 4", jeuId: 1} ]
-        const nouvPlateformes = await prisma.plateforme.createMany({
-            data: plateformes,
-        });
-        res.json(nouvPlateformes);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Erreur lors de l\'ajout des tags');
-    }
-});
+router.post('/addPlateforme',
+	[
+		body('nom').isString(),
+		body('id_jeux').isInt(),
+	],
+	async (req, res) => {
+	try {
+	
+		const { id_jeux, nom } = req.body; // Récupérer l'ID du jeu et le nom du tag depuis le corps de la requête
+	
+		if (!id_jeux || !nom) {
+			return res.status(400).json({ error: "Les champs 'id_jeux' et 'nom' sont requis" });
+		}
+	
+		// Ajouter un tag dans la base de données
+		const nouvPlat = await prisma.plateforme.create({
+			data: {
+				id_jeux: id_jeux,
+				nom: nom,
+			},
+		});
+	
+		res.status(201).json(nouvPlat);  // Retourner le tag ajouté
+	} catch (error) {
+	
+	}
+	});
 
 router.get('/TestGetTags', async (req, res, next) => {
     try {
@@ -190,6 +203,18 @@ router.get('/TestGetTags', async (req, res, next) => {
         next(err);
     }
 });
+
+router.get('/TestGetPlateformes', async (req, res, next) => {
+    try {
+        const tags = await prisma.plateforme.findMany();
+        res.json(tags);
+    } catch (err) {
+        console.error("Erreur lors de la récupération des tags :", err);
+        res.status(500).json({ error: "Erreur serveur lors de la récupération des tags" });
+        next(err);
+    }
+});
+
 
 
 module.exports = router;

@@ -130,6 +130,25 @@ router.patch('/PatchStatutLudo/:id1/:id2', async (req, res, next) => {
  }
 });
 
+router.get('/getid/:pseudo', async (req, res, next) => {
+    try {
+        const { pseudo } = req.params;
+
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { pseudo } // Chercher un utilisateur avec ce nom
+        });
+
+        if (!utilisateur) {
+            return res.status(404).json({ error: "Utilisateur non trouvé" });
+        }
+
+        res.json(utilisateur.id_utilisateur);
+    } catch (error) {
+        console.error("Erreur lors de la récupération de l'utilisateur :", error);
+        res.status(500).json({ error: "Une erreur est survenue lors de la récupération de l'utilisateur" });
+    }
+});
+
 
 
 module.exports = router;
