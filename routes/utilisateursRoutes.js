@@ -1,3 +1,11 @@
+/*
+* Nom: utilisateursRoutes.js
+* Description: il contiennt les routes pour les utilisateurs et la gestion de la connexion, de la déconnexion et la gestion de profils
+* Auteur: Matthieu Lamidon
+* Version: 1.0.6
+* Dernière modification: 2025-03-05
+*/
+
 // Chargement des modules nécessaires
 const { body, validationResult } = require('express-validator'); // Pour la validation des données
 const express = require('express');
@@ -9,7 +17,8 @@ const jwt = require('jsonwebtoken');
 // N'oublie pas d'installer les dépendances nécessaires : jsonwebtoken
 // npm install jsonwebtoken
 
-const SECRET_KEY = "zelda-oot-est-un jeu-banger"; // Mets une clé secrète forte et garde-la cachée !
+// Clé secrète pour le token JWT bah oui elle est belle ma clé secrète
+const SECRET_KEY = "zelda-oot-est-un jeu-banger"; 
 const authenticateJWT = require('../middlewares/authenticateJWT');
 
 const router = express.Router();
@@ -97,6 +106,151 @@ router.get('/utilisateurs', async (req, res) => {
     }
 });
 
+// Route pour récupérer un utilisateur
+router.get('/profils/:pseudo', async (req, res, next) => {
+    try {
+        const { pseudo } = req.params;
+
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { pseudo } // Chercher un utilisateur avec ce nom
+        });
+
+        if (!utilisateur) {
+            return res.status(404).json({ error: "Utilisateur non trouvé" });
+        }
+
+        res.json(utilisateur);
+    } catch (error) {
+        console.error("Erreur lors de la récupération de l'utilisateur :", error);
+        res.status(500).json({ error: "Une erreur est survenue lors de la récupération de l'utilisateur" });
+    }
+});
+
+//route pour récupérer l'id d'un utilisateur via son pseudo pour la ludotheque
+router.get('/getid/:pseudo', async (req, res, next) => {
+    try {
+        console.log("Tentative de récupération de l'ID de l'utilisateur");
+        const { pseudo } = req.params;
+
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { pseudo } // Chercher un utilisateur avec ce nom
+        });
+
+        if (!utilisateur) {
+            return res.status(404).json({ error: "Utilisateur non trouvé" });
+        }
+
+        res.json(utilisateur.id_utilisateur);
+    } catch (error) {
+        console.error("Erreur lors de la récupération de l'utilisateur :", error);
+        res.status(500).json({ error: "Une erreur est survenue lors de la récupération de l'utilisateur" });
+    }
+});
+
+//route qui permet de mettre a jour les informations d'un utilisateur
+router.patch('/majProfils',
+    [
+        // Validation des champs
+        body('Actuelpseudo').exists().withMessage('Le pseudo actuel est requis.'), // Actuelpseudo est obligatoire
+        
+        body('pseudo')
+            .optional().isLength({ min: 3, max: 20 })
+            .withMessage('Le pseudo doit contenir entre 3 et 20 caractères.')
+            .isString()
+            .custom(async (value) => {
+                if (value) {
+                    const existingUser = await prisma.utilisateur.findUnique({
+                        where: { pseudo: value },
+                    });
+                    if (existingUser) {
+                        throw new Error('Ce pseudo est déjà pris.');
+                    }
+                }
+                return true;
+            }),
+
+        body('adresse_email')
+            .optional().isEmail()
+            .withMessage('Adresse email invalide.'),
+        
+        body('nom')
+            .optional().isString()
+            .withMessage('Le nom doit être une chaîne de caractères.'),
+
+        body('prenom')
+            .optional().isString()
+            .withMessage('Le prénom doit être une chaîne de caractères.'),
+
+        body('description')
+            .optional().isString()
+            .withMessage('La description doit être une chaîne de caractères.'),
+
+        body('date_de_naissance')
+            .optional().isISO8601().toDate()
+            .withMessage('La date de naissance doit être au format ISO8601.'),
+        /*
+        body('icone_profil')
+            .optional().isString()
+            .custom((value) => {
+                const validIcons = [
+                    "img/image_de_profile_par_default.png", 
+                    "img/avatar1.png", 
+                    "img/avatar2.png"
+                ]; 
+                if (value && !validIcons.includes(value)) {
+                    throw new Error('Icône de profil invalide.');
+                }
+                return true;
+            })*/
+    ], 
+    async (req, res) => {
+        try {
+            // Validation des erreurs
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() });
+            }
+
+            // Récupérer l'Actuelpseudo dans le corps de la requête ou depuis le token JWT
+            const Actuelpseudo = req.body.Actuelpseudo || req.user.Actuelpseudo;
+            if (!Actuelpseudo) {
+                return res.status(400).json({ error: "Le pseudo actuel est requis." });
+            }
+
+            // Vérifier si l'utilisateur existe avec l'Actuelpseudo
+            const utilisateur = await prisma.utilisateur.findUnique({
+                where: { pseudo: Actuelpseudo }
+            });
+
+            if (!utilisateur) {
+                return res.status(404).json({ error: "Utilisateur non trouvé" });
+            }
+
+            // Mise à jour des champs modifiés
+            const updatedUser = await prisma.utilisateur.update({
+                where: { pseudo: Actuelpseudo }, // Utilisation de Actuelpseudo pour trouver l'utilisateur
+                data: {
+                    pseudo: req.body.pseudo || utilisateur.pseudo,
+                    nom: req.body.nom || utilisateur.nom,
+                    prenom: req.body.prenom || utilisateur.prenom,
+                    description: req.body.description || utilisateur.description,
+                    date_de_naissance: req.body.date_de_naissance || utilisateur.date_de_naissance,
+                    //icone_profil: req.body.icone_profil || utilisateur.icone_profil
+                }
+            });
+
+            // Retourner la réponse avec l'utilisateur mis à jour
+            res.json({ message: "Profil mis à jour avec succès", utilisateur: updatedUser });
+        } catch (error) {
+            console.error("Erreur lors de la mise à jour du profil :", error);
+            res.status(500).json({ error: "Une erreur est survenue lors de la modification du profil" });
+        }
+    }
+);
+
+
+
+
 // Route de connexion
 router.post('/loginMdp', [
     body('adresse_email')
@@ -176,8 +330,7 @@ router.get('/checkAuth', (req, res) => {
 
 // Déconnexion (suppression du token côté client)
 router.post('/logout', (req, res) => {
-    // On ne supprime pas le cookie, car on utilise localStorage côté client
-    // On ne fait rien côté serveur pour la déconnexion, le token est simplement retiré du localStorage côté client
+    // On ne supprime pas le cookie, car on n'en a plus car ça n'a jamais marcher et que cette route n'est plus utiliser que par mon seum imense de laisser d'énorme faille de securiter
     res.json({ message: "Déconnexion réussie, à bientôt !" });
 });
 

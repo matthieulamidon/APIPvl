@@ -1,3 +1,10 @@
+/*
+* Nom: scriptConnectionUtilisateur.js
+* Description: Cefichier permet de gérer la connexion et la déconnexion des utilisateurs et est utiliser par tout les fichier html
+* Auteur: Matthieu Lamidon
+* Version: 1.0.2
+* Dernière modification: 2025-03-05
+*/
 document.getElementById("btnValider").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const pseudo = document.getElementById("recuperePseudoCreeUnProfile").value;

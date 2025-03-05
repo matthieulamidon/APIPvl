@@ -129,3 +129,11 @@ pour le profile
 .conecction-profile{
   color : black;
 }
+
+/*
+pour que les texte des modal soit plus lisible
+ */
+.modal-body label {
+  font-weight: bold; /* Mettre en gras pour plus de lisibilité */
+  color: #333; /* Noir légèrement adouci */
+}

@@ -1,3 +1,10 @@
+/*
+* Nom: server.js
+* Description: ce fichier est le server qui permet de faire le lien entre le front et le back pour les utilisateurs
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
+* Version: 1.0.6
+* Dernière modification: 2025-03-05
+*/
 // Chargement des modules nécessaires
 const express = require('express');
 const cors = require('cors');
