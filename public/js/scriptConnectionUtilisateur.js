@@ -1,5 +1,5 @@
 document.getElementById("btnValider").addEventListener("click", async function () {
-    // Récupérer les valeurs du formulaire
+    // Récupère les valeurs du formulaire
     const pseudo = document.getElementById("recuperePseudoCreeUnProfile").value;
     const email = document.getElementById("recupereEmailCreeUnProfile").value;
     const password = document.getElementById("recupereMotsDePasseCreeUnProfile").value;
@@ -15,15 +15,15 @@ document.getElementById("btnValider").addEventListener("click", async function (
         return;
     }
 
-    
     const userData = {
         pseudo: pseudo,
         adresse_email: email,
         mot_de_passe: password
     };
 
+    console.log("test");
+    
     try {
-        
         const response = await fetch("http://localhost:3000/creationDutilisateurs", { 
             method: "POST",
             headers: {
@@ -47,29 +47,31 @@ document.getElementById("btnValider").addEventListener("click", async function (
 });
 
 document.getElementById("btnConnexion").addEventListener("click", async function () {
-    // Récupérer les valeurs du formulaire
     const email = document.getElementById("recuperePseudo").value;
     const motDePasse = document.getElementById("recupereMotsDePasse").value;
 
-    // Vérification des champs
     if (!email || !motDePasse) {
         alert("Veuillez remplir tous les champs !");
         return;
     }
 
-    // Création de l'objet à envoyer
-    const userData = {
-        email: email,
-        motDePasse: motDePasse
+    // Vérifie les valeurs
+    console.log("Email :", email);
+    console.log("Mot de passe :", motDePasse);
+
+    const userData = { 
+        adresse_email: email,
+        mot_de_passe: motDePasse 
     };
 
     try {
-        const response = await fetch("http://localhost:3000/loginMdp", {
-            method: "POST",
+        //ci-dessous l'ensemble du seum des 6 heures de travail perdu car les cookies ne fonctionnent pas :'(
+        const response = await fetch('http://localhost:3000/loginMdp', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(userData),
         });
 
         if (!response.ok) {
@@ -77,15 +79,63 @@ document.getElementById("btnConnexion").addEventListener("click", async function
             throw new Error(errorData.error || `Erreur HTTP : ${response.status}`);
         }
 
-        const result = await response.json();
+        const data = await response.json();
         alert("Connexion réussie !");
-        console.log("Token JWT :", result.token);
+        
+        // Sauvegarde le token dans localStorage 
+        const token = data.token;  // Assurez-vous que la réponse contient le token
+        localStorage.setItem('token', token);
+        localStorage.setItem('pseudo', data.pseudo);
 
-        // Stocker le token JWT dans le localStorage bah oui je sais pas faire des cookies autre que ce aux pepites de chocolat
-        localStorage.setItem("token", result.token);
+        window.location.reload();
 
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         alert("Identifiants incorrects ou erreur serveur.");
+    }
+});
+
+// Vérifier si l'utilisateur est connecté au chargement de la page
+document.addEventListener("DOMContentLoaded", async function () {
+    const token = localStorage.getItem('token');  // Récupère le token depuis localStorage
+
+    if (!token) {
+        console.log("Utilisateur non connecté.");
+        document.getElementById("nomUtilisateur").textContent = "Veuillez vous connecter.";
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:3000/checkAuth", {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`  // Envoie le token dans l'en-tête Authorization
+            }
+        });
+
+        if (!response.ok) throw new Error("Non connecté");
+
+        const userData = await response.json();
+        console.log("Utilisateur connecté :", userData);
+        localStorage.setItem('pseudo', userData.pseudo);
+        document.getElementById("nomUtilisateur").textContent = `Bienvenue, ${userData.pseudo} !`;
+
+    } catch (error) {
+        console.log("Erreur lors de la vérification de l'utilisateur :", error);
+        document.getElementById("nomUtilisateur").textContent = "Veuillez vous connecter.";
+    }
+});
+
+// Déconnexion de l'utilisateur
+document.getElementById("btnDeconnexion").addEventListener("click", async function () {
+    try {
+        // Supprimer le token du localStorage
+        localStorage.removeItem('token');
+        
+        alert("Déconnexion réussie !");
+        window.location.reload(); // Recharge la page 
+
+    } catch (error) {
+        console.error("Erreur de déconnexion :", error);
     }
 });

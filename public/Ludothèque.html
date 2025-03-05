@@ -16,62 +16,60 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark py-0">
-  <div class="container-fluid">
-    <!-- Logo -->
-    <!-- <a class="navbar-brand" href="#">Logo</a> -->
-    <img src="img/logo_produitVideoLudique.com2.svg" id="img1" alt="logo de produitVideoLudique.com" width="200px"
-         class="me-0"/>
-    <!-- Bouton de basculement pour les écrans plus petits -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Liens de navigation -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-1 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="accueil.html#">Maison</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Recherche.html">Recherche</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Ludothèque.html">Ludothèque</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Forum</a>
-        </li>
-      </ul>
-      <form class="d-flex me-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark py-0">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <!-- <a class="navbar-brand" href="#">Logo</a> -->
+      <img src="img/logo_produitVideoLudique.com2.svg" id="img1"  alt="logo de produitVideoLudique.com" width="200px" class="me-0"/>
+      <!-- Bouton de basculement pour les écrans plus petits -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Liens de navigation -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="accueil.html#">Maison</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Recherche.html">Recherche</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Ludothèque.html">Ludothèque</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Forum</a>
+          </li>
+        </ul>
+        <form class="d-flex me-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Rechercher" id="gsearch-box">
+          <button id="search-button" class="btn btn-outline-success" type="submit">Rechercher</button>
+        </form>
 
-      <!-- Menu déroulant aligné à droite -->
-      <ul class="navbar-nav">
+        <!-- Menu déroulant aligné à droite -->
+        <ul class="navbar-nav">
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"
-             aria-expanded="false">
-            <img src="img/image_de_profile_par_default.png" alt="Icône de Persona ludique" width="70" height="70"
-                 class="me-0">
-            Persona ludique
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+              <img src="img/image_de_profile_par_default.png" alt="Icône de Persona ludique" width="70" height="70" class="me-0">
+            <a id="nomUtilisateur" >...</a>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#connectionProfile" >Connexion</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#creeUnProfile">Créer un nouveau profil</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><button id="btnDeconnexion" class="dropdown-item btn btn-outline-success ">Déconnexion</button></li>
+            </ul>
+          </li>
+        </ul>
 
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 <div class="container" style="margin-top:50px">
   <h1>Ludothèque</h1>
 </div>
@@ -118,6 +116,73 @@
   <div class="row align-items-center" style=" margin-bottom:50px" id="containerJeuxPrevu"></div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="connectionProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabel" >Connection</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body conecction-profile">
+        <form>
+          <div class="mb-3 ">
+            <label for="recuperePseudo" class="col-form-label">Pseudo :</label>
+            <input type="text" class="form-control" id="recuperePseudo">
+          </div>
+          <div class="mb-3">
+            <label for="recupereMotsDePasse" class="col-form-label">Mots de passe:</label>
+            <input type="text" class="form-control" id="recupereMotsDePasse">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creeUnProfile">créée un compte</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+        <button type="button" id="btnConnexion" class="btn btn-primary">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="creeUnProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Connection</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body conecction-profile">
+        <form>
+          <div class="mb-3 ">
+            <label for="recuperePseudoCreeUnProfile" class="col-form-label">Pseudo :</label>
+            <input type="text" class="form-control" id="recuperePseudoCreeUnProfile">
+          </div>
+          <div class="mb-3 ">
+            <label for="recupereEmailCreeUnProfile" class="col-form-label">Couriel :</label>
+            <input type="text" class="form-control" id="recupereEmailCreeUnProfile">
+          </div>
+          <div class="mb-3">
+            <label for="recupereMotsDePasseCreeUnProfile" class="col-form-label">Mots de passe:</label>
+            <input type="text" class="form-control" id="recupereMotsDePasseCreeUnProfile">
+          </div>
+          <div class="mb-3">
+            <label for="recupereMotsDePasseCreeUnProfileVerif" class="col-form-label">Confirmer le mot de passe:</label>
+            <input type="text" class="form-control" id="recupereMotsDePasseCreeUnProfileVerif">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btnValider">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/scriptConnectionUtilisateur.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

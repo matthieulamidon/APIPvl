@@ -54,15 +54,15 @@
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
               <img src="img/image_de_profile_par_default.png" alt="Icône de Persona ludique" width="70" height="70" class="me-0">
-              Persona ludique
+            <a id="nomUtilisateur" >...</a>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#connectionProfile" >connection</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#creeUnProfile">créé un nouveau profile</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#connectionProfile" >Connexion</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#creeUnProfile">Créer un nouveau profil</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><button id="btnDeconnexion" class="dropdown-item btn btn-outline-success ">Déconnexion</button></li>
             </ul>
           </li>
         </ul>
@@ -295,8 +295,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creeUnProfile">créée un compte</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+        <button type="button" id="btnConnexion" class="btn btn-primary">Valider</button>
       </div>
     </div>
   </div>

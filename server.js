@@ -2,16 +2,25 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+//const cors = require('cors');
+
+
 
 
 // Initialisation des objets principaux
 const app = express();
+app.use(cors({
+    origin: ['http://localhost:3000', 'null'], // Remplacez par l'origine de votre frontend
+    credentials: true, // Autorise l'envoi des cookies
+}));
 
 // Middleware pour analyser le corps des requêtes
 
-app.use(cors());
+//app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+app.use(cookieParser());
 
 // Import du middleware de gestion des erreurs
 const errorHandler = require('./middlewares/errorHandler'); 
