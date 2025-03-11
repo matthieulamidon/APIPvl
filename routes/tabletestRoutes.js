@@ -13,8 +13,7 @@ const prisma = new PrismaClient();
 
 
 
-router.post(
-	'/TestPostUser',
+router.post('/TestPostUser',
 	[
 	  // Champs obligatoires
 	  body('pseudo')
@@ -70,8 +69,7 @@ router.post(
 	  } catch (err) {
 		next(err); // Gestion des erreurs
 	  }
-	}
-  );
+});
 
 // Exemple : route pour récupérer le contenu d'un TableTest
 router.get('/TestGetUser', async (req, res, next) => {

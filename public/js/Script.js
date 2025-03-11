@@ -1,3 +1,12 @@
+/*
+* Nom: Script.js
+* Description: il contiennt ce qui est utile pour la ludotheque
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
+* Version: 1.0.6
+* Dernière modification: 2025-03-11
+*/
+
+// Chargement des conteneur qui contiendront les jeux de la ludothèque
 document.addEventListener('DOMContentLoaded', async function () {
     const EnCoursBody = document.getElementById('containerJeuxEnCours');
     const AbandonBody = document.getElementById('containerJeuxAbandon');
@@ -98,6 +107,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 })
 
+// Fonction pour afficher les jeux dans un conteneur
 function afficherJeux(listeJeux, container) {
     listeJeux.forEach(item => {
         const row = document.createElement('div');

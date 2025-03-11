@@ -1,3 +1,11 @@
+/*
+* Nom: ludothequeRoutes.js
+* Description: il contiennt les routes pour la ludotheque
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
+* Version: 1.0.6
+* Dernière modification: 2025-03-11
+*/
+
 // Chargement des modules nécessaires
 const { body, validationResult } = require('express-validator'); 
 // pour la validation des données
@@ -11,6 +19,7 @@ const authenticateJWT = require('../middlewares/authenticateJWT');
 const router = express.Router();
 const prisma = new PrismaClient();
 
+// Route pour ajouter un jeu à la ludothèque d'un utilisateur
 router.post('/TestPostLudotheque',
 	[
 	  // Champs obligatoires
@@ -62,9 +71,9 @@ router.post('/TestPostLudotheque',
 	  } catch (err) {
 		next(err); // Gestion des erreurs
 	  }
-	});
+});
 
-    // Route pour récupérer le contenu de la table Ludotheque
+// Route pour récupérer le contenu de toute les Ludotheque
 router.get('/TestGetLudo', async (req, res, next) => {
 	try {
 		const tests = await prisma.ludotheque.findMany();
@@ -128,26 +137,7 @@ router.patch('/PatchStatutLudo/:id1/:id2', async (req, res, next) => {
  }
 });
 
-router.get('/getid/:pseudo', async (req, res, next) => {
-    try {
-        const { pseudo } = req.params;
-
-        const utilisateur = await prisma.utilisateur.findUnique({
-            where: { pseudo } // Chercher un utilisateur avec ce nom
-        });
-
-        if (!utilisateur) {
-            return res.status(404).json({ error: "Utilisateur non trouvé" });
-        }
-
-        res.json(utilisateur.id_utilisateur);
-    } catch (error) {
-        console.error("Erreur lors de la récupération de l'utilisateur :", error);
-        res.status(500).json({ error: "Une erreur est survenue lors de la récupération de l'utilisateur" });
-    }
-});
-
-
+// Route qui permet de savoir si un jeu est dans la ludotheque d'un utilisateur et oui c'est matthieu qui a fait cette route car il n'y a que lui qui est capable de faire une route avec un nom aulieu de l'id
 router.get('/appartient/:pseudo/:jeu', async (req, res, next) => {
   try {
       const { pseudo } = req.params;
@@ -158,7 +148,7 @@ router.get('/appartient/:pseudo/:jeu', async (req, res, next) => {
       const jeu1 = await prisma.jeux.findUnique({
           where: { nom: jeu }
       });
-      
+
       // Vérifier si l'utilisateur possède le jeu
       const tests = await prisma.ludotheque.findFirst({
         where: { 

@@ -1,3 +1,11 @@
+/*
+* Nom: jeuxRoutes.js
+* Description: il contiennt les routes pour tout ce qui conserne les jeux
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
+* Version: 1.0.6
+* Dernière modification: 2025-03-11
+*/
+
 // Chargement des modules nécessaires
 const { body, validationResult } = require('express-validator'); 
 // pour la validation des données
@@ -12,7 +20,7 @@ const authenticateJWT = require('../middlewares/authenticateJWT');
 const router = express.Router();
 const prisma = new PrismaClient();
 
-
+// Route pour ajouter un jeu a la db
 router.post('/TestPostJeu', 
 	[
 	  body('nom').isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
@@ -70,7 +78,7 @@ router.post('/TestPostJeu',
 			if (tagEnumValues.length === 0) {
 			  return res.status(400).json({ error: 'Aucun tag valide trouvé.' });
 			}
-	
+
 			const existingTags = await prisma.tag.findMany({
 			  where: { name: { in: tagEnumValues } }
 			});
@@ -90,7 +98,7 @@ router.post('/TestPostJeu',
 		}
 });
 
-  // Route pour récupérer le contenu de la table Jeux
+// Route pour récupérer le contenu tout les jeux stoquer dans la bdd
 router.get('/TestGetJeux', async (req, res, next) => {
 	try {
 		const tests = await prisma.Jeux.findMany();
@@ -110,7 +118,7 @@ next(err); // Passe l'erreur au gestionnaire centralisé
 }
 });
 
-// Route pour mettre à jour l'image d'un Jeu
+// Route pour mettre à jour l'image d'un Jeu en vrai c'est pratique
 router.patch('/PatchImg/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -163,6 +171,7 @@ router.patch('/PatchStudio/:id', async (req, res, next) => {
  }
 });
 
+// Route permet de rajouter un tag a un jeu
 router.post('/addTag',
 [
 	body('nom').isString(),
@@ -191,6 +200,7 @@ try {
 }
 });
 
+// Route permet de rajouter une plateforme a un jeu
 router.post('/addPlateforme',
 	[
 		body('nom').isString(),
@@ -219,6 +229,7 @@ router.post('/addPlateforme',
 	}
 	});
 
+// elle donne tout les relation entre les jeux et les tags
 router.get('/TestGetTags', async (req, res, next) => {
     try {
         const tags = await prisma.tag.findMany();
@@ -230,6 +241,7 @@ router.get('/TestGetTags', async (req, res, next) => {
     }
 });
 
+// elle donne tout les relation entre les jeux et les plateformes
 router.get('/TestGetPlateformes', async (req, res, next) => {
     try {
         const tags = await prisma.plateforme.findMany();
@@ -241,6 +253,7 @@ router.get('/TestGetPlateformes', async (req, res, next) => {
     }
 });
 
+// Route pour récupérer les jeux pour les charger dans la page de jeu
 router.get('/chargementPageDeJeu/:nom', async (req, res) => {
     try {
 		console.log("test"); // Debugging
@@ -299,7 +312,5 @@ router.get('/chargementPageDeJeu/:nom', async (req, res) => {
         res.status(500).json({ message: "Erreur serveur" });
     }
 });
-
-
 
 module.exports = router;

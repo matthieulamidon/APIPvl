@@ -17,6 +17,7 @@ const { TagEnum, PlateformeEnum } = require('@prisma/client'); // Import de l'en
 const router = express.Router();
 const prisma = new PrismaClient();
 
+// Route pour ajouter un commentaire
 router.post('/commentaire',
     [
         // Champs obligatoires
@@ -68,7 +69,7 @@ router.post('/commentaire',
     }
 );
 
-
+// Route pour verifier si un utilisateur a laissé un commentaire sur un jeu
 router.get('/laissercommentaire/:pseudo/:jeu', async (req, res, next) => {
   try {
       const { pseudo } = req.params;
