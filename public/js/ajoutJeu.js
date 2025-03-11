@@ -13,9 +13,9 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
 
     console.log("Date :", date);
 
-    let [annee, mois, jour] = date.split("-"); // Sépare la date
-    let dateConvertie = `${mois}-${jour}-${annee}`; // Reformate en MM-DD-YYYY
-    date = dateConvertie
+    //let [annee, mois, jour] = date.split("-"); // Sépare la date
+    //let dateConvertie = `${mois}-${jour}-${annee}`; // Reformate en MM-DD-YYYY
+    //date = dateConvertie
 
     console.log("Date convertie :", date);
 

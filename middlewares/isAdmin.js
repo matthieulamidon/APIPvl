@@ -1,22 +1,34 @@
 const { PrismaClient } = require("@prisma/client");
-
+const jwt = require("jsonwebtoken");  
 const prisma = new PrismaClient();
+const SECRET_KEY = "zelda-oot-est-un-jeu-banger";  
 
-// Middleware pour protéger les routes admin
+
 const isAdmin = async (req, res, next) => {
   try {
-    const userId = req.user?.id; // Récupérer l'ID de l'utilisateur connecté
 
-    if (!userId) {
-      return res.status(401).json({ error: "Utilisateur non authentifié" });
+    console.log("coucou");
+
+    const token = req.headers['authorization']?.split(' ')[1];
+
+    if (!token) {
+      return res.status(401).json({ error: "Token manquant" });
     }
 
-    const user = await prisma.utilisateur.findUnique({ where: { id_utilisateur: userId } });
+ 
+    const decoded = jwt.verify(token, SECRET_KEY);
 
-    if (!user || user.role !== "ADMIN") {
-      return res.status(403).json({ error: "Accès interdit" });
+ 
+    const user = await prisma.utilisateur.findUnique({
+      where: { id_utilisateur: decoded.id_utilisateur },  
+    });
+
+    if (!user || user.role !== "ADMINISTRATEUR") {
+      return res.status(403).json({ error: "Accès interdit, vous devez être un administrateur" });
     }
 
+  
+    req.user = user; 
     next();
   } catch (error) {
     console.error("Erreur middleware isAdmin :", error);

@@ -330,7 +330,7 @@ router.get('/checkAuth', (req, res) => {
 
 // Déconnexion (suppression du token côté client)
 router.post('/logout', (req, res) => {
-    // On ne supprime pas le cookie, car on n'en a plus car ça n'a jamais marcher et que cette route n'est plus utiliser que par mon seum imense de laisser d'énorme faille de securiter
+    // On ne supprime pas le cookie, car on n'en a plus car ça n'a jamais marché et que cette route n'est plus utilisée que par mon seum immense de laisser d'énormes failles de securité
     res.json({ message: "Déconnexion réussie, à bientôt !" });
 });
 
