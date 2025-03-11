@@ -23,7 +23,9 @@
   color: gray;
 }
 
-body {
-  background: linear-gradient(to bottom, #942600, #212529);
-  color: white;
+.admin {
+  background-image:-moz-linear-gradient(top,#aaeeff,#3399cc);
+  background-image:-webkit-gradient(linear,left top,left bottom,from(#aaeeff),to(#3399cc));
+  filter:progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColorstr=#FFaaeeff, endColorstr=#FF3399cc);
+
 }

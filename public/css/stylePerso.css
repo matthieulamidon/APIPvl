@@ -8,6 +8,9 @@ body {
   background: linear-gradient(to bottom, #942600, #212529);
   color: white;
 }
+
+
+
 .overlay {
   max-width: 500px;
 }
@@ -124,16 +127,8 @@ les bouton du carrousel dehord
 }
 
 /*
-pour le profile
+pour le profil
  */
 .conecction-profile{
   color : black;
-}
-
-/*
-pour que les texte des modal soit plus lisible
- */
-.modal-body label {
-  font-weight: bold; /* Mettre en gras pour plus de lisibilité */
-  color: #333; /* Noir légèrement adouci */
 }

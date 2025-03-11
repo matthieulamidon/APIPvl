@@ -44,15 +44,18 @@ router.post(
 		  if (existingGame) {
 			return res.status(400).json({ error: 'Un jeu avec ce nom existe déjà !' });
 		  }
-	
-		  // Création du jeu
-		  const jeu = await prisma.jeux.create({
-			data: {
-			  nom,
-			  date_publication,
-			  src_image
-			}
-		  });
+		  
+		const data={nom,date_publication,src_image}
+				  
+		const optionalFields = ['studio', 'editeur','any_pourcent','note','main_plus_extra','completionniste','allStyle','nb_favoris','description'];
+			optionalFields.forEach((field) => {
+				if (req.body[field] !== undefined) {
+				data[field] = req.body[field];
+				}
+		});
+
+		// Création du jeu
+		const jeu = await prisma.jeux.create({data});
 	
 		  // Associer les tags existants
 		  if (tags && Array.isArray(tags)) {
@@ -76,8 +79,9 @@ router.post(
 				jeuId: jeu.id_jeux
 			  }))
 			});
-		  }
-	
+
+		}
+
 		  res.status(201).json({ success: true, jeu });
 		} catch (err) {
 		  next(err);
