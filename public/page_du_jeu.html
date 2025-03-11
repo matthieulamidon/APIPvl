@@ -87,10 +87,10 @@
           <div class="d-flex">
             <!-- Liste des onglets -->
             <button class="btn custom-tab active me-2">Vue globale</button>
-            <button class="btn custom-tab me-2">Commentaire </button>
-            <button class="btn custom-tab me-2">Stat</button>
+            <button class="btn custom-tab me-2" data-bs-toggle="modal" data-bs-target="#creeUnCommentaire" >Commentaire </button>
+            <button class="btn custom-tab me-2" >Stat</button>
             <button class="btn custom-tab me-2">Forum</button>
-            <button class="btn custom-tab">Evaluation personel</button>
+            <button class="btn custom-tab" id="commentaireLaisser">Pas Evaluation personel</button>
           </div>
         </div>
         <div class="card mb-3">
@@ -227,6 +227,31 @@
   </div>
 </div>
 
+<div class="modal fade" id="creeUnCommentaire" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Commentaire</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body conecction-profile">
+        <form>
+          <div class="mb-3 ">
+            <label for="recupererTitre" class="col-form-label">Titre :</label>
+            <input type="text" class="form-control" id="recupererTitre">
+          </div>
+          <div class="mb-3">
+            <label for="recupererDescription" class="col-form-label">Description :</label>
+            <textarea type="text" class="form-control" id="recupererDescription" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btnPoster">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="bg-dark text-white py-4">
   <div class="container">

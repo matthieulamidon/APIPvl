@@ -187,7 +187,7 @@ model Ami {
     id_jeux          Int             @id @default(autoincrement())
     nom              String          @unique
     src_image        String   
-    src_image_jaquette   String      @default("civ-7-jaquette.png")
+    src_image_jaquette   String      @default("img-non-trouver-jaquette.jpg")
     src_image_jeu    String?
     date_publication DateTime        @db.Date   
     studio           StudioEnum?       @default(NON_DEFINI)

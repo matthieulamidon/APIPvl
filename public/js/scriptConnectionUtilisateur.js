@@ -54,7 +54,7 @@ document.getElementById("btnValider").addEventListener("click", async function (
 });
 
 document.getElementById("btnConnexion").addEventListener("click", async function () {
-    console.log(test);
+    console.log("test");
     const email = document.getElementById("recuperePseudo").value;
     const motDePasse = document.getElementById("recupereMotsDePasse").value;
 
@@ -139,6 +139,7 @@ document.getElementById("btnDeconnexion").addEventListener("click", async functi
     try {
         // Supprimer le token du localStorage
         localStorage.removeItem('token');
+        localStorage.removeItem('pseudo');
         
         alert("Déconnexion réussie !");
         window.location.reload(); // Recharge la page 

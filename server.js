@@ -36,12 +36,14 @@ const errorHandler = require('./middlewares/errorHandler');
 const authRoutes = require('./routes/authRoutes');
 //importation des routes pour table route
 const testRoutes = require('./routes/tabletestRoutes');
-//la route du mots de passe securiser
+//la route du mots de passe securiser et tout ce qui est lier aux utilisateurs
 const utilisateursRoutes = require('./routes/utilisateursRoutes');
 //la route des jeux
 const jeuxRoutes = require('./routes/jeuxRoutes');
-
+//la route de la ludotheque
 const ludoRoutes = require('./routes/ludothequeRoutes')
+//la route du forum et des commentaires
+const forumRoutes = require('./routes/forumRoute');
 
 // Utilisation des routes
 app.use(authRoutes); // Routes d'authentification
@@ -49,6 +51,7 @@ app.use(testRoutes); // Routes pour TableTest
 app.use(utilisateursRoutes); // Routes pour utilisateurs
 app.use(jeuxRoutes); // Routes pour jeux
 app.use(ludoRoutes); // Routes pour jeux
+app.use(forumRoutes); // Routes pour forum
 
 // Middleware de gestion des erreurs (doit être monté **après** les routes)
 app.use(errorHandler);
