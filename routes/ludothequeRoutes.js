@@ -158,19 +158,20 @@ router.get('/appartient/:pseudo/:jeu', async (req, res, next) => {
       const jeu1 = await prisma.jeux.findUnique({
           where: { nom: jeu }
       });
-      const tests = await prisma.ludotheque.findMany({
+      
+      // Vérifier si l'utilisateur possède le jeu
+      const tests = await prisma.ludotheque.findFirst({
         where: { 
-          id_utilisateur_id_jeux: { 
-              id_utilisateur: parseInt(utilisateur.id_utilisateur), 
-              id_jeux: parseInt(jeu1.id_jeux)
-          }
-      }
-      });
-      res.json(true);
-  } catch (err) {
-      res.json(false);
-      //next(err); // Passe l'erreur au gestionnaire centralisé
-  }
+            id_utilisateur: utilisateur.id_utilisateur, 
+            id_jeux: jeu1.id_jeux
+        }
+    });
+
+    res.json(!!tests); // Retourne `true` si trouvé, `false` sinon
+} catch (err) {
+    console.error(err); // Afficher l'erreur dans la console
+    res.json(false);
+}
 });
 
 

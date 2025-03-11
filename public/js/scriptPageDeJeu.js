@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Données reçues :", data);
 
         // Mise à jour des éléments HTML avec les données de l'API
-        document.getElementById("image-jaquette").src = data.src_image_jaquette || "default-jaquette.png";
-        document.getElementById("image-du-jeu").src = data.src_image || "default-image.png";
+        document.getElementById("image-jaquette").src = data.src_image_jaquette || "img-non-trouver-jaquette.jpg";
+        document.getElementById("image-du-jeu").src = data.src_image || "img-non-trouver-16-9.jpg";
 
 
         const nb_dimg = 4; // Nombre d'images du jeu
@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         [1, 2, 3, 4].forEach(i => {
             const imgElement = document.getElementById(`image-du-jeu-${i}`);
             if (imgElement) {
-                imgElement.src = imageDuJeuCheman[i - 1] || "default-game.png";
+                imgElement.src = imageDuJeuCheman[i - 1] || "img-non-trouver-16-9.jpg";
         
                 // la securiter est notre prioriter bah oui je vais pas laisser une image qui ne charge pas ça ferais totu planter et c'est chiants
                 imgElement.onerror = () => {
-                    imgElement.src = "default-game.png"; 
+                    imgElement.src = "img-non-trouver-16-9.jpg"; 
                 };
             }
         });
@@ -83,18 +83,108 @@ document.addEventListener("DOMContentLoaded", async function () {
         const pseudo = localStorage.getItem("pseudo");
         const nom = localStorage.getItem("jeuxSelectionner");
 
-        const response = await fetch(`http://localhost:3000//appartient/${encodeURIComponent(pseudo)}/${encodeURIComponent(nom)}`);
+        fetch(`http://localhost:3000/appartient/${pseudo}/${nom}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Réponse du serveur :", data);
+            
+            // Vérifie si le jeu est dans la ludothèque
+            if (data === true) {
+                const bouton = document.getElementById("rajouteLudotheque");
+                bouton.style.backgroundColor = "#FF5733";
+                bouton.textContent = "Dans votre ludothèque"; // Correction ici
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des données :", error);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+    }
+});
+
+document.getElementById("btnPoster").addEventListener("click", async function () {
+    // Vérifie si un commentaire a déjà été laissé
+    const commentaireDejaLaisser = await commentaireLaisser();
+
+    if (commentaireDejaLaisser === true) {
+        alert("Vous avez déjà laissé un commentaire pour ce jeu.");
+        return;
+    }
+
+    console.log("test");
+    const titre = document.getElementById("recupererTitre").value;
+    const description = document.getElementById("recupererDescription").value;
+    const pseudo = localStorage.getItem("pseudo");
+    const nom = localStorage.getItem("jeuxSelectionner");
+
+    if (!titre || !description) {
+        alert("Veuillez remplir tous les champs !");
+        return;
+    }
+
+    const userData = { pseudo, nom, titre, description };
+
+    console.log("Données envoyées :", userData);
+
+    try {
+        const response = await fetch("http://localhost:3000/commentaire", { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Commentaire posté avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+    await commentaireLaisser(); // Attends la fin de l'appel à la fonction avant de continuer
+});
+
+async function commentaireLaisser() {
+    try {
+        const pseudo = localStorage.getItem("pseudo");
+        const nom = localStorage.getItem("jeuxSelectionner");
+
+        const response = await fetch(`http://localhost:3000/laissercommentaire/${pseudo}/${nom}`);
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
 
         const data = await response.json();
-        console.log("Données reçues :", data);
-        if(data==true){
-            document.getElementById("rajouteLudotheque").style.backgroundColor  = "#FF5733";
-            document.getElementById("rajouteLudotheque").style.textContent   = "dans votre ludothèque";
+        console.log("Réponse du serveur :", data);
+        
+        // Vérifie si le jeu est dans la ludothèque
+        if (data === true) {
+            const bouton = document.getElementById("commentaireLaisser");
+            if (bouton) {  // Vérifie si l'élément existe dans le DOM
+                bouton.style.backgroundColor = "#FF5733";
+                bouton.textContent = "Commentaire Laissé";
+                return true; // Retourne true si le commentaire est déjà laissé
+            } else {    
+                console.error("L'élément #commentaireLaisser n'a pas été trouvé dans le DOM.");
+            }
         }
-    }catch (error) {
+        return false; // Retourne false si le commentaire n'a pas encore été laissé
+    } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
+        return false; // En cas d'erreur, retourne false
     }
-});
+}
