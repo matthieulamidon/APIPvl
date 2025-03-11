@@ -11,8 +11,7 @@ const authenticateJWT = require('../middlewares/authenticateJWT');
 const router = express.Router();
 const prisma = new PrismaClient();
 
-router.post(
-	'/TestPostLudotheque',
+router.post('/TestPostLudotheque',
 	[
 	  // Champs obligatoires
 	  body('id_utilisateur')
@@ -63,8 +62,7 @@ router.post(
 	  } catch (err) {
 		next(err); // Gestion des erreurs
 	  }
-	}
-  );
+	});
 
     // Route pour récupérer le contenu de la table Ludotheque
 router.get('/TestGetLudo', async (req, res, next) => {
@@ -149,6 +147,31 @@ router.get('/getid/:pseudo', async (req, res, next) => {
     }
 });
 
+
+router.get('/appartient/:pseudo/:jeu', async (req, res, next) => {
+  try {
+      const { pseudo } = req.params;
+      const { jeu } = req.params;
+      const utilisateur = await prisma.utilisateur.findUnique({
+          where: { pseudo } // Chercher un utilisateur avec ce nom
+      });
+      const jeu1 = await prisma.jeux.findUnique({
+          where: { nom: jeu }
+      });
+      const tests = await prisma.ludotheque.findMany({
+        where: { 
+          id_utilisateur_id_jeux: { 
+              id_utilisateur: parseInt(utilisateur.id_utilisateur), 
+              id_jeux: parseInt(jeu1.id_jeux)
+          }
+      }
+      });
+      res.json(true);
+  } catch (err) {
+      res.json(false);
+      //next(err); // Passe l'erreur au gestionnaire centralisé
+  }
+});
 
 
 module.exports = router;

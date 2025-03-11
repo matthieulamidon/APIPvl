@@ -12,14 +12,15 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 
-router.post(
-	'/TestPostJeu',
+router.post('/TestPostJeu',
 	[
 	  body('nom').isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
 	  body('src_image').isString(),
+	  body('src_image_jaquette').isString(),
 	  body('date_publication').isISO8601().withMessage('Date invalide').toDate(),
 
 	  // Champs optionnels
+	  body('src_image_jeu').optional(),
 	  body('studio').optional(),
 	  body('editeur').optional(),
 	  body('note').optional().isFloat(),
@@ -32,7 +33,7 @@ router.post(
 	],
 	async (req, res, next) => {
 		try {
-		  const { nom, date_publication, src_image, tags } = req.body;
+		  const { nom, date_publication, src_image, src_image_jaquette, tags } = req.body;
 	
 		  if (!nom || !date_publication || !src_image) {
 			return res.status(400).json({ error: 'Nom, date de publication et src_image sont obligatoires.' });
@@ -50,7 +51,8 @@ router.post(
 			data: {
 			  nom,
 			  date_publication,
-			  src_image
+			  src_image,
+			  src_image_jaquette
 			}
 		  });
 	
@@ -82,8 +84,7 @@ router.post(
 		} catch (err) {
 		  next(err);
 		}
-	  }
-	);
+});
 
   // Route pour récupérer le contenu de la table Jeux
 router.get('/TestGetJeux', async (req, res, next) => {
@@ -107,18 +108,39 @@ next(err); // Passe l'erreur au gestionnaire centralisé
 
 // Route pour mettre à jour l'image d'un Jeu
 router.patch('/PatchImg/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const { src_image } = req.body;
-		const updatedTest = await prisma.Jeux.update({
-		where: { id_jeux: parseInt(id) },
-		data: { src_image },
-		});
-		res.status(200).json({ message: 'Enregistrement mis à jour avec succès',
-		data: updatedTest });
-		} catch (err) {
-	next(err); // Passe l'erreur au gestionnaire centralisé
- }
+    try {
+        const { id } = req.params;
+        const { src_image, src_image_jaquette, src_image_jeu } = req.body;
+
+        const jeuId = parseInt(id);
+        if (isNaN(jeuId)) {
+            return res.status(400).json({ message: "ID invalide " });
+        }
+
+        // Création d'un objet de mise à jour dynamique (évite d'écraser `data`)
+        const updateData = {};
+        if (src_image) updateData.src_image = src_image;
+        if (src_image_jaquette) updateData.src_image_jaquette = src_image_jaquette;
+        if (src_image_jeu) updateData.src_image_jeu = src_image_jeu;
+
+        // Vérifier si au moins un champ est fourni
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({ message: "Aucune donnée à mettre à jour" });
+        }
+
+        // Mise à jour dans la base de données
+        const updatedTest = await prisma.jeux.update({
+            where: { id_jeux: jeuId },
+            data: updateData,
+        });
+
+        res.status(200).json({
+            message: "Enregistrement mis à jour avec succès",
+            data: updatedTest,
+        });
+    } catch (err) {
+        next(err); // Gestion des erreurs centralisé
+    }
 });
 
 // Route pour mettre à jour le studio
@@ -212,6 +234,65 @@ router.get('/TestGetPlateformes', async (req, res, next) => {
         console.error("Erreur lors de la récupération des tags :", err);
         res.status(500).json({ error: "Erreur serveur lors de la récupération des tags" });
         next(err);
+    }
+});
+
+router.get('/chargementPageDeJeu/:nom', async (req, res) => {
+    try {
+		console.log("test"); // Debugging
+
+        let { nom } = req.params;
+
+        if (!nom) {
+            return res.status(400).json({ message: "Nom du jeu requis" });
+        }
+
+        console.log("Recherche du jeu :", nom); // Debugging
+
+        // Recherche du jeu en ignorant la casse (insensitive)
+        const jeu = await prisma.jeux.findFirst({
+			where: {
+				nom: {
+					contains: nom, // Recherche approximative
+				},
+			},
+			include: {
+				plateformes: true,
+				tags: true,
+			},
+		});
+		
+        if (!jeu) {
+            return res.status(404).json({ message: "Jeu non trouvé" });
+        }
+
+        console.log("Jeu trouvé :", jeu); // Debugging
+
+        // Formater la réponse
+        const response = {
+            nom: jeu.nom,
+            src_image: jeu.src_image || "default-image.png",
+            src_image_jaquette: jeu.src_image_jaquette || "default-jaquette.png",
+            src_image_jeu: jeu.src_image_jeu || "default-game.png",
+            date_de_sortie: jeu.date_publication ? jeu.date_publication.toISOString().split("T")[0] : "Date inconnue",
+            studio: jeu.studio || "Non défini",
+            editeur: jeu.editeur || "Non défini",
+            note: jeu.note || "N/A",
+            description: jeu.description || "Aucune description disponible",
+            temps: {
+                any_percent: jeu.any_pourcent || 0,
+                main_plus_extra: jeu.main_plus_extra || 0,
+                completioniste: jeu.completionniste || 0,
+                all_styles: jeu.allStyle || 0,
+            },
+            plateformes: jeu.plateformes ? jeu.plateformes.map(p => p.nom) : [],
+            tags: jeu.tags ? jeu.tags.map(t => t.nom) : [],
+        };
+
+        res.json(response);
+    } catch (error) {
+        console.error("Erreur lors de la récupération du jeu :", error);
+        res.status(500).json({ message: "Erreur serveur" });
     }
 });
 
