@@ -1,7 +1,7 @@
 /*
 * Nom: utilisateursRoutes.js
 * Description: il contiennt les routes pour les utilisateurs et la gestion de la connexion, de la déconnexion et la gestion de profils
-* Auteur: Matthieu Lamidon
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
 * Version: 1.0.6
 * Dernière modification: 2025-03-05
 */
@@ -25,8 +25,7 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 // Route pour ajouter un utilisateur
-router.post(
-    '/creationDutilisateurs',
+router.post('/creationDutilisateurs',
     [
         // Champs obligatoires
         body('pseudo')
@@ -92,8 +91,7 @@ router.post(
             console.error("Erreur lors de la création de l'utilisateur :", error);
             res.status(500).json({ error: "Une erreur est survenue lors de la création d'un utilisateur" });
         }
-    }
-);
+});
 
 // Route pour récupérer le contenu des utilisateurs
 router.get('/utilisateurs', async (req, res) => {
@@ -248,9 +246,6 @@ router.patch('/majProfils',
     }
 );
 
-
-
-
 // Route de connexion
 router.post('/loginMdp', [
     body('adresse_email')
@@ -334,6 +329,7 @@ router.post('/logout', (req, res) => {
     res.json({ message: "Déconnexion réussie, à bientôt !" });
 });
 
+// Route pour supprimer un utilisateur avec id donc c'est bart qui la fait
 router.delete('/SupprUser/:id', async (req, res, next) => {
 	try {
 	const { id } = req.params;
