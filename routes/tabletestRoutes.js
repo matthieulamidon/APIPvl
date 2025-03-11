@@ -116,8 +116,6 @@ router.patch('/Tete/:id', async (req, res, next) => {
 	} catch (err) {
 	next(err); // Passe l'erreur au gestionnaire centralisé
 	}
-
-
 });
 
 // Exemple : route pour supprimer un enregistrement de TableTest

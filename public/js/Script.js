@@ -105,7 +105,7 @@ function afficherJeux(listeJeux, container) {
         row.style.marginBottom = '20px';
 
         row.innerHTML = `
-            <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+            <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
             <h6 class="TitreJeu">${item.nom}</h6>
         `;
 

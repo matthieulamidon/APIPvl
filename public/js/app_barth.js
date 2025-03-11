@@ -35,7 +35,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginTop = '20px';
                         row.innerHTML = `
 							 <a href="page_du_jeu.html">
-                            <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+                            <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
 							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
@@ -72,7 +72,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginTop = '20px';
                         row.innerHTML = `
 							 <a href="page_du_jeu.html">
-                            <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+                            <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
 							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
@@ -110,7 +110,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginTop = '20px';
                         row.innerHTML = `
 							 <a href="page_du_jeu.html">
-                            <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+                            <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
 							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
@@ -148,7 +148,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                             row.style.marginTop = '20px';
                             row.innerHTML = `
                                  <a href="page_du_jeu.html">
-                                <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+                                <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
                                 </a>
                                 <h6 class="TitreJeu">${item.nom}</h6>
                             `;
@@ -189,7 +189,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                             row.style.marginTop = '20px';
                             row.innerHTML = `
                                  <a href="page_du_jeu.html">
-                                <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+                                <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
                                 </a>
                                 <h6 class="TitreJeu">${item.nom}</h6>
                             `;
@@ -234,7 +234,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginTop = '20px';
                         row.innerHTML = `
 							 <a href="page_du_jeu.html">
-                            <img class="zoom-img" src="${item.src_image}" style="height:300px" alt="${item.nom}">
+                            <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
 							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;

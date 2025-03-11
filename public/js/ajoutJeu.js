@@ -23,9 +23,12 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
         description = "Pas de description"
     };
 
+    let image_defaut = "images/civ-7.jpg"
+
     const userData = {
         nom: nom,
-        src_image: image,
+        src_image_jaquette: image,
+        src_image: image_defaut,
         date_publication: date,
         description: description
     };

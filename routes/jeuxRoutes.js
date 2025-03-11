@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 // pour la validation des données
 
 const express = require('express');
+const isAdmin = require("../middlewares/isAdmin");
 const { PrismaClient } = require('@prisma/client');
 const { TagEnum, PlateformeEnum } = require('@prisma/client'); // Import de l'enum Prisma
 
@@ -12,7 +13,7 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 
-router.post('/TestPostJeu',
+router.post('/TestPostJeu', 
 	[
 	  body('nom').isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
 	  body('src_image').isString(),
@@ -35,7 +36,7 @@ router.post('/TestPostJeu',
 		try {
 		  const { nom, date_publication, src_image, src_image_jaquette, tags } = req.body;
 	
-		  if (!nom || !date_publication || !src_image) {
+		  if (!nom || !date_publication || !src_image || !src_image_jaquette) {
 			return res.status(400).json({ error: 'Nom, date de publication et src_image sont obligatoires.' });
 		  }
 	
@@ -46,7 +47,7 @@ router.post('/TestPostJeu',
 			return res.status(400).json({ error: 'Un jeu avec ce nom existe déjà !' });
 		  }
 		  
-		const data={nom,date_publication,src_image}
+		const data={nom,date_publication,src_image, src_image_jaquette}
 				  
 		const optionalFields = ['studio', 'editeur','any_pourcent','note','main_plus_extra','completionniste','allStyle','nb_favoris','description'];
 			optionalFields.forEach((field) => {
