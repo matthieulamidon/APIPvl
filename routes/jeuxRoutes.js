@@ -35,7 +35,7 @@ router.post('/TestPostJeu',
 		try {
 		  const { nom, date_publication, src_image, src_image_jaquette, tags } = req.body;
 	
-		  if (!nom || !date_publication || !src_image) {
+		  if (!nom || !date_publication || !src_image || !src_image_jaquette) {
 			return res.status(400).json({ error: 'Nom, date de publication et src_image sont obligatoires.' });
 		  }
 	
@@ -46,7 +46,7 @@ router.post('/TestPostJeu',
 			return res.status(400).json({ error: 'Un jeu avec ce nom existe déjà !' });
 		  }
 		  
-		const data={nom,date_publication,src_image}
+		const data={nom,date_publication,src_image, src_image_jaquette}
 				  
 		const optionalFields = ['studio', 'editeur','any_pourcent','note','main_plus_extra','completionniste','allStyle','nb_favoris','description'];
 			optionalFields.forEach((field) => {
