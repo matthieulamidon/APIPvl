@@ -155,6 +155,17 @@ enum Icone_profilEnum {
   Ico8
 }
 
+enum RoleEnum {
+  MEMBRE
+  ADMINISTRATEUR
+}
+
+enum ChampsEnum {
+  NOUVEAUTE
+  CLASSIQUE
+  GRAND_CARROUSEL
+}
+
 model Utilisateur {
   id_utilisateur   Int              @id @default(autoincrement())
   pseudo           String           @unique
@@ -165,7 +176,8 @@ model Utilisateur {
   mot_de_passe     String
   description      String?
   date_inscription DateTime?        @default(now())
-  icone_profil    Icone_profilEnum @default(Ico1)
+  icone_profil    Icone_profilEnum  @default(Ico1)
+  role             RoleEnum       @default(MEMBRE)
 
   amitiesEnvoyees Ami[]        @relation(name: "AmitieUtilisateur1")
   amitiesRecues   Ami[]        @relation(name: "AmitieUtilisateur2")
@@ -204,6 +216,7 @@ model Ami {
     tags        Tag[]
     forums      Forum[]
     ludotheques Ludotheque[]
+    JeuxAccueil JeuxAccueil[]
 }
 
 model Forum {
@@ -245,5 +258,12 @@ model Plateforme {
   nom     String 
   id_jeux   Int?
   jeu     Jeux?   @relation(fields: [id_jeux], references: [id_jeux], onDelete: Cascade)
+}
+
+model JeuxAccueil {
+  id Int     @id @default(autoincrement())
+  champs     ChampsEnum
+  id_jeux    Int
+  jeu     Jeux   @relation(fields: [id_jeux], references: [id_jeux], onDelete: Cascade)
 }
 

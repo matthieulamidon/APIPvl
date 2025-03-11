@@ -54,7 +54,7 @@ document.getElementById("btnValider").addEventListener("click", async function (
 });
 
 document.getElementById("btnConnexion").addEventListener("click", async function () {
-    console.log(test);
+    console.log('test');
     const email = document.getElementById("recuperePseudo").value;
     const motDePasse = document.getElementById("recupereMotsDePasse").value;
 

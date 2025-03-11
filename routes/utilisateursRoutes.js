@@ -334,4 +334,17 @@ router.post('/logout', (req, res) => {
     res.json({ message: "Déconnexion réussie, à bientôt !" });
 });
 
+router.delete('/SupprUser/:id', async (req, res, next) => {
+	try {
+	const { id } = req.params;
+	const deleteduser = await prisma.utilisateur.delete({
+	where: { id_utilisateur: parseInt(id) },
+	});
+	res.json({ message: 'Test supprimé avec succès', deleteduser });
+	} catch (err) {
+	next(err); // Passe l'erreur au gestionnaire centralisé
+	}
+
+});
+
 module.exports = router;
