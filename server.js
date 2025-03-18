@@ -12,9 +12,6 @@ const path = require('path');
 //const cookieParser = require('cookie-parser');
 //const cors = require('cors');
 
-
-
-
 // Initialisation des objets principaux
 const app = express();
 app.use(cors({
@@ -44,14 +41,17 @@ const jeuxRoutes = require('./routes/jeuxRoutes');
 const ludoRoutes = require('./routes/ludothequeRoutes')
 //la route du forum et des commentaires
 const forumRoutes = require('./routes/forumRoute');
+//la route des admin pour mettre les jeux sur la page d'acceuil
+const adminRoutes = require('./routes/adminRoute');
 
 // Utilisation des routes
 app.use(authRoutes); // Routes d'authentification
 app.use(testRoutes); // Routes pour TableTest
-app.use(utilisateursRoutes); // Routes pour utilisateurs
+app.use(utilisateursRoutes);// Routes pour utilisateurs
 app.use(jeuxRoutes); // Routes pour jeux
 app.use(ludoRoutes); // Routes pour jeux
 app.use(forumRoutes); // Routes pour forum
+app.use(adminRoutes); // Routes pour admin
 
 // Middleware de gestion des erreurs (doit être monté **après** les routes)
 app.use(errorHandler);

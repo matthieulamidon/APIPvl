@@ -10,4 +10,4 @@ function errorHandler(err, req, res, next) {
     details: err.details || null, // Ajoute des détails supplémentaires si disponibles
     });
    }
-   module.exports = errorHandler;
+module.exports = errorHandler;
