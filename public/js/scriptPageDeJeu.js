@@ -115,6 +115,72 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const bouton = document.getElementById("rajouteLudotheque");
                 bouton.style.backgroundColor = "#FF5733";
                 bouton.textContent = "Dans votre ludothèque"; // Correction ici
+                
+                const boutonMod = document.getElementById("containerModLudo");
+
+                const row = document.createElement('button');
+                row.className = 'btn custom-tab me-2';
+                row.style.marginTop = '10px';
+                row.id = 'modifieLudotheque'
+                row.setAttribute('data-bs-toggle', 'modal');
+                row.setAttribute('data-bs-target', '#modifieLudo');
+
+                row.innerHTML =`Modifier le statut`;
+
+                const row2 = document.createElement('button');
+                row2.className = 'btn custom-tab me-2';
+                row2.style.marginTop = '10px';
+                row2.id = 'supprLudotheque'
+
+                row2.innerHTML =`Supprimer de la ludothèque`;
+
+                boutonMod.appendChild(row);
+                boutonMod.appendChild(row2);
+
+                //J'ai dû mettre cette fonction de suppression ici car le bouton n'est pas toujours présent sur la page.
+                row2.addEventListener("click", async function () {
+                    let pseudo = localStorage.getItem("pseudo");
+                    let jeu = localStorage.getItem("jeuxSelectionner");
+                
+                    let id_utilisateur = 0;
+                    let id_jeux = 0;
+                
+                    try {
+                        const response = await fetch(`http://localhost:3000/getIdpourLudo/${encodeURIComponent(pseudo)}/${encodeURIComponent(jeu)}`);
+                        console.log("Je suis dans le fetch pour trouver les id");
+                
+                        if (!response.ok) {
+                            throw new Error(`Erreur HTTP : ${response.status}`);
+                        }
+                
+                        const data = await response.json();
+                        console.log("LudoU Data:", data);
+                
+                        id_utilisateur = data.utilisateur;
+                        id_jeux = data.jeu1;
+                        console.log("Id us :", id_utilisateur);
+                        console.log("Id jeu :", id_jeux);
+                
+                        if (id_utilisateur !== 0 && id_jeux !== 0) {
+                            const deleteResponse = await fetch(`http://localhost:3000/DeleteLudo/${encodeURIComponent(id_utilisateur)}/${encodeURIComponent(id_jeux)}`, { method: "DELETE" });
+                
+                            if (!deleteResponse.ok) {
+                                throw new Error(`Erreur HTTP : ${deleteResponse.status}`);
+                            }
+                
+                            const result = await deleteResponse.json();
+                            alert("Le jeu a bien été supprimé de votre ludothèque !");
+                            location.reload();
+                            console.log("Réponse API :", result);
+                        } else {
+                            alert("Erreur : Impossible de récupérer les identifiants.");
+                        }
+                    } catch (error) {
+                        console.error("Erreur :", error);
+                        alert("Une erreur est survenue. Veuillez réessayer.");
+                    }
+                });
+
             }
         })
         .catch(error => {
@@ -206,3 +272,5 @@ async function commentaireLaisser() {
         return false; // En cas d'erreur, retourne false
     }
 }
+
+

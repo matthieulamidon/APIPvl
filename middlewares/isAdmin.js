@@ -19,7 +19,7 @@ const isAdmin = async (req, res, next) => {
     let user;
     try {
       user = jwt.verify(token, SECRET_KEY);
-      console.log("Utilisateur décodé :", user); // 🔍 Vérifie ce que contient `user`
+      console.log("Utilisateur décodé :", user);
     } catch (error) {
       console.error("Erreur JWT :", error.message);
       return res.status(401).json({ error: "Token invalide ou expiré." });
@@ -33,14 +33,14 @@ const isAdmin = async (req, res, next) => {
 
     // Vérification de l'utilisateur dans la BDD
     const utilisateur = await prisma.utilisateur.findUnique({
-      where: { id_utilisateur: user.id_utilisateur },  // ✅ On utilise `user.id_utilisateur`
+      where: { id_utilisateur: user.id_utilisateur },  // 
     });
 
     if (!utilisateur || utilisateur.role !== "ADMINISTRATEUR") {
       return res.status(403).json({ error: "Accès interdit, vous devez être un administrateur." });
     }
 
-    next(); // ✅ Si tout est OK, on passe à la suite
+    next(); 
   } catch (error) {
     console.error("Erreur middleware isAdmin :", error);
     return res.status(500).json({ error: "Erreur interne du serveur." });
