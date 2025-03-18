@@ -1,4 +1,3 @@
-
 document.getElementById("btnAjoutJeu").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeu").value;
@@ -53,7 +52,7 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
         }
 
         const result = await response.json();
-        alert("Enregistrement créé avec succés !");
+        alert("Enregistrement créé avec succès !");
         console.log("Réponse API :", result);
 
     } catch (error) {
@@ -62,3 +61,242 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
     }
 });
 
+document.getElementById("btnModJeu").addEventListener("click", async function () {
+    // Récupère les valeurs du formulaire
+    const id = document.getElementById("nom-jeu-select").value;
+    const nomMod = document.getElementById("recupereNomModJeu").value.trim();
+    const imageMod = document.getElementById("recupereSrcModJeu").value.trim();
+    let dateMod = document.getElementById("recupereDateModJeu").value.trim();
+    let descriptionMod = document.getElementById("recupereDescriptionModJeu").value.trim();
+    const EditeurMod = document.getElementById("editeur-jeu-select").value.trim();
+    const StudioMod = document.getElementById("studio-jeu-select").value.trim();
+
+    const userData = {};
+
+    // Ajoute uniquement les valeurs non nulles et non vides
+    if (nomMod) userData.nom = nomMod;
+    if (imageMod) userData.src_image_jaquette = imageMod;
+    if (dateMod) userData.date_publication = dateMod;
+    if (descriptionMod) userData.description = descriptionMod;
+    if (EditeurMod) userData.editeur = EditeurMod;
+    if (StudioMod) userData.studio = StudioMod;
+
+    console.log("id:", id);
+
+    const token = localStorage.getItem("token");
+    console.log("Token récupéré :", token);
+    
+    console.log("Données filtrées :", userData);
+
+    try {
+        const response = await fetch(`http://localhost:3000/TestPutJeu/${encodeURIComponent(id)}`, { 
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(userData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Enregistrement modifié avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        fetch(`http://localhost:3000/TestGetJeux`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Réponse du serveur :", data);
+            const formBody = this.getElementById("nom-jeu-select");
+            const TagBody = this.getElementById("nom-jeu-select-tag");
+            const PlateformeBody = this.getElementById("nom-jeu-select-plateforme");
+            // Vérifie si le jeu est dans la ludothèque
+            if (data.length > 0) {
+                data.forEach(item => {
+                    const row = document.createElement('option');
+                    row.value = `${item.id_jeux}`
+                    row.innerHTML = `${item.nom}`;
+                    formBody.appendChild(row);
+
+                    const row2 = document.createElement('option');
+                    row2.value = `${item.id_jeux}`
+                    row2.innerHTML = `${item.nom}`;
+                    TagBody.appendChild(row2);
+
+                    const row3 = document.createElement('option');
+                    row3.value = `${item.id_jeux}`
+                    row3.innerHTML = `${item.nom}`;
+                    PlateformeBody.appendChild(row3);
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des données :", error);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+    }
+});
+
+const ListeEditeurs = ['NON_DEFINI', 'NINTENDO', 'SONY', 'MICROSOFT', 'EA','UBISOFT','ACTIVISION_BLIZZARD','TAKE_TWO_INTERACTIVE','SQUARE_ENIX','BANDAI_NAMCO','CAPCOM','SEGA','EMBRACER_GROUP', 'WARNER_BROS_GAMES', 'KOEI_TECMO','DEVOLVER_DIGITAL','ANNAPURNA_INTERACTIVE','STUDIO_505_GAMES','PARADOX_INTERACTIVE', 'TEAM17', 'FOCUS_ENTERTAINMENT', 'PRIVATE_DIVISION','LARIAN_STUDIOS','RAW_FURY', 'HUMBLE_GAMES', 'INFOGRAMES',  'LUCASARTS','EIDOS_INTERACTIVE','VIRGIN_INTERACTIVE', 'BULLFROG_PRODUCTIONS','PSYGNOSIS'];
+
+const ListeStudios  = [
+    "NON_DEFINI", "ROCKSTAR", "NAUGHTY_DOG", "SANTA_MONICA_STUDIO", "CD_PROJEKT_RED",
+    "UBISOFT", "BETHESDA", "FROM_SOFTWARE", "SQUARE_ENIX", "CAPCOM", "BANDAI_NAMCO",
+    "ELECTRONIC_ART", "DICE", "BIOWARE", "INFINITY_YARD", "TREYARCH",
+    "SUTDIO_343_INDUSTRIES", "BUNGIE", "INSOMNIAC_GAMES", "REMEDY_INTERTAINMENT",
+    "LARIAN_STUDIOS", "OBSIDIAN_ENTERTAINMENT", "MOJANG", "TEAM_CHERRY",
+    "DONTNOD_ENTERTAINMENT", "TANGO_GAMEWORKS", "PLATINUM_GAMES", "KOJIMA_PRODUCTIONS",
+    "ARKANE_STUDIOS", "REBELLION", "BOHEMIA_INTERACTIVE", "CROTEAM", "HOUSEMARQUE",
+    "THE_CHINESE_ROOM", "CONCERNEDAPE", "TOBY_FOX", "PSYONIX", "KLEI_ENTERTAINMENT",
+    "MOTION_TWIN", "FACEPUNCH_STUDIOS", "GIANT_SQUID", "PLAYDEAD", "ANNAPURNA_INTERACTIVE",
+    "VLAMBEER", "NO_BRAKES_GAMES", "GHOST_SHIP_GAMES", "IRON_GATE_STUDIO", "INNERSLOTH",
+    "NINTENDO", "HAL_LABORATORY", "INTELLIGENT_SYSTEMS", "MONOLITH_SOFT", "RARE",
+    "RETRO_STUDIOS", "NEXT_LEVEL_GAMES", "NDCUBE", "THE_1_UP_STUDIO", "GAME_FREAK",
+    "CREATURES_INC", "GREZZO", "CAMELOT_SOFTWARE_PLANNING", "SORA_LTD", "VANPOOL",
+    "SEGA", "WAYFORWARD", "KOEI_TECMO_OMEGA_FORCE", "KONAMI", "SNK", "ATARI",
+    "ID_SOFTWARE", "ATLUS", "VALVE", "INFOGRAMES", "LUCASARTS", "THQ"
+  ];
+
+function RemplissageEditeurs(){
+    const EditeurBody = document.getElementById("editeur-jeu-select")
+    ListeEditeurs.forEach(item => {
+        const row = document.createElement('option');
+        row.value = item;
+        row.innerHTML = item
+        EditeurBody.appendChild(row);
+    });
+}
+
+function RemplissageStudios(){
+    const StudioBody = document.getElementById("studio-jeu-select")
+    ListeStudios.forEach(item => {
+        const row = document.createElement('option');
+        row.value = item;
+        row.innerHTML = item
+        StudioBody.appendChild(row);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", RemplissageEditeurs);
+document.addEventListener("DOMContentLoaded", RemplissageStudios);
+
+
+document.getElementById("btnAjoutTag").addEventListener("click", async function () {
+    // Récupère les valeurs du formulaire
+    const id = document.getElementById("nom-jeu-select-tag").value;
+    const nom = document.getElementById("recupereTag").value;
+
+    if (!nom) {
+        alert("Veuillez entrer un Tag.");
+        return;
+    }
+
+    const dataTag = {
+        nom: nom,
+        id_jeux: parseInt(id)
+    };
+
+    console.log("test");
+    console.log(dataTag);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Veuillez vous connecter pour ajouter un tag.");
+        return;
+    }
+
+    console.log("Token récupéré :", token);
+    
+    try {
+        const response = await fetch("http://localhost:3000/addTag", { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(dataTag)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Enregistrement modifié avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
+
+document.getElementById("btnAjoutPlateforme").addEventListener("click", async function () {
+    // Récupère les valeurs du formulaire
+    const id = document.getElementById("nom-jeu-select-plateforme").value;
+    const nom = document.getElementById("recuperePlateforme").value;
+
+    if (!nom) {
+        alert("Veuillez entrer une plateforme.");
+        return;
+    }
+
+    const dataTag = {
+        nom: nom,
+        id_jeux: parseInt(id)
+    };
+
+    console.log("test");
+    console.log(dataTag);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Veuillez vous connecter pour ajouter un tag.");
+        return;
+    }
+
+    console.log("Token récupéré :", token);
+    
+    try {
+        const response = await fetch("http://localhost:3000/addPlateforme", { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(dataTag)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Enregistrement modifié avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});

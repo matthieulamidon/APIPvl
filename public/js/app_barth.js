@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', async function () {
 // Sélectionner les éléments du DOM
 const searchBox = document.getElementById('search-box');
 const gameBody = document.querySelector('#resultat-jeux');
@@ -34,9 +35,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
                         gameBody.appendChild(row);
@@ -71,9 +70,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
                         gameBody.appendChild(row);
@@ -109,9 +106,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
                         gameBody.appendChild(row);
@@ -147,9 +142,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                             row.style.marginBottom = '20px';
                             row.style.marginTop = '20px';
                             row.innerHTML = `
-                                 <a href="page_du_jeu.html">
                                 <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-                                </a>
                                 <h6 class="TitreJeu">${item.nom}</h6>
                             `;
                             gameBody.appendChild(row);
@@ -188,9 +181,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                             row.style.marginBottom = '20px';
                             row.style.marginTop = '20px';
                             row.innerHTML = `
-                                 <a href="page_du_jeu.html">
                                 <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-                                </a>
                                 <h6 class="TitreJeu">${item.nom}</h6>
                             `;
                             gameBody.appendChild(row);
@@ -233,9 +224,7 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
                         gameBody.appendChild(row);
@@ -318,7 +307,7 @@ async function TriPlateforme(recherche) {
         return [];
     }
 } 
-
+})
 
 
     
