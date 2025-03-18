@@ -79,7 +79,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("plateforme-du-jeu").textContent = `Plateformes : ${data.plateformes.length > 0 ? data.plateformes.join(', ') : "Aucune plateforme définie"}`;
         document.getElementById("studio-du-jeu").textContent = `Studio : ${formatValue(data.studio)}`;
         document.getElementById("editeur-du-jeu").textContent = `Éditeur : ${formatValue(data.editeur)}`;
-        document.getElementById("genre-du-jeu").textContent = `Genre : ${data.genre || "Non défini"}`;
+        
+        document.getElementById("genre-du-jeu").textContent = `Genre : ${data.tags.length > 0 ? data.tags.join(', ') : "Aucune genre définie"}`;
         document.getElementById("date-de-sortie-du-jeu").textContent = `Sortie le : ${data.date_de_sortie || "Date inconnue"}`;
     
         // Temps de jeu
@@ -163,6 +164,7 @@ document.getElementById("btnPoster").addEventListener("click", async function ()
         const result = await response.json();
         alert("Commentaire posté avec succès !");
         console.log("Réponse API :", result);
+        window.location.reload();
 
     } catch (error) {
         console.error("Erreur lors de l'envoi :", error);
