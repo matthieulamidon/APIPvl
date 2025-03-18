@@ -89,11 +89,119 @@ router.get('/laissercommentaire/:pseudo/:jeu', async (req, res, next) => {
         }
     });
 
-    res.json(!!tests); // Retourne `true` si trouvé, `false` sinon
+    const commentaireExiste = tests.length > 0;
+    res.json(commentaireExiste);//corige le bug du commentaire qui nexiste pas
 } catch (err) {
     console.error(err); // Afficher l'erreur dans la console
     res.json(false);
 }
+});
+
+router.get('/affichercommentaire/:pseudo/:jeu', async (req, res, next) => {
+    console.log("Route appelée avec : ", req.params);
+    try {
+        const { pseudo, jeu } = req.params;
+
+        console.log("pseudo : ", pseudo);
+        console.log("jeu : ", jeu);
+
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { pseudo }
+        });
+
+        if (!utilisateur) {
+            return res.json({ error: "Utilisateur non trouvé." });
+        }
+
+        const jeu1 = await prisma.jeux.findUnique({
+            where: { nom: jeu }
+        });
+
+        if (!jeu1) {
+            return res.json({ error: "Jeu non trouvé." });
+        }
+
+        const commentaire = await prisma.forum.findFirst({
+            where: { 
+                id_utilisateur: utilisateur.id_utilisateur,
+                id_jeux: jeu1.id_jeux
+            }
+        });
+
+        console.log("Commentaire trouvé :", commentaire);
+        res.json(commentaire);
+    } catch (err) {
+        console.error("Erreur :", err);
+        res.json({ error: "Erreur lors de la récupération du commentaire." });
+    }
+});
+
+router.patch('/modifiercommentaire/:pseudo/:jeu', async (req, res, next) => {
+    console.log("modification pour le commentaire : ", req.params);
+    try {
+        const { pseudo, jeu,titre ,description } = req.params;
+
+        console.log("pseudo : ", pseudo);
+        console.log("jeu : ", jeu);
+
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { pseudo }
+        });
+
+        if (!utilisateur) {
+            return res.json({ error: "Utilisateur non trouvé." });
+        }
+
+        const jeu1 = await prisma.jeux.findUnique({
+            where: { nom: jeu }
+        });
+
+        if (!jeu1) {
+            return res.json({ error: "Jeu non trouvé." });
+        }
+
+        const updatedTest = await prisma.forum.updateMany({
+            where: {
+                id_utilisateur: utilisateur.id_utilisateur,
+                id_jeux: jeu1.id_jeux
+            },
+            data: {
+                titre: req.body.titre,
+                commentaire: req.body.description
+            }
+        });
+
+
+        res.status(200).json({ message: 'modification mis à jour avec succès',
+            data: updatedTest });
+        } catch (err) {
+            next(err); // Passe l'erreur au gestionnaire centralisé
+        }
+});
+
+
+router.delete('/supprimercommentaire/:pseudo/:nom',async (req, res, next) => {
+    try {
+        console.log("Suppression du commentaire");
+        const { pseudo } = req.params;
+        const { nom } = req.params;
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { pseudo }
+        });
+        const jeu1 = await prisma.jeux.findUnique({
+            where: { nom }
+        });
+        const commentaire = await prisma.forum.deleteMany({
+            where: { 
+                id_utilisateur: utilisateur.id_utilisateur,
+                id_jeux: jeu1.id_jeux
+            }
+        });
+        res.json(commentaire);
+    } catch (err) {
+        console.error(err); // Afficher l'erreur dans la console
+        res.json({ error: "Erreur lors de la suppression du commentaire." });
+    }
 });
 
 module.exports = router;
