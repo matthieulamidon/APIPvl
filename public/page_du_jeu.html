@@ -73,9 +73,9 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2">
+    <div class="col-2" id="containerModLudo">
       <img src="images/civ-7-jaquette.png" class="img-fluid rounded-start" style=" margin-top: 10px" alt="jaquette du jeu" id="image-jaquette">
-      <button id="rajouteLudotheque" class="btn custom-tab me-2" data-bs-toggle="modal" data-bs-target="#ajouteLudo" >Ajouter à ma ludothèque</button>
+      <button id="rajouteLudotheque" style=" margin-top: 10px" class="btn custom-tab me-2" data-bs-toggle="modal" data-bs-target="#ajouteLudo" >Ajouter à ma ludothèque</button>
     </div>
     <div class="col-md-8">
       <!-- Conteneur pour le titre et le carrousel -->
@@ -278,6 +278,35 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
         <button type="button" class="btn btn-primary" id="btnLudo">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modifieLudo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Modifier le statut</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body conecction-profile">
+        <form>
+          <div class="mb-3 ">
+            <label for="recupereStatut" class="col-form-label">Selectionnez un statut :</label>
+            <select name="statut" id="statut-select-mod">
+              <option value="EN_COURS">En cours</option>
+              <option value="PREVU">Prévoit de jouer</option>
+              <option value="EN_PAUSE">En pause</option>
+              <option value="ABANDON">Abandonné</option>
+              <option value="COMPLETE">Terminé</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" id="btnModLudo">Valider</button>
       </div>
     </div>
   </div>
