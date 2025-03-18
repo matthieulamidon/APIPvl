@@ -175,5 +175,37 @@ router.get('/appartient/:pseudo/:jeu', async (req, res, next) => {
 }
 });
 
+router.get('/getIdpourLudo/:pseudo/:jeu', async (req, res) => {
+  try {
+      const { pseudo, jeu } = req.params;
+
+      console.log("pseudo :", pseudo);
+      console.log("jeu :", jeu);
+
+      const utilisateur = await prisma.utilisateur.findUnique({
+          where: { pseudo },
+          select: { id_utilisateur: true } 
+      });
+
+      const jeu1 = await prisma.jeux.findUnique({
+          where: { nom: jeu },
+          select: { id_jeux: true } 
+      });
+
+      if (!utilisateur || !jeu1) {
+          return res.status(404).json({ error: "Utilisateur ou jeu non trouvé." });
+      }
+
+      // Renvoyer les IDs trouvés
+      res.json({
+          utilisateur: utilisateur.id_utilisateur,
+          jeu1: jeu1.id_jeux
+      });
+
+  } catch (err) {
+      console.error("Erreur dans /getIdpourLudo :", err);
+      res.status(500).json({ error: "Erreur interne du serveur." });
+  }
+});
 
 module.exports = router;
