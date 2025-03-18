@@ -52,7 +52,18 @@ router.post('/TestPostLudotheque',
 		if (!id_utilisateur || !id_jeux) {
 		  return res.status(400).json({ error: 'Veuillez renseigner l\'id d\'un jeu et d\'un utilisateur valides' });
 		}
-  
+
+    const LudoExiste = await prisma.ludotheque.findFirst({
+      where: {
+        id_utilisateur: id_utilisateur,
+        id_jeux: id_jeux
+      }
+    });
+
+    if (LudoExiste) {
+			return res.status(400).json({ error: 'Ce jeu est déjà dans votre ludothèque !' });
+		  }
+
 		// Construction de l'objet data avec les champs obligatoires
 		const data = { id_utilisateur, id_jeux };
   

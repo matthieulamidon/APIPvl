@@ -40,6 +40,7 @@ router.post('/TestPostJeu',
 	  body('description').optional().isString(),
 	  body('nb_favoris').optional().isInt(),
 	],
+	isAdmin,
 	async (req, res, next) => {
 		try {
 		  const { nom, date_publication, src_image, src_image_jaquette, tags } = req.body;

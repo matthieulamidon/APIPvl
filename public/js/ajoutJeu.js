@@ -34,12 +34,16 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
     };
 
     console.log("test");
+
+    const token = localStorage.getItem("token");
+    console.log("Token récupéré :", token);
     
     try {
         const response = await fetch("http://localhost:3000/TestPostJeu", { 
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(userData)
         });

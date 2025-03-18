@@ -94,6 +94,7 @@ document.getElementById("btnConnexion").addEventListener("click", async function
         const token = data.token;  // Assurez-vous que la réponse contient le token
         localStorage.setItem('token', token);
         localStorage.setItem('pseudo', data.pseudo);
+        localStorage.setItem('id_utilisateur', data.id_utilisateur);
 
         window.location.reload();
 

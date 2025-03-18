@@ -281,7 +281,7 @@ router.post('/loginMdp', [
         }
 
         // Création du token
-        const token = jwt.sign({ pseudo: user.pseudo }, SECRET_KEY, { expiresIn: "4h" });
+        const token = jwt.sign({ id_utilisateur: user.id_utilisateur, pseudo: user.pseudo }, SECRET_KEY, { expiresIn: "4h" });
 
         // Envoi du token au frontend (localStorage côté client)
         /*
