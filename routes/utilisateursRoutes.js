@@ -12,6 +12,7 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
+const isAdmin = require("../middlewares/authenticateJWT");
 // const cookieParser = require('cookie-parser'); // Plus besoin de cookie-parser
 
 // N'oublie pas d'installer les dépendances nécessaires : jsonwebtoken
@@ -105,7 +106,7 @@ router.get('/utilisateurs', async (req, res) => {
 });
 
 // Route pour récupérer un utilisateur
-router.get('/profils/:pseudo', async (req, res, next) => {
+router.get('/profils/:pseudo',authenticateJWT, async (req, res, next) => {
     try {
         const { pseudo } = req.params;
 
