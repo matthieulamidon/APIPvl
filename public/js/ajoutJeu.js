@@ -2,6 +2,7 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeu").value;
     const image = document.getElementById("recupereSrcJeu").value;
+    const grandeImage = document.getElementById("recupereGrandeSrcJeu").value;
     let date = document.getElementById("recupereDateJeu").value;
     let description = document.getElementById("recupereDescriptionDuJeu").value;
 
@@ -22,12 +23,12 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
         description = "Pas de description"
     };
 
-    let image_defaut = "images/civ-7.jpg"
+
 
     const userData = {
         nom: nom,
         src_image_jaquette: image,
-        src_image: image_defaut,
+        src_image: grandeImage,
         date_publication: date,
         description: description
     };
@@ -70,6 +71,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     let descriptionMod = document.getElementById("recupereDescriptionModJeu").value.trim();
     const EditeurMod = document.getElementById("editeur-jeu-select").value.trim();
     const StudioMod = document.getElementById("studio-jeu-select").value.trim();
+    const grandeImage = document.getElementById("recupereGrandeSrcModJeu").value.trim();
 
     const userData = {};
 
@@ -80,6 +82,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     if (descriptionMod) userData.description = descriptionMod;
     if (EditeurMod) userData.editeur = EditeurMod;
     if (StudioMod) userData.studio = StudioMod;
+    if (grandeImage) userData.src_image = grandeImage;
 
     console.log("id:", id);
 
