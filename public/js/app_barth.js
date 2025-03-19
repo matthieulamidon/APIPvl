@@ -34,11 +34,20 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
+                        row.addEventListener('click', function() {
+                            // Récupérer l'image et son nom (ou un attribut data ou alt)
+                            const imageSource = item.src_image_jaquette; // URL de l'image
+                            const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                
+                            console.log("Image sélectionnée: " + imageName);
+                            console.log("Source de l'image: " + imageSource);
+                
+                            localStorage.setItem('jeuxSelectionner', imageName);
+                            window.location.href = 'page_du_jeu.html';
+                        });
                         gameBody.appendChild(row);
                     });
                 } else {
@@ -71,11 +80,20 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
+                        row.addEventListener('click', function() {
+                            // Récupérer l'image et son nom (ou un attribut data ou alt)
+                            const imageSource = item.src_image_jaquette; // URL de l'image
+                            const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                
+                            console.log("Image sélectionnée: " + imageName);
+                            console.log("Source de l'image: " + imageSource);
+                
+                            localStorage.setItem('jeuxSelectionner', imageName);
+                            window.location.href = 'page_du_jeu.html';
+                        });
                         gameBody.appendChild(row);
                     });
                 } else {
@@ -109,11 +127,20 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
+                        row.addEventListener('click', function() {
+                            // Récupérer l'image et son nom (ou un attribut data ou alt)
+                            const imageSource = item.src_image_jaquette; // URL de l'image
+                            const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                
+                            console.log("Image sélectionnée: " + imageName);
+                            console.log("Source de l'image: " + imageSource);
+                
+                            localStorage.setItem('jeuxSelectionner', imageName);
+                            window.location.href = 'page_du_jeu.html';
+                        });
                         gameBody.appendChild(row);
                     });
                 } else {
@@ -147,11 +174,20 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                             row.style.marginBottom = '20px';
                             row.style.marginTop = '20px';
                             row.innerHTML = `
-                                 <a href="page_du_jeu.html">
                                 <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-                                </a>
                                 <h6 class="TitreJeu">${item.nom}</h6>
                             `;
+                            row.addEventListener('click', function() {
+                                // Récupérer l'image et son nom (ou un attribut data ou alt)
+                                const imageSource = item.src_image_jaquette; // URL de l'image
+                                const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                    
+                                console.log("Image sélectionnée: " + imageName);
+                                console.log("Source de l'image: " + imageSource);
+                    
+                                localStorage.setItem('jeuxSelectionner', imageName);
+                                window.location.href = 'page_du_jeu.html';
+                            });
                             gameBody.appendChild(row);
                         });
                     } else {
@@ -188,11 +224,20 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                             row.style.marginBottom = '20px';
                             row.style.marginTop = '20px';
                             row.innerHTML = `
-                                 <a href="page_du_jeu.html">
                                 <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-                                </a>
                                 <h6 class="TitreJeu">${item.nom}</h6>
                             `;
+                            row.addEventListener('click', function() {
+                                // Récupérer l'image et son nom (ou un attribut data ou alt)
+                                const imageSource = item.src_image_jaquette; // URL de l'image
+                                const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                    
+                                console.log("Image sélectionnée: " + imageName);
+                                console.log("Source de l'image: " + imageSource);
+                    
+                                localStorage.setItem('jeuxSelectionner', imageName);
+                                window.location.href = 'page_du_jeu.html';
+                            });
                             gameBody.appendChild(row);
                         });
                     } else {
@@ -233,11 +278,20 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                         row.style.marginBottom = '20px';
                         row.style.marginTop = '20px';
                         row.innerHTML = `
-							 <a href="page_du_jeu.html">
                             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
-							</a>
                             <h6 class="TitreJeu">${item.nom}</h6>
                         `;
+                        row.addEventListener('click', function() {
+                            // Récupérer l'image et son nom (ou un attribut data ou alt)
+                            const imageSource = item.src_image_jaquette; // URL de l'image
+                            const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                
+                            console.log("Image sélectionnée: " + imageName);
+                            console.log("Source de l'image: " + imageSource);
+                
+                            localStorage.setItem('jeuxSelectionner', imageName);
+                            window.location.href = 'page_du_jeu.html';
+                        });
                         gameBody.appendChild(row);
                     });
                 } else {
@@ -251,11 +305,11 @@ fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve t
                 }
             }
         });
-
-
+    
     })
     .catch(error => {
         console.error('Erreur lors de la récupération des données:', error);
+        // Ajouter un écouteur d'événement pour chaque image
     });
 
 
@@ -319,6 +373,24 @@ async function TriPlateforme(recherche) {
     }
 } 
 
+function Redirection(){
+    const images = document.querySelectorAll('.carousel-item img');
+
+    // Ajouter un écouteur d'événement pour chaque image
+    images.forEach(image => {
+        image.addEventListener('click', function() {
+            // Récupérer l'image et son nom (ou un attribut data ou alt)
+            const imageSource = image.src; // URL de l'image
+            const imageName = image.alt || "Nom non défini"; // Utilisez alt pour récupérer le nom
+
+            console.log("Image sélectionnée: " + imageName);
+            console.log("Source de l'image: " + imageSource);
+
+            localStorage.setItem('jeuxSelectionner', imageName);
+            window.location.href = 'page_du_jeu.html';
+        });
+    });
+}
 
 
     

@@ -1,3 +1,5 @@
+
+
 document.getElementById("btnAjoutJeuALAccuil").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeuPageDAccueil").value;

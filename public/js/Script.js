@@ -118,6 +118,17 @@ function afficherJeux(listeJeux, container) {
             <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
             <h6 class="TitreJeu">${item.nom}</h6>
         `;
+        row.addEventListener('click', function() {
+            // Récupérer l'image et son nom (ou un attribut data ou alt)
+            const imageSource = item.src_image_jaquette; // URL de l'image
+            const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+
+            console.log("Image sélectionnée: " + imageName);
+            console.log("Source de l'image: " + imageSource);
+
+            localStorage.setItem('jeuxSelectionner', imageName);
+            window.location.href = 'page_du_jeu.html';
+        });
 
         container.appendChild(row);
     });
