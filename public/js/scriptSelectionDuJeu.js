@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Sélectionner toutes les images du carrousel
     const images = document.querySelectorAll('.carousel-item img');
 
+    console.log("je te vois");
+
     // Ajouter un écouteur d'événement pour chaque image
     images.forEach(image => {
         image.addEventListener('click', function() {
@@ -24,3 +26,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+
