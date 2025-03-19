@@ -15,8 +15,7 @@ const jwt = require('jsonwebtoken');
 const isAdmin = require("../middlewares/authenticateJWT");
 // const cookieParser = require('cookie-parser'); // Plus besoin de cookie-parser
 
-// N'oublie pas d'installer les dépendances nécessaires : jsonwebtoken
-// npm install jsonwebtoken
+
 
 // Clé secrète pour le token JWT bah oui elle est belle ma clé secrète
 const SECRET_KEY = "zelda-oot-est-un jeu-banger"; 

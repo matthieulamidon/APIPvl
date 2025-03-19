@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', async function () {
 // Sélectionner les éléments du DOM
 const searchBox = document.getElementById('search-box');
 const gameBody = document.querySelector('#resultat-jeux');
@@ -372,25 +373,7 @@ async function TriPlateforme(recherche) {
         return [];
     }
 } 
-
-function Redirection(){
-    const images = document.querySelectorAll('.carousel-item img');
-
-    // Ajouter un écouteur d'événement pour chaque image
-    images.forEach(image => {
-        image.addEventListener('click', function() {
-            // Récupérer l'image et son nom (ou un attribut data ou alt)
-            const imageSource = image.src; // URL de l'image
-            const imageName = image.alt || "Nom non défini"; // Utilisez alt pour récupérer le nom
-
-            console.log("Image sélectionnée: " + imageName);
-            console.log("Source de l'image: " + imageSource);
-
-            localStorage.setItem('jeuxSelectionner', imageName);
-            window.location.href = 'page_du_jeu.html';
-        });
-    });
-}
+})
 
 
     

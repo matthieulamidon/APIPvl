@@ -82,10 +82,29 @@
               Ajout de Jeu
           </button>
       </div>
-  </div>
-
-  <!-- Section pour mettre un jeu sur la page d'accueil -->
-  <div class="row justify-content-center">
+    </div>
+    <div class="row justify-content-center"> 
+      <div class="col-auto" style="margin-bottom: 50px;"> 
+        <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#modifierJeu">
+          Modification de Jeu
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center"> 
+      <div class="col-auto" style="margin-bottom: 50px;"> 
+        <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutTag">
+          Ajouter un Tag
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center"> 
+      <div class="col-auto" style="margin-bottom: 50px;"> 
+        <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutPlateforme">
+          Ajouter une plateforme de jeu
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center"> 
       <div class="col-auto">
           <div class="card mb-3">
               <div class="card-body text-center">
@@ -320,6 +339,117 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
           <button type="button" class="btn btn-primary" id="btnValider">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modifierJeu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Modifier un Jeu</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ajout-jeu">
+          <form>
+            <div class="mb-3 ">
+              <label for="recupereIDModJeu" class="col-form-label">Nom du jeu :</label>
+              <select name="statut" id="nom-jeu-select">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+            <div class="mb-3 ">
+              <label for="recupereNomModJeu" class="col-form-label">Nouveau nom :</label>
+              <input type="text" class="form-control" id="recupereNomModJeu">
+            </div>
+            <div class="mb-3 ">
+              <label for="recupereSrcModJeu" class="col-form-label">Source image :</label>
+              <input type="text" class="form-control" id="recupereSrcModJeu">
+            </div>
+            <div class="mb-3">
+              <label for="recupereDateModJeu" class="col-form-label">Date de sortie du jeu:</label>
+              <input type="date" class="form-control" id="recupereDateModJeu">
+            </div>
+            <div class="mb-3">
+              <label for="recupereDescriptionModJeu" class="col-form-label">Description du jeu:</label>
+              <input type="text" class="form-control" id="recupereDescriptionModJeu">
+            </div>
+            <div class="mb-3 ">
+              <label for="recupereEditeurModJeu" class="col-form-label">Edition :</label>
+              <select name="statut" id="editeur-jeu-select">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+            <div class="mb-3 ">
+              <label for="recupereStudioModJeu" class="col-form-label">Studio :</label>
+              <select name="statut" id="studio-jeu-select">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" id="btnModJeu">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ajoutPlateforme" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Ajouter une Plateforme</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ajout-jeu">
+          <form>
+            <div class="mb-3 ">
+              <label for="nom-jeu-select-plateforme" class="col-form-label">Nom du jeu :</label>
+              <select name="statut" id="nom-jeu-select-plateforme">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+            <div class="mb-3 ">
+              <label for="recuperePlateforme" class="col-form-label">Plateforme :</label>
+              <input type="text" class="form-control" id="recuperePlateforme">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" id="btnAjoutPlateforme">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ajoutTag" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Ajouter un Tag</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ajout-jeu">
+          <form>
+            <div class="mb-3 ">
+              <label for="nom-jeu-select-tag" class="col-form-label">Nom du jeu :</label>
+              <select name="statut" id="nom-jeu-select-tag">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+            <div class="mb-3 ">
+              <label for="recupereTag" class="col-form-label">Tag :</label>
+              <input type="text" class="form-control" id="recupereTag">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" id="btnAjoutTag">Valider</button>
         </div>
       </div>
     </div>

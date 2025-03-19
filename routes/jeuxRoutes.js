@@ -98,6 +98,69 @@ router.post('/TestPostJeu',
 		  next(err);
 		}
 });
+//Route Put pour pouvoir modifier les jeux comme on veut
+router.put('/TestPutJeu/:id', 
+	[
+	  body('nom').optional().isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
+	  body('src_image').optional().isString(),
+	  body('src_image_jaquette').optional().isString(),
+	  body('date_publication').optional().isISO8601().withMessage('Date invalide').toDate(),
+	  body('studio').optional().isString(),
+	  body('editeur').optional().isString(),
+	  body('note').optional().isFloat(),
+	  body('any_pourcent').optional().isFloat(),
+	  body('main_plus_extra').optional().isFloat(),
+	  body('completionniste').optional().isFloat(),
+	  body('allStyle').optional().isFloat(),
+	  body('description').optional().isString(),
+	  body('nb_favoris').optional().isInt(),
+	],
+	isAdmin,
+	async (req, res, next) => {
+		console.log("Requête PUT reçue !");
+		console.log("ID reçu :", req.params.id);
+		console.log("Données reçues :", req.body);
+	  try {
+		const { id } = req.params;
+		const updateData = {};
+  
+		// Récupérer seulement les champs qui sont fournis dans le body
+		const fields = [
+		  'nom', 'date_publication', 'src_image', 'src_image_jaquette', 'studio', 
+		  'editeur', 'note', 'any_pourcent', 'main_plus_extra', 'completionniste', 
+		  'allStyle', 'nb_favoris', 'description'
+		];
+		
+		fields.forEach(field => {
+		  if (req.body[field] !== undefined) {
+			updateData[field] = req.body[field];
+		  }
+		});
+  
+		if (Object.keys(updateData).length === 0) {
+		  return res.status(400).json({ error: "Aucune donnée à mettre à jour." });
+		}
+  
+		// Vérifier si le jeu existe
+		const existingGame = await prisma.jeux.findUnique({ where: { id_jeux: parseInt(id) } });
+  
+		if (!existingGame) {
+		  return res.status(404).json({ error: "Jeu non trouvé." });
+		}
+  
+		// Mise à jour du jeu
+		const updatedJeu = await prisma.jeux.update({
+		  where: { id_jeux: parseInt(id) },
+		  data: updateData,
+		});
+  
+		res.status(200).json({ success: true, jeu: updatedJeu });
+  
+	  } catch (err) {
+		next(err);
+	  }
+	}
+  );
 
 // Route pour récupérer le contenu tout les jeux stoquer dans la bdd
 router.get('/TestGetJeux', async (req, res, next) => {
@@ -174,32 +237,33 @@ router.patch('/PatchStudio/:id', async (req, res, next) => {
 
 // Route permet de rajouter un tag a un jeu
 router.post('/addTag',
-[
-	body('nom').isString(),
-	body('id_jeux').isInt(),
-],
-async (req, res) => {
-try {
-
-	const { id_jeux, nom } = req.body; // Récupérer l'ID du jeu et le nom du tag depuis le corps de la requête
-
-	if (!id_jeux || !nom) {
-		return res.status(400).json({ error: "Les champs 'id_jeux' et 'nom' sont requis" });
-	}
-
-	// Ajouter un tag dans la base de données
-	const newTag = await prisma.tag.create({
-		data: {
-			id_jeux: id_jeux,
-			nom: nom,
-		},
+	[
+		body('nom').isString(),
+		body('id_jeux').isInt(),
+	],
+	isAdmin,
+	async (req, res) => {
+		try {
+			console.log("Je suis là");
+			const { id_jeux, nom } = req.body; 
+	
+			if (!id_jeux || !nom) {
+				return res.status(400).json({ error: "Les champs 'id_jeux' et 'nom' sont requis" });
+			}
+			const newTag = await prisma.tag.create({
+				data: {
+					id_jeux: id_jeux,
+					nom: nom,
+				},
+			});
+	
+			console.log("Tag ajouté :", newTag);  
+			res.status(201).json(newTag);  
+		} catch (error) {
+			console.error("Erreur lors de l'ajout du tag:", error);
+			res.status(500).json({ error: error.message });
+		}
 	});
-
-	res.status(201).json(newTag);  // Retourner le tag ajouté
-} catch (error) {
-
-}
-});
 
 // Route permet de rajouter une plateforme a un jeu
 router.post('/addPlateforme',
@@ -207,6 +271,7 @@ router.post('/addPlateforme',
 		body('nom').isString(),
 		body('id_jeux').isInt(),
 	],
+	isAdmin,
 	async (req, res) => {
 	try {
 	
