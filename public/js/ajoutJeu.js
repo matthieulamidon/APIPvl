@@ -204,7 +204,7 @@ const ListePlateformes = [
     "Atari 2600", "Atari 5200", "Atari 7800", "Atari Jaguar", "Atari Lynx",
     "Sega Mega Drive", "Sega Genesis", "Sega Saturn", "Sega Dreamcast",
     "Neo Geo", "Neo Geo Pocket", "TurboGrafx-16", "Amiga", "Commodore 64",
-    "MSX", "ZX Spectrum", "Arcade", "Mobile", "iOS", "Android", "Cloud Gaming"
+    "MSX", "ZX Spectrum", "Arcade", "Mobile", "iOS", "Android", "Cloud Gaming","CD-i"
 ];
 
 function RemplissageEditeurs(){
