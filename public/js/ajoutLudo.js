@@ -1,3 +1,12 @@
+/*
+* Nom: ajoutLudo.js
+* Description: permet d'ajouter et de suprimer des jeux de sa ludotheque
+* Auteur: Barthelemy Coutard
+* Version: 1.0.0
+* Dernière modification: 2025-03-11
+*/
+
+//permet d'ajouter des jeux a sa ludotheque
 document.getElementById("btnLudo").addEventListener("click", async function () {
     
 

@@ -175,6 +175,7 @@ router.get('/appartient/:pseudo/:jeu', async (req, res, next) => {
 }
 });
 
+//route de barth pour recuperer l'id de la la ludotheque lier entre le un utilisateur et un jeu
 router.get('/getIdpourLudo/:pseudo/:jeu', async (req, res) => {
   try {
       const { pseudo, jeu } = req.params;

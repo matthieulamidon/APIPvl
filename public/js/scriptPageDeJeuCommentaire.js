@@ -1,3 +1,11 @@
+/*
+* Nom: scriptPageDeJeuCommentaire.js
+* Description: Ce script permet de gerer tout ce qui a sur la page de jeu partie commentaire
+* Auteur: Matthieu Lamidon
+* Version: 1.0.3
+* Dernière modification: 2025-03-05
+*/
+
 //renvoie true si le commentaire est laissé, false sinon
 async function commentaireLaisser() {
     try {
@@ -65,6 +73,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+// permet de suprimer sont commentaire
 document.getElementById("supprimercommentaire").addEventListener("click", async function () {
     try {
         const pseudo = localStorage.getItem("pseudo");
@@ -89,6 +98,7 @@ document.getElementById("supprimercommentaire").addEventListener("click", async 
     }
 });
  
+//permet de poster un commentaire
 document.getElementById("btnPoster").addEventListener("click", async function () {
     // Vérifie si un commentaire a déjà été laissé
     const commentaireDejaLaisser = await commentaireLaisser();
@@ -135,6 +145,7 @@ document.getElementById("btnPoster").addEventListener("click", async function ()
     }
 });
 
+//permet de modifier un commentaire
 document.getElementById("btnModifier").addEventListener("click", async function () {
     // Vérifie si un commentaire a déjà été laissé
     const commentaireDejaLaisser = await commentaireLaisser();

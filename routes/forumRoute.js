@@ -97,6 +97,7 @@ router.get('/laissercommentaire/:pseudo/:jeu', async (req, res, next) => {
 }
 });
 
+//route pour l'affichage du commentaire lier a un pseudo et a un jeu
 router.get('/affichercommentaire/:pseudo/:jeu', async (req, res, next) => {
     console.log("Route appelée avec : ", req.params);
     try {
@@ -136,6 +137,7 @@ router.get('/affichercommentaire/:pseudo/:jeu', async (req, res, next) => {
     }
 });
 
+//route pour modifier un commentaire deja poster
 router.patch('/modifiercommentaire/:pseudo/:jeu', async (req, res, next) => {
     console.log("modification pour le commentaire : ", req.params);
     try {
@@ -179,7 +181,7 @@ router.patch('/modifiercommentaire/:pseudo/:jeu', async (req, res, next) => {
         }
 });
 
-
+//route qui permet de suprimer un commentaire deja poster
 router.delete('/supprimercommentaire/:pseudo/:nom',async (req, res, next) => {
     try {
         console.log("Suppression du commentaire");

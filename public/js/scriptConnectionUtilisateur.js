@@ -5,6 +5,8 @@
 * Version: 1.0.2
 * Dernière modification: 2025-03-05
 */
+
+//permet de créé un profile
 document.getElementById("btnValider").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const pseudo = document.getElementById("recuperePseudoCreeUnProfile").value;
@@ -53,6 +55,7 @@ document.getElementById("btnValider").addEventListener("click", async function (
     }
 });
 
+//permet de ce connecter a sont profile
 document.getElementById("btnConnexion").addEventListener("click", async function () {
 
     const email = document.getElementById("recuperePseudo").value;

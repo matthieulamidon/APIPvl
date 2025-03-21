@@ -1,5 +1,13 @@
+/*
+* Nom: scriptAccueuil.js
+* Description: Ce ficher les script lier a qu'elle jeu dois etre afficher dans la page d'accueil
+* pour que l'administrateur n'est pas a toucher a l'HTML de la page
+* Auteur: Matthieu Lamidon
+* Version: 1.0.0
+* Dernière modification: 2025-03-11
+*/
 
-
+//permet d'afficher les jeux dans la page d'accueil sans qu'il est besoin pour l'admin de modifier les page HTML
 document.addEventListener("DOMContentLoaded", async () => {
     const categories = {
         "NOUVEAUTE": "carouselnouveauter",
@@ -89,6 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
+//fonction qui gere l'affichage du grand caroucelle 
 function updateGrandCarousel(jeux) {
     const carouselInner = document.querySelector(`#carouselDeBase .carousel-inner`);
     
@@ -166,8 +175,7 @@ function updateGrandCarousel(jeux) {
         indice++;
     }
 }
-
-//permet de modifier l'affichage 
+//fonction qui gere l'affichage des deux autre caroucelle
 function updateCarousel(jeux, type, carouselId) {
     // Cibler le carrousel selon l'ID passé en paramètre
     const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);

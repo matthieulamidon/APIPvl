@@ -19,7 +19,7 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 
-
+//fait en sorte que le jeu choisis est afficher dans l'accueil
 router.post('/affecterALAccueil', 
     [
       body('nom').isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
@@ -73,6 +73,7 @@ router.post('/affecterALAccueil',
         }
 });
 
+//permet de recuperer le nom des jeux a afficher dans la page d'accueil pour la page admin
 router.get('/afficherLesJeuxDeLaPageDAccueil/:type', async (req, res, next) => {
     console.log("Route appelée avec : ", req.params);
     try {
@@ -99,6 +100,7 @@ router.get('/afficherLesJeuxDeLaPageDAccueil/:type', async (req, res, next) => {
     }
 });
 
+//permet de recuperer le nom et les image des jeux a afficher dans la page d'accueil pour la page accueil 
 router.get('/recuperationPourLAccueil/:type', async (req, res, next) => {
     console.log("Route appelée avec : ", req.params);
     try {
@@ -139,6 +141,7 @@ router.get('/recuperationPourLAccueil/:type', async (req, res, next) => {
     }
 });
 
+//fait en sorte que le jeu choisis estuprimer de l'affichage de l'accueil
 router.delete('/supprimerJeuDeLaPageDAccueil/:type/:nom', isAdmin, async (req, res, next) => {
     try {
         const { type, nom } = req.params;
@@ -182,9 +185,5 @@ router.delete('/supprimerJeuDeLaPageDAccueil/:type/:nom', isAdmin, async (req, r
         next(err); // Gère l'erreur proprement via le middleware d'erreur
     }
 });
-
-
-
-
 
 module.exports = router;
