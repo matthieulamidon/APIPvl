@@ -229,6 +229,10 @@
             <label for="recupereSrcJeu" class="col-form-label">Source image :</label>
             <input type="text" class="form-control" id="recupereSrcJeu">
           </div>
+          <div class="mb-3 ">
+            <label for="recupereGrandeSrcJeu" class="col-form-label">Source grande image :</label>
+            <input type="text" class="form-control" id="recupereGrandeSrcJeu">
+          </div>
           <div class="mb-3">
             <label for="recupereDateJeu" class="col-form-label">Date de sortie du jeu:</label>
             <input type="date" class="form-control" id="recupereDateJeu">
@@ -367,6 +371,10 @@
               <label for="recupereSrcModJeu" class="col-form-label">Source image :</label>
               <input type="text" class="form-control" id="recupereSrcModJeu">
             </div>
+            <div class="mb-3 ">
+              <label for="recupereGrandeSrcModJeu" class="col-form-label">Source grande image :</label>
+              <input type="text" class="form-control" id="recupereGrandeSrcModJeu">
+            </div>
             <div class="mb-3">
               <label for="recupereDateModJeu" class="col-form-label">Date de sortie du jeu:</label>
               <input type="date" class="form-control" id="recupereDateModJeu">
@@ -413,8 +421,10 @@
               </select>
             </div>
             <div class="mb-3 ">
-              <label for="recuperePlateforme" class="col-form-label">Plateforme :</label>
-              <input type="text" class="form-control" id="recuperePlateforme">
+              <label for="plateformes-jeu-select" class="col-form-label">Plateforme :</label>
+              <select name="statut" id="plateformes-jeu-select">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
             </div>
           </form>
         </div>
@@ -442,8 +452,10 @@
               </select>
             </div>
             <div class="mb-3 ">
-              <label for="recupereTag" class="col-form-label">Tag :</label>
-              <input type="text" class="form-control" id="recupereTag">
+              <label for="tags-jeu-select" class="col-form-label">Tag :</label>
+              <select name="statut" id="tags-jeu-select">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
             </div>
           </form>
         </div>

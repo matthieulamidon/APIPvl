@@ -11,6 +11,7 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeu").value;
     const image = document.getElementById("recupereSrcJeu").value;
+    const grandeImage = document.getElementById("recupereGrandeSrcJeu").value;
     let date = document.getElementById("recupereDateJeu").value;
     let description = document.getElementById("recupereDescriptionDuJeu").value;
 
@@ -31,12 +32,12 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
         description = "Pas de description"
     };
 
-    let image_defaut = "images/civ-7.jpg"
+
 
     const userData = {
         nom: nom,
         src_image_jaquette: image,
-        src_image: image_defaut,
+        src_image: grandeImage,
         date_publication: date,
         description: description
     };
@@ -80,6 +81,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     let descriptionMod = document.getElementById("recupereDescriptionModJeu").value.trim();
     const EditeurMod = document.getElementById("editeur-jeu-select").value.trim();
     const StudioMod = document.getElementById("studio-jeu-select").value.trim();
+    const grandeImage = document.getElementById("recupereGrandeSrcModJeu").value.trim();
 
     const userData = {};
 
@@ -90,6 +92,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     if (descriptionMod) userData.description = descriptionMod;
     if (EditeurMod) userData.editeur = EditeurMod;
     if (StudioMod) userData.studio = StudioMod;
+    if (grandeImage) userData.src_image = grandeImage;
 
     console.log("id:", id);
 
@@ -188,6 +191,35 @@ const ListeStudios  = [
     "ID_SOFTWARE", "ATLUS", "VALVE", "INFOGRAMES", "LUCASARTS", "THQ"
   ];
 
+  const ListeTags = [
+    "Action", "Aventure", "RPG", "JRPG", "WRPG", "FPS", "TPS", "Plateformes", "Stratégie",
+    "Stratégie Temps Réel", "Stratégie Au Tour Par Tour", "Survie", "Horreur", "Puzzle", "Simulation",
+    "Gestion", "City Builder", "Course", "Combat", "Party Game", "Rogue Like", "Rogue Lite",
+    "Metroidvania", "Hack And Slash", "MMORPG", "MOBA", "Battle Royale", "Tactique", "Narratif",
+    "Point And Click", "Sandbox", "Shoot Em Up", "Souls Like", "Exploration", "Infiltration",
+    "Open World", "Coopératif", "Multijoueur", "Solo", "VR", "Indépendant", "Sport", "Musical",
+    "Réalité Augmentée", "Tower Defense", "Deck Building", "Auto Battler", "Dungeon Crawler",
+    "Textuel", "Survival Horror", "Visual Novel", "Farming", "Dating Sim", "Tycoon",
+    "Cartes", "Jeu de Rythme", "Beat Them Up", "Battle Chess", "Mecha", "Stealth",
+    "Bullet Hell", "Clicker", "Idle Game", "Education", "Cuisine", "Pêche", "Physics Game","Historique",
+    "Construction", "Histoire Interactive", "Anime", "Cyberpunk", "Steampunk",
+    "Post Apocalyptique", "Fantastique", "Science Fiction", "Médiéval",
+    "Western", "Pirates", "Zombie", "Cthulhu", "Detective", "Crime",
+    "Guerre", "Politique", "Espionnage", "Artisanat", "Exploration Sous Marine" ,"Narration"
+];
+
+const ListePlateformes = [
+    "PC", "PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PS Vita",
+    "Xbox Series X", "Xbox Series S", "Xbox One", "Xbox 360", "Xbox",
+    "Nintendo Switch", "Wii U", "Wii", "GameCube", "N64", "SNES", "NES",
+    "Game Boy", "Game Boy Color", "Game Boy Advance", "DS", "3DS", "2DS",
+    "Steam Deck", "Meta Quest", "Oculus Rift", "HTC Vive", "PS VR",
+    "Atari 2600", "Atari 5200", "Atari 7800", "Atari Jaguar", "Atari Lynx",
+    "Sega Mega Drive", "Sega Genesis", "Sega Saturn", "Sega Dreamcast",
+    "Neo Geo", "Neo Geo Pocket", "TurboGrafx-16", "Amiga", "Commodore 64",
+    "MSX", "ZX Spectrum", "Arcade", "Mobile", "iOS", "Android", "Cloud Gaming","CD-i"
+];
+
 //les menue deroulant pour choisir l'editeur
 function RemplissageEditeurs(){
     const EditeurBody = document.getElementById("editeur-jeu-select")
@@ -210,14 +242,35 @@ function RemplissageStudios(){
     });
 }
 
+function RemplissageTags(){
+    const TagsBody = document.getElementById("tags-jeu-select")
+    ListeTags.forEach(item => {
+        const row = document.createElement('option');
+        row.value = item;
+        row.innerHTML = item
+        TagsBody.appendChild(row);
+    });
+}
+
+function RemplissagePlateformes(){
+    const PlatBody = document.getElementById("plateformes-jeu-select")
+    ListePlateformes.forEach(item => {
+        const row = document.createElement('option');
+        row.value = item;
+        row.innerHTML = item
+        PlatBody.appendChild(row);
+    });
+}
 document.addEventListener("DOMContentLoaded", RemplissageEditeurs);
 document.addEventListener("DOMContentLoaded", RemplissageStudios);
+document.addEventListener("DOMContentLoaded", RemplissageTags);
+document.addEventListener("DOMContentLoaded", RemplissagePlateformes);
 
 //permet d'ajouter un tag a un jeu en gros un jeu est un FPS,STRATEGIQUE,...
 document.getElementById("btnAjoutTag").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-select-tag").value;
-    const nom = document.getElementById("recupereTag").value;
+    const nom = document.getElementById("tags-jeu-select").value;
 
     if (!nom) {
         alert("Veuillez entrer un Tag.");
@@ -269,7 +322,7 @@ document.getElementById("btnAjoutTag").addEventListener("click", async function 
 document.getElementById("btnAjoutPlateforme").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-select-plateforme").value;
-    const nom = document.getElementById("recuperePlateforme").value;
+    const nom = document.getElementById("plateformes-jeu-select").value;
 
     if (!nom) {
         alert("Veuillez entrer une plateforme.");
