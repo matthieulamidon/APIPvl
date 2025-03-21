@@ -92,16 +92,37 @@
     </div>
     <div class="row justify-content-center"> 
       <div class="col-auto" style="margin-bottom: 50px;"> 
-        <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutTag">
-          Ajouter un Tag
-        </button>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+              <h5 class="card-title" id="nom-jeux-nouv">Modifier les tags d'un jeu</h5>
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-center gap-3">
+                  <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutTag">
+                    Ajouter un Tag
+                  </button>
+                  <button class="btn btn-danger px-4 py-2" data-bs-toggle="modal" data-bs-target="#suppressionTag">
+                    Retirer un Tag
+                  </button>
+              </div>
+          </div>
       </div>
     </div>
     <div class="row justify-content-center"> 
       <div class="col-auto" style="margin-bottom: 50px;"> 
-        <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutPlateforme">
-          Ajouter une plateforme de jeu
-        </button>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+              <h5 class="card-title" id="nom-jeux-nouv">Modifier les plateformes d'un jeu</h5>
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-center gap-3">
+                  <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutPlateforme">
+                    Ajouter une plateforme de jeu
+                  </button>
+                  <button class="btn btn-danger px-4 py-2" data-bs-toggle="modal" data-bs-target="#suppressionPlateforme">
+                    Retirer une plateforme de jeu
+                  </button>
+              </div>
+          </div>
+      </div>
       </div>
     </div>
     <div class="row justify-content-center"> 
@@ -405,6 +426,37 @@
     </div>
   </div>
 
+  <div class="modal fade" id="suppressionPlateforme" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Supprimer une Plateforme</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ajout-jeu">
+          <form>
+            <div class="mb-3 ">
+              <label for="nom-jeu-suppr-plateforme" class="col-form-label">Nom du jeu :</label>
+              <select name="statut" id="nom-jeu-suppr-plateforme">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+            <div class="mb-3 ">
+              <label for="plateformes-jeu-suppr" class="col-form-label">Plateforme :</label>
+              <select name="statut" id="plateformes-jeu-suppr">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" id="btnSupprPlateforme">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="ajoutPlateforme" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog ">
       <div class="modal-content">
@@ -462,6 +514,37 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
           <button type="button" class="btn btn-primary" id="btnAjoutTag">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="suppressionTag" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Supprimer un Tag</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ajout-jeu">
+          <form>
+            <div class="mb-3 ">
+              <label for="nom-jeu-suppr-tag" class="col-form-label">Nom du jeu :</label>
+              <select name="statut" id="nom-jeu-suppr-tag">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+            <div class="mb-3 ">
+              <label for="tags-jeu-suppr" class="col-form-label">Tag :</label>
+              <select name="statut" id="tags-jeu-suppr">
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" id="btnSupprTag">Valider</button>
         </div>
       </div>
     </div>

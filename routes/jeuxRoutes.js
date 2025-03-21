@@ -265,6 +265,42 @@ router.post('/addTag',
 		}
 	});
 
+	//Route pour supprimer un Tag
+	router.delete('/deleteTag',
+		[
+			body('id_jeux').isInt(), 
+			body('nom').isString(),  
+		],
+		isAdmin,
+		async (req, res) => {
+		try {
+			const { id_jeux, nom } = req.body; 
+	
+			if (!id_jeux || !nom) {
+				return res.status(400).json({ error: "Veuillez renseigner un jeu et un tag valide" });
+			}
+	
+			// Vérifie si la plateforme existe pour ce jeu
+			const existingTags = await prisma.tag.findFirst({
+				where: { id_jeux: id_jeux, nom: nom },
+			});
+	
+			if (!existingTags) {
+				return res.status(404).json({ error: "Tag non trouvée pour ce jeu" });
+			}
+	
+			// Supprimer la plateforme
+			await prisma.tag.delete({
+				where: { id: existingTags.id }, 
+			});
+	
+			res.status(200).json({ message: "Tag supprimé avec succès" });
+		} catch (error) {
+			console.error(error);
+			res.status(500).json({ error: "Une erreur est survenue lors de la suppression" });
+		}
+	});
+
 // Route permet de rajouter une plateforme a un jeu
 router.post('/addPlateforme',
 	[
@@ -294,6 +330,43 @@ router.post('/addPlateforme',
 	
 	}
 	});
+
+	//Route pour supprimer une plateforme
+	router.delete('/deletePlateforme',
+		[
+			body('id_jeux').isInt(), 
+			body('nom').isString(),  
+		],
+		isAdmin,
+		async (req, res) => {
+		try {
+			const { id_jeux, nom } = req.body; 
+	
+			if (!id_jeux || !nom) {
+				return res.status(400).json({ error: "Veuillez renseigner un jeu et une plateforme valide" });
+			}
+	
+			// Vérifie si la plateforme existe pour ce jeu
+			const existingPlat = await prisma.plateforme.findFirst({
+				where: { id_jeux: id_jeux, nom: nom },
+			});
+	
+			if (!existingPlat) {
+				return res.status(404).json({ error: "Plateforme non trouvée pour ce jeu" });
+			}
+	
+			// Supprimer la plateforme
+			await prisma.plateforme.delete({
+				where: { id: existingPlat.id }, 
+			});
+	
+			res.status(200).json({ message: "Plateforme supprimée avec succès" });
+		} catch (error) {
+			console.error(error);
+			res.status(500).json({ error: "Une erreur est survenue lors de la suppression" });
+		}
+	});
+	
 
 // elle donne tout les relation entre les jeux et les tags
 router.get('/TestGetTags', async (req, res, next) => {

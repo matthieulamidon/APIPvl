@@ -128,25 +128,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.log("Réponse du serveur :", data);
             const formBody = this.getElementById("nom-jeu-select");
             const TagBody = this.getElementById("nom-jeu-select-tag");
+            const TagBody2 = this.getElementById("nom-jeu-suppr-tag");
             const PlateformeBody = this.getElementById("nom-jeu-select-plateforme");
-            // Vérifie si le jeu est dans la ludothèque
+            const PlateformeBody2 = this.getElementById("nom-jeu-suppr-plateforme");
             if (data.length > 0) {
-                data.forEach(item => {
-                    const row = document.createElement('option');
-                    row.value = `${item.id_jeux}`
-                    row.innerHTML = `${item.nom}`;
-                    formBody.appendChild(row);
-
-                    const row2 = document.createElement('option');
-                    row2.value = `${item.id_jeux}`
-                    row2.innerHTML = `${item.nom}`;
-                    TagBody.appendChild(row2);
-
-                    const row3 = document.createElement('option');
-                    row3.value = `${item.id_jeux}`
-                    row3.innerHTML = `${item.nom}`;
-                    PlateformeBody.appendChild(row3);
-                });
+                RemplissageJeux(data, formBody);
+                RemplissageJeux(data, TagBody);
+                RemplissageJeux(data, TagBody2);
+                RemplissageJeux(data, PlateformeBody);
+                RemplissageJeux(data, PlateformeBody2);
             }
         })
         .catch(error => {
@@ -229,23 +219,45 @@ function RemplissageStudios(){
 
 function RemplissageTags(){
     const TagsBody = document.getElementById("tags-jeu-select")
+    const TagsBodySuppr = document.getElementById("tags-jeu-suppr")
     ListeTags.forEach(item => {
         const row = document.createElement('option');
         row.value = item;
         row.innerHTML = item
         TagsBody.appendChild(row);
+
+        const row2 = document.createElement('option');
+        row2.value = item;
+        row2.innerHTML = item
+        TagsBodySuppr.appendChild(row2);
     });
 }
 
 function RemplissagePlateformes(){
     const PlatBody = document.getElementById("plateformes-jeu-select")
+    const PlatBodySuppr = document.getElementById("plateformes-jeu-suppr")
     ListePlateformes.forEach(item => {
         const row = document.createElement('option');
         row.value = item;
         row.innerHTML = item
         PlatBody.appendChild(row);
+
+        const row2 = document.createElement('option');
+        row2.value = item;
+        row2.innerHTML = item
+        PlatBodySuppr.appendChild(row2);
     });
 }
+
+function RemplissageJeux(data, Body){
+    data.forEach(item => {
+        const row = document.createElement('option');
+        row.value = `${item.id_jeux}`
+        row.innerHTML = `${item.nom}`;
+        Body.appendChild(row);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", RemplissageEditeurs);
 document.addEventListener("DOMContentLoaded", RemplissageStudios);
 document.addEventListener("DOMContentLoaded", RemplissageTags);
@@ -313,6 +325,108 @@ document.getElementById("btnAjoutPlateforme").addEventListener("click", async fu
         return;
     }
 
+    const dataPlat = {
+        nom: nom,
+        id_jeux: parseInt(id)
+    };
+
+    console.log("test");
+    console.log(dataPlat);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Veuillez vous connecter pour ajouter une plateforme.");
+        return;
+    }
+
+    console.log("Token récupéré :", token);
+    
+    try {
+        const response = await fetch("http://localhost:3000/addPlateforme", { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(dataPlat)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Enregistrement modifié avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
+
+document.getElementById("btnSupprPlateforme").addEventListener("click", async function () {
+    // Récupère les valeurs du formulaire
+    const id = document.getElementById("nom-jeu-suppr-plateforme").value;
+    const nom = document.getElementById("plateformes-jeu-suppr").value;
+
+    if (!nom) {
+        alert("Veuillez entrer une plateforme.");
+        return;
+    }
+
+    const dataPlat = {
+        nom: nom,
+        id_jeux: parseInt(id)
+    };
+
+    console.log("test");
+    console.log(dataPlat);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Veuillez vous connecter pour supprimer une plateforme.");
+        return;
+    }
+
+    console.log("Token récupéré :", token);
+    
+    try {
+        const response = await fetch("http://localhost:3000/deletePlateforme", { 
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(dataPlat)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Enregistrement modifié avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
+
+document.getElementById("btnSupprTag").addEventListener("click", async function () {
+    // Récupère les valeurs du formulaire
+    const id = document.getElementById("nom-jeu-suppr-tag").value;
+    const nom = document.getElementById("tags-jeu-suppr").value;
+
+    if (!nom) {
+        alert("Veuillez entrer une plateforme.");
+        return;
+    }
+
     const dataTag = {
         nom: nom,
         id_jeux: parseInt(id)
@@ -324,15 +438,15 @@ document.getElementById("btnAjoutPlateforme").addEventListener("click", async fu
     const token = localStorage.getItem("token");
 
     if (!token) {
-        alert("Veuillez vous connecter pour ajouter un tag.");
+        alert("Veuillez vous connecter pour supprimer un tag.");
         return;
     }
 
     console.log("Token récupéré :", token);
     
     try {
-        const response = await fetch("http://localhost:3000/addPlateforme", { 
-            method: "POST",
+        const response = await fetch("http://localhost:3000/deleteTag", { 
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
