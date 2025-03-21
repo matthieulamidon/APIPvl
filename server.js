@@ -29,8 +29,7 @@ app.use(express.json());
 // Import du middleware de gestion des erreurs
 const errorHandler = require('./middlewares/errorHandler'); 
 
-//importation des routes d'autentification
-const authRoutes = require('./routes/authRoutes');
+
 //importation des routes pour table route
 const testRoutes = require('./routes/tabletestRoutes');
 //la route du mots de passe securiser et tout ce qui est lier aux utilisateurs
@@ -45,7 +44,6 @@ const forumRoutes = require('./routes/forumRoute');
 const adminRoutes = require('./routes/adminRoute');
 
 // Utilisation des routes
-app.use(authRoutes); // Routes d'authentification
 app.use(testRoutes); // Routes pour TableTest
 app.use(utilisateursRoutes);// Routes pour utilisateurs
 app.use(jeuxRoutes); // Routes pour jeux

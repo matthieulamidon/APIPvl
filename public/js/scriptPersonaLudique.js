@@ -5,6 +5,8 @@
 * Version: 1.0.3
 * Dernière modification: 2025-03-05
 */
+
+//chargement de la page profile
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         console.log("chargement du profil");
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+//permet de modifier sont profile
 document.getElementById("modifierValider").addEventListener("click", async function () {
     const token = localStorage.getItem("token");
     const Actuelpseudo = localStorage.getItem("pseudo");
@@ -136,7 +139,6 @@ document.getElementById("modifierValider").addEventListener("click", async funct
         console.error("Une erreur est survenue lors de la requête:", error);
     }
 });
-
 
 // Fonction de validation de l'email
 function validateEmail(email) {

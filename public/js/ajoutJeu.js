@@ -1,3 +1,12 @@
+/*
+* Nom: ajoutJeu.js
+* Description: contient des fonction lier a l'admin pour ajouter des jeu a la BDD
+* Auteur: Barthelemy Coutard
+* Version: 1.0.0
+* Dernière modification: 2025-03-11
+*/
+
+//permet d'ajouter un jeu de maniere rapide mais incomplete
 document.getElementById("btnAjoutJeu").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeu").value;
@@ -62,6 +71,7 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
     }
 });
 
+//permet de modifier un jeu
 document.getElementById("btnModJeu").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-select").value;
@@ -115,6 +125,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     }
 });
 
+//ce commentaire est encore a faire
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         fetch(`http://localhost:3000/TestGetJeux`)
@@ -148,8 +159,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+//enum de la liste des editeur
 const ListeEditeurs = ['NON_DEFINI', 'NINTENDO', 'SONY', 'MICROSOFT', 'EA','UBISOFT','ACTIVISION_BLIZZARD','TAKE_TWO_INTERACTIVE','SQUARE_ENIX','BANDAI_NAMCO','CAPCOM','SEGA','EMBRACER_GROUP', 'WARNER_BROS_GAMES', 'KOEI_TECMO','DEVOLVER_DIGITAL','ANNAPURNA_INTERACTIVE','STUDIO_505_GAMES','PARADOX_INTERACTIVE', 'TEAM17', 'FOCUS_ENTERTAINMENT', 'PRIVATE_DIVISION','LARIAN_STUDIOS','RAW_FURY', 'HUMBLE_GAMES', 'INFOGRAMES',  'LUCASARTS','EIDOS_INTERACTIVE','VIRGIN_INTERACTIVE', 'BULLFROG_PRODUCTIONS','PSYGNOSIS'];
 
+//enum de la liste des studio
 const ListeStudios  = [
     "NON_DEFINI", "ROCKSTAR", "NAUGHTY_DOG", "SANTA_MONICA_STUDIO", "CD_PROJEKT_RED",
     "UBISOFT", "BETHESDA", "FROM_SOFTWARE", "SQUARE_ENIX", "CAPCOM", "BANDAI_NAMCO",
@@ -197,6 +210,7 @@ const ListePlateformes = [
     "MSX", "ZX Spectrum", "Arcade", "Mobile", "iOS", "Android", "Cloud Gaming","CD-i"
 ];
 
+//les menue deroulant pour choisir l'editeur
 function RemplissageEditeurs(){
     const EditeurBody = document.getElementById("editeur-jeu-select")
     ListeEditeurs.forEach(item => {
@@ -207,6 +221,7 @@ function RemplissageEditeurs(){
     });
 }
 
+//les menue deroulant pour choisir les studio de dev
 function RemplissageStudios(){
     const StudioBody = document.getElementById("studio-jeu-select")
     ListeStudios.forEach(item => {
@@ -263,7 +278,7 @@ document.addEventListener("DOMContentLoaded", RemplissageStudios);
 document.addEventListener("DOMContentLoaded", RemplissageTags);
 document.addEventListener("DOMContentLoaded", RemplissagePlateformes);
 
-
+//permet d'ajouter un tag a un jeu en gros un jeu est un FPS,STRATEGIQUE,...
 document.getElementById("btnAjoutTag").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-select-tag").value;
@@ -315,6 +330,7 @@ document.getElementById("btnAjoutTag").addEventListener("click", async function 
     }
 });
 
+//pour rajouter une plateforme de jeu
 document.getElementById("btnAjoutPlateforme").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-select-plateforme").value;

@@ -1,5 +1,13 @@
+/*
+* Nom: pageDeJeu.js
+* Description: Ce ficher les script lier a qu'elle jeu dois etre afficher dans la page d'accueil
+* pour que l'administrateur n'est pas a toucher a l'HTML de la page
+* Auteur: Matthieu Lamidon
+* Version: 1.0.0
+* Dernière modification: 2025-03-11
+*/
 
-
+//ajouter un jeu a l'affichage de la page d'accueil
 document.getElementById("btnAjoutJeuALAccuil").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeuPageDAccueil").value;
@@ -42,6 +50,7 @@ document.getElementById("btnAjoutJeuALAccuil").addEventListener("click", async f
     }
 });
 
+//ajouter le nom du jeu qui seras afficher dans la page d'accueil
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         // Définition des catégories et leur nombre max de jeux
@@ -101,6 +110,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+//suprime un jeu de l'affichage de la page d'accueil
 document.getElementById("btnSuprimerDeLaPageDaccueil").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const nom = document.getElementById("recupereNomJeuPageDAccueilS").value;

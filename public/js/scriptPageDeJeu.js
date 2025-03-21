@@ -1,10 +1,12 @@
 /*
 * Nom: pageDeJeu.js
-* Description: Ce ficher contien le fichier de chargement de la page de jeu
+* Description: Ce ficher contien le fichier de chargement de la page de jeu 
 * Auteur: Matthieu Lamidon
 * Version: 1.0.0
 * Dernière modification: 2025-03-11
 */
+
+//permet de charger la page de jeu
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         const nom = localStorage.getItem("jeuxSelectionner");
@@ -95,6 +97,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+//permet de verifier si il y a un jeu dans votre ludotheque
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         const pseudo = localStorage.getItem("pseudo");
@@ -192,6 +195,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+//permet de poster un commentaire
 document.getElementById("btnPoster").addEventListener("click", async function () {
     // Vérifie si un commentaire a déjà été laissé
     const commentaireDejaLaisser = await commentaireLaisser();
@@ -238,10 +242,12 @@ document.getElementById("btnPoster").addEventListener("click", async function ()
     }
 });
 
+// permet de verifier si un commentaire a été laiser
 document.addEventListener("DOMContentLoaded", async function () {
     await commentaireLaisser(); // Attends la fin de l'appel à la fonction avant de continuer
 });
 
+//fonction qui renvoie true si un commentaire a été laisser
 async function commentaireLaisser() {
     try {
         const pseudo = localStorage.getItem("pseudo");

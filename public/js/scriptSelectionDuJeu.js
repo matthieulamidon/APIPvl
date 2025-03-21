@@ -5,6 +5,8 @@
 * Version: 1.0.2
 * Dernière modification: 2025-03-05
 */
+
+//transforme les image en bouton qui renvoie vers le bon jeu
 document.addEventListener("DOMContentLoaded", function() {
     // Sélectionner toutes les images du carrousel
     const images = document.querySelectorAll('.carousel-item img');

@@ -1,3 +1,11 @@
+/*
+* Nom: tabletestRoutes.js
+* Description: il contient des routr de teste de base surement a suprimer dans le futur
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
+* Version: 1.0.6
+* Dernière modification: 2025-03-11
+*/
+
 // Chargement des modules nécessaires
 const { body, validationResult } = require('express-validator'); 
 // pour la validation des données
@@ -12,7 +20,7 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 
-
+//seul route potentielement a garder
 router.post('/TestPostUser',
 	[
 	  // Champs obligatoires
@@ -80,8 +88,6 @@ router.get('/TestGetUser', async (req, res, next) => {
 		next(err); // Passe l'erreur au gestionnaire centralisé
 	}
 });
-
-
 
 // Exemple : route pour mettre à jour un TableTest
 router.put('/Tata/:id', async (req, res, next) => {

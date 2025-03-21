@@ -98,6 +98,7 @@ router.post('/TestPostJeu',
 		  next(err);
 		}
 });
+
 //Route Put pour pouvoir modifier les jeux comme on veut
 router.put('/TestPutJeu/:id', 
 	[
