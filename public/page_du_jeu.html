@@ -41,6 +41,9 @@
           <li class="nav-item">
             <a class="nav-link" href="personaludique.html">Profil</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" id="admin-link" href="admin.html" style="display: none;">Page Admin</a>
+          </li>
         </ul>
         <form class="d-flex me-3" role="search">
           <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Rechercher" id="gsearch-box">
@@ -329,9 +332,10 @@
 
       <!-- Colonne 2 : Contact -->
       <div class="col-md-4">
-        <h5>Comtacte</h5>
+        <h5>Contact</h5>
         <p><i class="bi bi-telephone-fill"></i> +33 1 23 45 67 89</p>
         <p><i class="bi bi-envelope-fill"></i> matthieu.lamidon@reseau.eseo.fr</p>
+        <p><i class="bi bi-envelope-fill"></i> barthelemy.coutard@reseau.eseo.fr</p>
         <p><i class="bi bi-geo-alt-fill"></i> Angers, France</p>
       </div>
 
@@ -368,7 +372,7 @@
     thumb.classList.add("active");
   }
  </script>
-
+<script src="js/verifAdmin.js"></script>
 <script src="js/scriptConnectionUtilisateur.js"></script>
 <script src="js/ajoutLudo.js"></script>
  <script src="js/scriptPageDeJeu.js"></script>

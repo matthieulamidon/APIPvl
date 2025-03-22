@@ -54,8 +54,9 @@ app.use(adminRoutes); // Routes pour admin
 // Middleware de gestion des erreurs (doit être monté **après** les routes)
 app.use(errorHandler);
 
+
 // Démarrer le serveur
 const PORT = 3000;
 app.listen(PORT, () => {
  console.log(`Serveur démarré sur http://localhost:${PORT}`);
-});
+}); 
