@@ -134,7 +134,7 @@ function updateGrandCarousel(jeux) {
                         <div class="card-body">
                             <h5 class="card-title">${jeu.nom}</h5>
                             <p class="card-text">${jeu.description || "Pas de description disponible."}</p>
-                            <p class="card-text"><small class="text-muted">Sortie le : ${jeu.sortie || "Date inconnue"}</small></p>
+                            <p class="card-text"><small class="text-muted">Sortie le : ${jeu.date_de_sortie || "Date inconnue"}</small></p>
                         </div>
                     </div>
                 </div>

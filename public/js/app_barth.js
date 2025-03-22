@@ -25,13 +25,48 @@ document.addEventListener('DOMContentLoaded', async function () {
         .then(response => response.json()) // Convertir la réponse en JSON
         .then(data => {
 
+            const sortedData = trierJeuxParAlphabet(data);
+
+            if (sortedData.length > 0) {
+                sortedData.forEach(item => {
+                    const row = document.createElement('div');
+                    row.className = 'col-md-2';
+                    row.style.marginBottom = '20px';
+                    row.style.marginTop = '20px';
+                    row.innerHTML = `
+                        <img class="zoom-img" src="${item.src_image_jaquette}" style="height:300px" alt="${item.nom}">
+                        <h6 class="TitreJeu">${item.nom}</h6>
+                    `;
+                    row.addEventListener('click', function() {
+                        // Récupérer l'image et son nom (ou un attribut data ou alt)
+                        const imageSource = item.src_image_jaquette; // URL de l'image
+                        const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+            
+                        console.log("Image sélectionnée: " + imageName);
+                        console.log("Source de l'image: " + imageSource);
+            
+                        localStorage.setItem('jeuxSelectionner', imageName);
+                        window.location.href = 'page_du_jeu.html';
+                    });
+                    gameBody.appendChild(row);
+                });
+            } else {
+                const row = document.createElement('div');
+                row.className = 'col-md-2';
+                row.style.marginBottom = '20px';
+                row.innerHTML = `
+                    <h6 class="TitreJeu">Aucun résultat</h6>
+                `;
+                gameBody.appendChild(row);
+            }
+
             searchBox.addEventListener('input', function(event) {
                 const query = event.target.value.trim().toLowerCase();
                 gameBody.innerHTML = ''; // Effacer les anciens résultats
 
                 if (query.length >= 3) {
                     // Filtrer les données en fonction de la requête
-                    const filteredData = data.filter(item => 
+                    const filteredData = sortedData.filter(item => 
                         item.nom.toLowerCase().includes(query.toLowerCase()) ||  // Vérifie le nom
                         JSON.stringify(item.editeur)?.toLowerCase().includes(query.toLowerCase()) // Vérifie l'énum studio
                     );
@@ -78,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 if (query.length >= 4) {
                     // Filtrer les données en fonction de la requête
-                    const filteredData = data.filter(item => 
+                    const filteredData = sortedData.filter(item => 
                         JSON.stringify(item.date_publication)?.toLowerCase().includes(query.toLowerCase()) // Vérifie l'année
                     );
 
@@ -124,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 if (query.length >= 3) {
                     // Filtrer les données en fonction de la requête
-                    const filteredData = data.filter(item => 
+                    const filteredData = sortedData.filter(item => 
                         JSON.stringify(item.editeur)?.toLowerCase().includes(query.toLowerCase()) || // Vérifie l'énum editeur
                         JSON.stringify(item.studio)?.toLowerCase().includes(query.toLowerCase()) // Vérifie l'énum studio
                     );
@@ -172,7 +207,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     try {
                         // Filtrer les données en fonction de la requête
                         const listeIdTag = await TriTag(query); 
-                        const filteredData = data.filter(item => 
+                        const filteredData = sortedData.filter(item => 
                             listeIdTag.includes(item.id_jeux) // Comparer avec l'id_jeux
                         );
             
@@ -222,7 +257,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     try {
                         // Filtrer les données en fonction de la requête
                         const listeIdPlat = await TriPlateforme(query); 
-                        const filteredData = data.filter(item => 
+                        const filteredData = sortedData.filter(item => 
                             listeIdPlat.includes(item.id_jeux) // Comparer avec l'id_jeux
                         );
             
@@ -273,7 +308,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 if (query.length >= 3) {
                     // Filtrer les données en fonction de la requête
-                    const filteredData = data.filter(item => 
+                    const filteredData = sortedData.filter(item => 
                         item.nom.toLowerCase().includes(query.toLowerCase()) ||  // Vérifie le nom
                         JSON.stringify(item.editeur)?.toLowerCase().includes(query.toLowerCase()) || // verifie l'editeur
                         JSON.stringify(item.date_publication)?.toLowerCase().includes(query.toLowerCase()) || // Vérifie la date
@@ -383,6 +418,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     } 
 })
+
+function trierJeuxParAlphabet(data) {
+    return data.sort((a, b) => {
+        const nomA = a.nom.toLowerCase();
+        const nomB = b.nom.toLowerCase();
+
+        if (nomA < nomB) {
+            return -1; 
+        }
+        if (nomA > nomB) {
+            return 1; 
+        }
+        return 0; 
+    });
+}
 
 
     
