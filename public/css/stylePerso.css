@@ -17,10 +17,31 @@ body {
 /*
  systeme qui rend les caroucelle plus beau avec des bord arrondi
  */
+
+
+
+.carousel-item {
+  border-radius: 5px !important; /* Force l'application du border-radius */
+}
+
+.carousel-item img {
+  border-radius: 5px !important; /* Applique aussi le border-radius sur les images */
+}
+
+.carousel-inner {
+  overflow: hidden; /* S'assure que les images sont coupées au niveau des bords arrondis */
+  border-radius: 5px !important; /* Assure que les bords arrondis sont respectés */
+  overflow: hidden; /* Cela empêche les éléments de dépasser et de perdre les bords arrondis */
+}
+
+
+
 .carousel-item img {
   object-fit: cover;
   margin: 3px;
-  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px !important;
 }
 
 .custom-tab {
@@ -43,13 +64,13 @@ body {
 .carousel-container {
   background-color: #2e2e2e;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 10px !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 .carousel-main img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 10px !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .carousel-thumbnails {
@@ -96,7 +117,7 @@ survole grossisant
 }
 
 .image-container img {
-  transition: transform 0.3s ease; /* Ajoute une transition fluide */
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out; /* Ajoute une transition fluide */
 }
 
 .image-container:hover img {

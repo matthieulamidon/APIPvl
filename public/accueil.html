@@ -29,7 +29,7 @@
       </button>
       <!-- Liens de navigation -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-1 mb-lg-0" id="navbar-liens">
           <li class="nav-item">
             <a class="nav-link" href="accueil.html#">Maison</a>
           </li>
@@ -37,10 +37,13 @@
             <a class="nav-link" href="Recherche.html">Recherche</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Ludothèque.html">Ludothèque</a>
+            <a class="nav-link" href="Ludothèque.html?reload=true">Ludothèque</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="personaludique.html">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="admin-link" href="admin.html" style="display: none;">Page Admin</a>
           </li>
         </ul>
         <form class="d-flex me-3" role="search">
@@ -405,6 +408,7 @@
 
 <script src="js/scriptConnectionUtilisateur.js"></script>
 <script src="js/scriptAccueil.js"></script>
+<script src="js/verifAdmin.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

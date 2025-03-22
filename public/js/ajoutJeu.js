@@ -14,6 +14,8 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
     const grandeImage = document.getElementById("recupereGrandeSrcJeu").value;
     let date = document.getElementById("recupereDateJeu").value;
     let description = document.getElementById("recupereDescriptionDuJeu").value;
+    const editeur = document.getElementById("recupereEditeurJeu").value;
+    const studio = document.getElementById("recupereStudioJeu").value;
 
     if (!nom || !image || !date) {
         alert("Le nom l'image, et la date sont obligatoires !");
@@ -39,7 +41,9 @@ document.getElementById("btnAjoutJeu").addEventListener("click", async function 
         src_image_jaquette: image,
         src_image: grandeImage,
         date_publication: date,
-        description: description
+        description: description,
+        editeur: editeur,
+        studio: studio
     };
 
     console.log("test");
@@ -125,7 +129,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     }
 });
 
-//ce commentaire est encore a faire
+//permet de remplir les menus déroulants contenants les noms de jeux
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         fetch(`http://localhost:3000/TestGetJeux`)
@@ -138,12 +142,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         .then(data => {
             console.log("Réponse du serveur :", data);
             const formBody = this.getElementById("nom-jeu-select");
+            const JeuSupprBody = this.getElementById("nom-jeu-suppr");
             const TagBody = this.getElementById("nom-jeu-select-tag");
             const TagBody2 = this.getElementById("nom-jeu-suppr-tag");
             const PlateformeBody = this.getElementById("nom-jeu-select-plateforme");
             const PlateformeBody2 = this.getElementById("nom-jeu-suppr-plateforme");
             if (data.length > 0) {
                 RemplissageJeux(data, formBody);
+                RemplissageJeux(data, JeuSupprBody);
                 RemplissageJeux(data, TagBody);
                 RemplissageJeux(data, TagBody2);
                 RemplissageJeux(data, PlateformeBody);
@@ -180,7 +186,7 @@ const ListeStudios  = [
     "SEGA", "WAYFORWARD", "KOEI_TECMO_OMEGA_FORCE", "KONAMI", "SNK", "ATARI",
     "ID_SOFTWARE", "ATLUS", "VALVE", "INFOGRAMES", "LUCASARTS", "THQ"
   ];
-
+//liste de tags
   const ListeTags = [
     "Action", "Aventure", "RPG", "JRPG", "WRPG", "FPS", "TPS", "Plateformes", "Stratégie",
     "Stratégie Temps Réel", "Stratégie Au Tour Par Tour", "Survie", "Horreur", "Puzzle", "Simulation",
@@ -197,7 +203,7 @@ const ListeStudios  = [
     "Western", "Pirates", "Zombie", "Cthulhu", "Detective", "Crime",
     "Guerre", "Politique", "Espionnage", "Artisanat", "Exploration Sous Marine" ,"Narration"
 ];
-
+//liste de plateformes
 const ListePlateformes = [
     "PC", "PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PS Vita",
     "Xbox Series X", "Xbox Series S", "Xbox One", "Xbox 360", "Xbox",
@@ -210,25 +216,38 @@ const ListePlateformes = [
     "MSX", "ZX Spectrum", "Arcade", "Mobile", "iOS", "Android", "Cloud Gaming","CD-i"
 ];
 
-//les menue deroulant pour choisir l'editeur
+//les menus deroulant pour choisir l'editeur
 function RemplissageEditeurs(){
     const EditeurBody = document.getElementById("editeur-jeu-select")
+    const EditeurBody2 = document.getElementById("recupereEditeurJeu")
     ListeEditeurs.forEach(item => {
         const row = document.createElement('option');
         row.value = item;
         row.innerHTML = item
         EditeurBody.appendChild(row);
+
+        const row2 = document.createElement('option');
+        row2.value = item;
+        row2.innerHTML = item
+        EditeurBody2.appendChild(row2);
     });
 }
 
-//les menue deroulant pour choisir les studio de dev
+//les menus deroulant pour choisir les studio de dev
 function RemplissageStudios(){
     const StudioBody = document.getElementById("studio-jeu-select")
+    const StudioBody2 = document.getElementById("recupereStudioJeu")
+
     ListeStudios.forEach(item => {
         const row = document.createElement('option');
         row.value = item;
         row.innerHTML = item
         StudioBody.appendChild(row);
+
+        const row2 = document.createElement('option');
+        row2.value = item;
+        row2.innerHTML = item
+        StudioBody2.appendChild(row2);
     });
 }
 
@@ -382,6 +401,7 @@ document.getElementById("btnAjoutPlateforme").addEventListener("click", async fu
     }
 });
 
+//pour supprimer une plateforme
 document.getElementById("btnSupprPlateforme").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-suppr-plateforme").value;
@@ -433,6 +453,7 @@ document.getElementById("btnSupprPlateforme").addEventListener("click", async fu
     }
 });
 
+//pour supprimer un tag
 document.getElementById("btnSupprTag").addEventListener("click", async function () {
     // Récupère les valeurs du formulaire
     const id = document.getElementById("nom-jeu-suppr-tag").value;
@@ -476,6 +497,50 @@ document.getElementById("btnSupprTag").addEventListener("click", async function 
 
         const result = await response.json();
         alert("Enregistrement modifié avec succès !");
+        console.log("Réponse API :", result);
+
+    } catch (error) {
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
+
+document.getElementById("btnSupprJeu").addEventListener("click", async function () {
+    // Récupère les valeurs du formulaire
+    const id = document.getElementById("nom-jeu-suppr").value;
+
+    const dataJeu = {
+        id_jeux: parseInt(id)
+    };
+
+    console.log("test");
+    console.log(dataJeu);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Veuillez vous connecter pour supprimer un tag.");
+        return;
+    }
+
+    console.log("Token récupéré :", token);
+    
+    try {
+        const response = await fetch("http://localhost:3000/deleteJeu", { 
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(dataJeu)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert("Enregistrement supprimé avec succès !");
         console.log("Réponse API :", result);
 
     } catch (error) {

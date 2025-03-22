@@ -39,7 +39,7 @@
             <a class="nav-link" href="Recherche.html">Recherche</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Ludothèque.html">Ludothèque</a>
+            <a class="nav-link" href="Ludothèque.html?reload=true">Ludothèque</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="personaludique.html">Profil</a>
@@ -79,16 +79,33 @@
   <!-- Bouton d'ajout de jeu -->
   <div class="row justify-content-center">
       <div class="col-auto" style="margin-bottom: 50px;">
-          <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutJeu">
-              Ajout de Jeu
-          </button>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+              <h5 class="card-title" id="nom-jeux-nouv">Ajout de jeux</h5>
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-center gap-3">
+                  <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#ajoutJeu">
+                    Ajouter un jeu
+                  </button>
+                  <button class="btn btn-danger px-4 py-2" data-bs-toggle="modal" data-bs-target="#suppressionjeu">
+                    Retirer un jeu
+                  </button>
+              </div>
+          </div>
       </div>
     </div>
     <div class="row justify-content-center"> 
       <div class="col-auto" style="margin-bottom: 50px;"> 
-        <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#modifierJeu">
-          Modification de Jeu
-        </button>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+              <h5 class="card-title" id="nom-jeux-nouv">Modification de jeux</h5>
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-center gap-3">
+                  <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#modifierJeu">
+                    Modifier un jeu
+                  </button>
+              </div>
+          </div>
       </div>
     </div>
     <div class="row justify-content-center"> 
@@ -263,11 +280,49 @@
             <label for="recupereDescriptionDuJeu" class="col-form-label">Description du jeu:</label>
             <input type="text" class="form-control" id="recupereDescriptionDuJeu">
           </div>
+          <div class="mb-3 ">
+            <label for="recupereEditeurJeu" class="col-form-label">Edition :</label>
+            <select name="statut" id="recupereEditeurJeu">
+              <!-- Remplissage automatique via ajoutJeu -->
+            </select>
+          </div>
+          <div class="mb-3 ">
+            <label for="recupereStudioJeu" class="col-form-label">Studio :</label>
+            <select name="statut" id="recupereStudioJeu">
+              <!-- Remplissage automatique via ajoutJeu -->
+            </select>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
         <button type="button" class="btn btn-primary" id="btnAjoutJeu">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="suppressionjeu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 conecction-profile" id="staticBackdropLabelCreeUnProfile" >Supprimer un Jeu</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ajout-jeu">
+        <form>
+          <div class="mb-3 ">
+            <label for="nom-jeu-suppr" class="col-form-label">Nom du jeu :</label>
+              <select name="statut" id="nom-jeu-suppr">
+                <option value="">--Choix Jeu--</option>
+                <!-- Remplissage automatique via ajoutJeu -->
+              </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" id="btnSupprJeu">Valider</button>
       </div>
     </div>
   </div>
@@ -382,6 +437,7 @@
             <div class="mb-3 ">
               <label for="recupereIDModJeu" class="col-form-label">Nom du jeu :</label>
               <select name="statut" id="nom-jeu-select">
+                <option value="">--Veuillez choisir un Jeu--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
@@ -408,12 +464,14 @@
             <div class="mb-3 ">
               <label for="recupereEditeurModJeu" class="col-form-label">Edition :</label>
               <select name="statut" id="editeur-jeu-select">
+                <option value="">--Veuillez choisir un Editeur--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
             <div class="mb-3 ">
               <label for="recupereStudioModJeu" class="col-form-label">Studio :</label>
               <select name="statut" id="studio-jeu-select">
+                <option value="">--Veuillez choisir un Studio--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
@@ -439,12 +497,14 @@
             <div class="mb-3 ">
               <label for="nom-jeu-suppr-plateforme" class="col-form-label">Nom du jeu :</label>
               <select name="statut" id="nom-jeu-suppr-plateforme">
+                <option value="">--Veuillez choisir un Jeu--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
             <div class="mb-3 ">
               <label for="plateformes-jeu-suppr" class="col-form-label">Plateforme :</label>
               <select name="statut" id="plateformes-jeu-suppr">
+                <option value="">--Veuillez choisir une Plateforme--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
@@ -470,12 +530,14 @@
             <div class="mb-3 ">
               <label for="nom-jeu-select-plateforme" class="col-form-label">Nom du jeu :</label>
               <select name="statut" id="nom-jeu-select-plateforme">
+                <option value="">--Veuillez choisir un Jeu--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
             <div class="mb-3 ">
               <label for="plateformes-jeu-select" class="col-form-label">Plateforme :</label>
               <select name="statut" id="plateformes-jeu-select">
+                <option value="">--Veuillez choisir une Plateforme--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
@@ -501,12 +563,14 @@
             <div class="mb-3 ">
               <label for="nom-jeu-select-tag" class="col-form-label">Nom du jeu :</label>
               <select name="statut" id="nom-jeu-select-tag">
+                <option value="">--Veuillez choisir un Jeu--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
             <div class="mb-3 ">
               <label for="tags-jeu-select" class="col-form-label">Tag :</label>
               <select name="statut" id="tags-jeu-select">
+                <option value="">--Veuillez choisir un Tag--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
@@ -532,12 +596,14 @@
             <div class="mb-3 ">
               <label for="nom-jeu-suppr-tag" class="col-form-label">Nom du jeu :</label>
               <select name="statut" id="nom-jeu-suppr-tag">
+                <option value="">--Veuillez choisir un Jeu--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>
             <div class="mb-3 ">
               <label for="tags-jeu-suppr" class="col-form-label">Tag :</label>
               <select name="statut" id="tags-jeu-suppr">
+                <option value="">--Veuillez choisir un Tag--</option>
                 <!-- Remplissage automatique via ajoutJeu -->
               </select>
             </div>

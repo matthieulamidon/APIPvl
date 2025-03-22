@@ -99,6 +99,33 @@ router.post('/TestPostJeu',
 		}
 });
 
+//Route pour supprimer un jeu
+router.delete('/deleteJeu', 
+    [
+        body('id_jeux').isInt().withMessage('L\'ID du jeu doit être un entier.'),
+    ],
+    isAdmin,
+    async (req, res, next) => {
+        try {
+            const { id_jeux} = req.body;
+
+            // Vérifier si le jeu existe
+            const jeu = await prisma.jeux.findFirst({ where: { id_jeux } });
+
+            if (!jeu) {
+                return res.status(404).json({ error: 'Jeu non trouvé.' });
+            }
+
+            // Supprimer le jeu
+            await prisma.jeux.delete({ where: { id_jeux } });
+
+            res.status(200).json({ success: true, message: `L'enregistrement a été supprimé avec succès.` });
+        } catch (err) {
+            next(err);
+        }
+    }
+);
+
 //Route Put pour pouvoir modifier les jeux comme on veut
 router.put('/TestPutJeu/:id', 
 	[

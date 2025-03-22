@@ -12,7 +12,7 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
-const isAdmin = require("../middlewares/authenticateJWT");
+const isAdmin = require("../middlewares/isAdmin");
 // const cookieParser = require('cookie-parser'); // Plus besoin de cookie-parser
 
 
@@ -342,5 +342,10 @@ router.delete('/SupprUser/:id', async (req, res, next) => {
 	}
 
 });
+
+//route pour vérifier q'un utilisateur a le rôle admin via le middleware isAdmin
+router.get("/VerifAdmin", isAdmin, (req, res) => {
+    res.json({ isAdmin: true });
+  });
 
 module.exports = router;
