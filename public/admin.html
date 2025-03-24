@@ -342,7 +342,10 @@
         <form>
           <div class="mb-3 ">
             <label for="recupereNomJeuPageDAccueil" class="col-form-label">Nom du jeu :</label>
-            <input type="text" class="form-control" id="recupereNomJeuPageDAccueil">
+            <select name="statut" id="recupereNomJeuPageDAccueil">
+              <option value="">--Veuillez choisir un Jeu--</option>
+              <!-- Remplissage automatique via ajoutJeu -->
+            </select>
           </div>
           <div class="mb-3">
             <label for="recupereLEndroisChoisi" class="col-form-label">Description du jeu:</label>

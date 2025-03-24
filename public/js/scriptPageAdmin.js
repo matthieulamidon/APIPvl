@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Sélection du tbody du tableau
         const tbody = document.querySelector("table tbody");
+
         tbody.innerHTML = ""; // Efface le contenu existant
 
         // Création dynamique des lignes du tableau
@@ -92,7 +93,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <td>${categories.CLASSIQUE.jeux[i]?.nom || "N/A"}</td>
                 <td>${categories.NOUVEAUTE.jeux[i]?.nom || "N/A"}</td>
             `;
-
             // Ajout de GRAND CARROUSEL (fusion de 2 lignes)
             if (i % 2 === 0 && i / 2 < categories.GRAND_CARROUSEL.max) {
                 let td = document.createElement("td");

@@ -141,19 +141,22 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
         .then(data => {
             console.log("Réponse du serveur :", data);
+            const sortedData = trierJeuxParAlphabet(data);
             const formBody = this.getElementById("nom-jeu-select");
             const JeuSupprBody = this.getElementById("nom-jeu-suppr");
             const TagBody = this.getElementById("nom-jeu-select-tag");
             const TagBody2 = this.getElementById("nom-jeu-suppr-tag");
             const PlateformeBody = this.getElementById("nom-jeu-select-plateforme");
             const PlateformeBody2 = this.getElementById("nom-jeu-suppr-plateforme");
-            if (data.length > 0) {
-                RemplissageJeux(data, formBody);
-                RemplissageJeux(data, JeuSupprBody);
-                RemplissageJeux(data, TagBody);
-                RemplissageJeux(data, TagBody2);
-                RemplissageJeux(data, PlateformeBody);
-                RemplissageJeux(data, PlateformeBody2);
+            const JeuAccueilBody = this.getElementById("recupereNomJeuPageDAccueil");
+            if (sortedData.length > 0) {
+                RemplissageJeux(sortedData, formBody);
+                RemplissageJeux(sortedData, JeuSupprBody);
+                RemplissageJeux(sortedData, TagBody);
+                RemplissageJeux(sortedData, TagBody2);
+                RemplissageJeux(sortedData, PlateformeBody);
+                RemplissageJeux(sortedData, PlateformeBody2);
+                RemplissageJeuxAccueil(sortedData, JeuAccueilBody);
             }
         })
         .catch(error => {
@@ -287,6 +290,15 @@ function RemplissageJeux(data, Body){
     data.forEach(item => {
         const row = document.createElement('option');
         row.value = `${item.id_jeux}`
+        row.innerHTML = `${item.nom}`;
+        Body.appendChild(row);
+    });
+}
+
+function RemplissageJeuxAccueil(data, Body){
+    data.forEach(item => {
+        const row = document.createElement('option');
+        row.value = `${item.nom}`
         row.innerHTML = `${item.nom}`;
         Body.appendChild(row);
     });
@@ -548,3 +560,18 @@ document.getElementById("btnSupprJeu").addEventListener("click", async function 
         alert("Une erreur est survenue. Veuillez réessayer.");
     }
 });
+
+function trierJeuxParAlphabet(data) {
+    return data.sort((a, b) => {
+        const nomA = a.nom.toLowerCase();
+        const nomB = b.nom.toLowerCase();
+
+        if (nomA < nomB) {
+            return -1; 
+        }
+        if (nomA > nomB) {
+            return 1; 
+        }
+        return 0; 
+    });
+}
