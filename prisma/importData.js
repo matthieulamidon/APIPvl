@@ -1,3 +1,11 @@
+/*
+* Nom: importData.js
+* Description: permet d'importer un bdd au format .json
+* Auteur: Matthieu Lamidon 
+* Version: 1.0.6
+* Dernière modification: 2025-03-18
+*/
+
 const { PrismaClient } = require('@prisma/client');
 const fs = require('fs');
 
@@ -6,13 +14,13 @@ const prisma = new PrismaClient();
 async function importData() {
     try {
         if (!fs.existsSync('export.json')) {
-            console.error("❌ Fichier export.json introuvable !");
+            console.error("❌fichier export.json introuvable !");
             return;
         }
 
         const data = JSON.parse(fs.readFileSync('export.json', 'utf8'));
 
-        console.log("🚨 Suppression des données existantes...");
+        console.log(" Suppression des données existantes...");
         await prisma.ludotheque.deleteMany();
         await prisma.forum.deleteMany();
         await prisma.jeuxAccueil.deleteMany();
@@ -22,9 +30,9 @@ async function importData() {
         await prisma.utilisateur.deleteMany();
         await prisma.jeux.deleteMany();
 
-        console.log("✅ Base de données vidée avec succès !");
+        console.log(" Base de données vidée avec succès !");
 
-        console.log("📥 Importation des nouvelles données...");
+        console.log(" Importation des nouvelles données...");
         await prisma.utilisateur.createMany({ data: data.utilisateurs });
         await prisma.ami.createMany({ data: data.amis });
         await prisma.jeux.createMany({ data: data.jeux });
@@ -34,10 +42,10 @@ async function importData() {
         await prisma.plateforme.createMany({ data: data.plateformes });
         await prisma.jeuxAccueil.createMany({ data: data.jeuxAccueil });
 
-        console.log("✅ Importation réussie !");
+        console.log("✅Importation réussie !");
 
     } catch (error) {
-        console.error("❌ Erreur d'importation :", error);
+        console.error("❌Erreur d'importation :", error);
     } finally {
         await prisma.$disconnect();
     }

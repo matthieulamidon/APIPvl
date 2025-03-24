@@ -11,3 +11,7 @@
 .table {
   font-family: 'Exo 2', sans-serif;
 }
+
+.modal {
+  color: black; /* Définit la couleur du texte en noir */
+}
