@@ -1,3 +1,12 @@
+/*
+* Nom: verifAdmin.js
+* Description: permet de rajouter le bouton Page admin si tu est admin
+* Auteur: Barthelemy Coutard
+* Version: 1.0.0
+* Dernière modification: 2025-03-11
+*/
+
+//rajoute le bouton Page admin si tu est admin
 document.addEventListener('DOMContentLoaded', async function () {
     const token = localStorage.getItem("token"); 
 

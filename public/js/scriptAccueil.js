@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 //fonction qui gere l'affichage du grand caroucelle 
-function updateGrandCarousel(jeux) {
+async function updateGrandCarousel(jeux) {
     const carouselInner = document.querySelector(`#carouselDeBase .carousel-inner`);
     
     if (!carouselInner) return;
@@ -108,9 +108,9 @@ function updateGrandCarousel(jeux) {
     if (jeux.length === 0) {
         jeux = [{ 
             nom: "Jeu non trouvé", 
-            image: "img/img-non-trouver-16-9.jpg", 
+            src_img: "img/img-non-trouver-16-9.jpg", 
             description: "Aucun jeu disponible.", 
-            sortie: "Date inconnue" 
+            date_de_sortie: "Date inconnue" 
         }];
     }
 
@@ -118,8 +118,24 @@ function updateGrandCarousel(jeux) {
     const carouselItems = carouselInner.querySelectorAll('.carousel-item');
     let indice = 0;
 
-    // Pour chaque jeu, mettre à jour un élément existant si possible
-    jeux.forEach((jeu, index) => {
+    for (let index = 0; index < jeux.length; index++) {
+        let jeu = jeux[index];
+
+        try {
+            const response = await fetch(`http://localhost:3000/chargementPageDeJeu/${encodeURIComponent(jeu.nom)}`);
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Mise à jour des infos du jeu avec les données récupérées
+            jeu.description = data.description || "Pas de description disponible.";
+            jeu.date_de_sortie = data.date_de_sortie || "Date inconnue";
+        } catch (error) {
+            console.error(`Erreur lors du chargement des données pour ${jeu.nom} :`, error);
+        }
+
         // Si on a un élément existant, on le met à jour
         const slideDiv = carouselItems[index] || document.createElement("div");
         slideDiv.className = `carousel-item ${index === 0 ? "active" : ""}`;
@@ -133,8 +149,8 @@ function updateGrandCarousel(jeux) {
                     <div class="col-md-4">
                         <div class="card-body">
                             <h5 class="card-title">${jeu.nom}</h5>
-                            <p class="card-text">${jeu.description || "Pas de description disponible."}</p>
-                            <p class="card-text"><small class="text-muted">Sortie le : ${jeu.date_de_sortie || "Date inconnue"}</small></p>
+                            <p class="card-text">${jeu.description}</p>
+                            <p class="card-text"><small class="text-muted">Sortie le : ${jeu.date_de_sortie}</small></p>
                         </div>
                     </div>
                 </div>
@@ -146,28 +162,29 @@ function updateGrandCarousel(jeux) {
         }
 
         indice++;
-    });
+    }
 
     // Compléter le carrousel avec des éléments par défaut si nécessaire
     for (let i = indice; i < carouselItems.length; i++) {
         const slideDiv = carouselItems[i];
         slideDiv.className = `carousel-item`;
-        slideDiv.innerHTML = `
+        slideDiv.innerHTML = `  
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-8">
-                        <img src="img/img-non-trouver-16-9.jpg" class="img-fluid rounded-start" alt="civilization7">
+                        <img src="img/img-non-trouver-16-9.jpg" class="img-fluid rounded-start" alt="Jeu inconnu">
                     </div>
                     <div class="col-md-4">
                         <div class="card-body">
                             <h5 class="card-title">N/A</h5>
                             <p class="card-text">Pas de description disponible.</p>
-                            <p class="card-text"><small class="text-muted">Sortie le :  Date inconnue</small></p>
+                            <p class="card-text"><small class="text-muted">Sortie le : Date inconnue</small></p>
                         </div>
                     </div>
                 </div>
             </div>
         `;
+
         if (!carouselItems[i]) {
             carouselInner.appendChild(slideDiv); // Si c'est un nouvel élément, on l'ajoute
         }
@@ -175,6 +192,8 @@ function updateGrandCarousel(jeux) {
         indice++;
     }
 }
+
+
 //fonction qui gere l'affichage des deux autre caroucelle
 function updateCarousel(jeux, type, carouselId) {
     // Cibler le carrousel selon l'ID passé en paramètre
