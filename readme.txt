@@ -11,3 +11,13 @@ Pour pouvoir utiliser correctement, voici quelques informations qu'il est utile 
 -L'option rechercher dans la navbar ne fonctionne que dans l'onglet "Recherche".
 
 -Pour pouvoir utiliser la base de donnée, il faut penser à changer le nom d'utilisateur et le mot de passe maria DB dans le fichier .env
+
+-Procedure simplifier d'importation de base de donnée : aller dans le fichier prisma et lancer : node importData.js
+
+-Procedure simplifier d'exportation de base de donnée : aller dans le fichier prisma et lancer : node exportData.js
+
+-info toutes les save de la base de donnée sont stoquer dans le fichier prisma sous le nom : export.json
+
+-Procedure classique qui marche pour implémentées notre bdd depuis MariaDB :    1/utiliser les ligne de commande de MariaDB
+                                                                                2/utiliser cette commande : mysql -u root -p pvl_database < "C:\\Users\\matth\\APIPvl\\sauvegarde.sql"
+

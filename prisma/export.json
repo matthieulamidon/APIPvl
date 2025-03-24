@@ -1,0 +1,524 @@
+{
+    "utilisateurs": [
+        {
+            "id_utilisateur": 1,
+            "pseudo": "jean-gamer",
+            "nom": null,
+            "prenom": null,
+            "date_naissance": null,
+            "adresse_email": "jeangamer@gmail.com",
+            "mot_de_passe": "$argon2id$v=19$m=65536,t=3,p=4$qxtEeoI2PjvoRa487y4vXQ$5Do2fxF0cBNQHiVvxc/IXbCJrjClwLpmCIhykgPHAZc",
+            "description": null,
+            "date_inscription": "2025-03-11T14:02:57.733Z",
+            "icone_profil": "Ico1",
+            "role": "MEMBRE"
+        },
+        {
+            "id_utilisateur": 3,
+            "pseudo": "Administrator",
+            "nom": null,
+            "prenom": null,
+            "date_naissance": null,
+            "adresse_email": "admin@apipvl.com",
+            "mot_de_passe": "$argon2id$v=19$m=65536,t=3,p=4$CheVbk75GB6U//GLyT14Gg$yH1esDyHf5ROpoJ63wC1GuELIqBNj/FBGzQePfDZ0ss",
+            "description": null,
+            "date_inscription": "2025-03-11T14:54:06.678Z",
+            "icone_profil": "Ico1",
+            "role": "ADMINISTRATEUR"
+        }
+    ],
+    "jeux": [
+        {
+            "id_jeux": 1,
+            "nom": "Hollow Knight : Silksong",
+            "src_image": "images/civ-7.jpg",
+            "src_image_jaquette": "images/hollow_knight_silksong.png",
+            "src_image_jeu": null,
+            "date_publication": "2050-12-11T00:00:00.000Z",
+            "studio": "TEAM_CHERRY",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Il sortira un jour, je crois",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 2,
+            "nom": "Animal Crossing : New Horizons",
+            "src_image": "images/civ-7.jpg",
+            "src_image_jaquette": "images/acnh.png",
+            "src_image_jeu": null,
+            "date_publication": "2020-03-19T00:00:00.000Z",
+            "studio": "NINTENDO",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Ce sont des animauxx",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 3,
+            "nom": "Rayman 3",
+            "src_image": "images/rayman3.png",
+            "src_image_jaquette": "images/rayman3-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2003-01-19T00:00:00.000Z",
+            "studio": "UBISOFT",
+            "editeur": "UBISOFT",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un très bon jeu de plateformes 3D",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 4,
+            "nom": "Undertale",
+            "src_image": "images/civ-7.jpg",
+            "src_image_jaquette": "images/undertale.png",
+            "src_image_jeu": null,
+            "date_publication": "2015-09-14T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un jeu indé",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 5,
+            "nom": "Read Dead Redemption",
+            "src_image": "images/civ-7.jpg",
+            "src_image_jaquette": "images/rdr.png",
+            "src_image_jeu": null,
+            "date_publication": "2010-05-17T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un jeu dans le Far-West",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 6,
+            "nom": "Red Dead Redemption",
+            "src_image": "images/civ-7.jpg",
+            "src_image_jaquette": "images/rdr.png",
+            "src_image_jeu": null,
+            "date_publication": "2010-05-18T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un jeu dans le Far-West",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 7,
+            "nom": "Raft",
+            "src_image": "images/civ-7.jpg",
+            "src_image_jaquette": "images/raft-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2018-05-23T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un radeau",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 8,
+            "nom": "Portal 2",
+            "src_image": "images/portal2.png",
+            "src_image_jaquette": "images/portal2-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2011-04-18T00:00:00.000Z",
+            "studio": "VALVE",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est des portails 2",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 9,
+            "nom": "Metaphor : Refantazio",
+            "src_image": "images/metaphor_refantazio.jpg",
+            "src_image_jaquette": "images/metaphor-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2024-10-11T00:00:00.000Z",
+            "studio": "ATLUS",
+            "editeur": "SEGA",
+            "note": 100,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le véritable GOTY 2024",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 10,
+            "nom": "Persona 5 Royal",
+            "src_image": "images/persona_5_royal.png",
+            "src_image_jaquette": "images/persona5royal-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2019-10-31T00:00:00.000Z",
+            "studio": "ATLUS",
+            "editeur": "SEGA",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "You never see it coming",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 11,
+            "nom": "Shin Megami Tensei V: Vengeance",
+            "src_image": "images/shin_megami_tensei_vv.png",
+            "src_image_jaquette": "images/shin_megami_tensei_vv-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2024-06-14T00:00:00.000Z",
+            "studio": "ATLUS",
+            "editeur": "SEGA",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est la réincarnation de la déesse de la mort 5 vengeance",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 12,
+            "nom": "Valheim",
+            "src_image": "images/valheim.png",
+            "src_image_jaquette": "images/valheim-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2021-02-02T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est des vikings",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 13,
+            "nom": "Anno 1800",
+            "src_image": "images/anno_1800.png",
+            "src_image_jaquette": "images/anno_1800-jaquette.jpg",
+            "src_image_jeu": null,
+            "date_publication": "2019-04-16T00:00:00.000Z",
+            "studio": "UBISOFT",
+            "editeur": "UBISOFT",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est de la gestion",
+            "nb_favoris": null
+        }
+    ],
+    "forums": [
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 10,
+            "commentaire": "I'm not a robot AI challenging you",
+            "titre": "It's not a game",
+            "date_publication": "2025-03-18T20:06:41.637Z"
+        }
+    ],
+    "ludotheques": [
+        {
+            "id_utilisateur": 1,
+            "id_jeux": 2,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 1,
+            "id_jeux": 3,
+            "statut": "NON_DEFINI",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 1,
+            "id_jeux": 4,
+            "statut": "EN_COURS",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 1,
+            "id_jeux": 7,
+            "statut": null,
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 1,
+            "id_jeux": 8,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 1,
+            "id_jeux": 10,
+            "statut": "PREVU",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 1,
+            "statut": "PREVU",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 9,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 10,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 11,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 12,
+            "statut": "ABANDON",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        }
+    ],
+    "amis": [],
+    "tags": [
+        {
+            "id": 1,
+            "nom": "RPG",
+            "id_jeux": 9
+        },
+        {
+            "id": 2,
+            "nom": "RPG",
+            "id_jeux": 10
+        },
+        {
+            "id": 3,
+            "nom": "JRPG",
+            "id_jeux": 10
+        },
+        {
+            "id": 4,
+            "nom": "Anime",
+            "id_jeux": 10
+        },
+        {
+            "id": 5,
+            "nom": "Narration",
+            "id_jeux": 10
+        },
+        {
+            "id": 6,
+            "nom": "Plateformes",
+            "id_jeux": 3
+        },
+        {
+            "id": 7,
+            "nom": "Action",
+            "id_jeux": 3
+        },
+        {
+            "id": 8,
+            "nom": "Gestion",
+            "id_jeux": 1
+        },
+        {
+            "id": 9,
+            "nom": "Gestion",
+            "id_jeux": 13
+        },
+        {
+            "id": 10,
+            "nom": "Historique",
+            "id_jeux": 13
+        },
+        {
+            "id": 11,
+            "nom": "Metroidvania",
+            "id_jeux": 1
+        },
+        {
+            "id": 12,
+            "nom": "Souls Like",
+            "id_jeux": 1
+        },
+        {
+            "id": 13,
+            "nom": "Plateformes",
+            "id_jeux": 1
+        }
+    ],
+    "plateformes": [
+        {
+            "id": 1,
+            "nom": "Nintendo Switch",
+            "id_jeux": 1
+        },
+        {
+            "id": 2,
+            "nom": "PC",
+            "id_jeux": 9
+        },
+        {
+            "id": 3,
+            "nom": "PS5",
+            "id_jeux": 9
+        },
+        {
+            "id": 4,
+            "nom": "PC",
+            "id_jeux": 10
+        },
+        {
+            "id": 5,
+            "nom": "Nintendo Switch",
+            "id_jeux": 10
+        },
+        {
+            "id": 6,
+            "nom": "PS5",
+            "id_jeux": 10
+        },
+        {
+            "id": 7,
+            "nom": "PS4",
+            "id_jeux": 10
+        },
+        {
+            "id": 8,
+            "nom": "XBOX Series",
+            "id_jeux": 10
+        },
+        {
+            "id": 9,
+            "nom": "PC",
+            "id_jeux": 12
+        },
+        {
+            "id": 10,
+            "nom": "PC",
+            "id_jeux": 3
+        },
+        {
+            "id": 11,
+            "nom": "PS2",
+            "id_jeux": 3
+        },
+        {
+            "id": 12,
+            "nom": "PS3",
+            "id_jeux": 3
+        },
+        {
+            "id": 13,
+            "nom": "XBOX 360",
+            "id_jeux": 3
+        },
+        {
+            "id": 14,
+            "nom": "GameCube",
+            "id_jeux": 3
+        }
+    ],
+    "jeuxAccueil": [
+        {
+            "id": 1,
+            "champs": "GRAND_CARROUSEL",
+            "id_jeux": 9
+        },
+        {
+            "id": 2,
+            "champs": "GRAND_CARROUSEL",
+            "id_jeux": 10
+        },
+        {
+            "id": 3,
+            "champs": "GRAND_CARROUSEL",
+            "id_jeux": 12
+        },
+        {
+            "id": 4,
+            "champs": "GRAND_CARROUSEL",
+            "id_jeux": 8
+        },
+        {
+            "id": 5,
+            "champs": "CLASSIQUE",
+            "id_jeux": 13
+        },
+        {
+            "id": 6,
+            "champs": "NOUVEAUTE",
+            "id_jeux": 3
+        }
+    ]
+}

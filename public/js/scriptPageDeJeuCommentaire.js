@@ -36,10 +36,33 @@ async function commentaireLaisser() {
         console.error("Erreur lors de la récupération des données :", error);
         return false; // En cas d'erreur, retourne false
     }
+
+
 }
 
 // permet de recuperer le commentaire laisser par l'utilisateur
 document.addEventListener("DOMContentLoaded", async function () {
+    try{
+        const nom = localStorage.getItem("jeuxSelectionner");
+    
+        const response = await fetch(`http://localhost:3000/chargementPageDeJeu/${encodeURIComponent(nom)}`);
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+    
+        const data = await response.json();
+        console.log("Données reçues :", data);
+    
+        const imageJaquette = document.getElementById("image-jaquette");
+        imageJaquette.src = data.src_image_jaquette || "img/img-non-trouver-jaquette.jpg";
+        imageJaquette.onerror = () => {
+            imageJaquette.src = "img/img-non-trouver-jaquette.jpg"; // Image de remplacement si erreur
+        };
+    }catch{
+        console.error("Erreur dans le chargement du commentaire :", error);
+    }
+    
+    
     try {
         data = await commentaireLaisser(); // Attends la fin de la fonction avant de continuer
 

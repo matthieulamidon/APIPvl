@@ -1,7 +1,7 @@
 /*
 * Nom: pageDeJeu.js
 * Description: Ce ficher contien le fichier de chargement de la page de jeu 
-* Auteur: Matthieu Lamidon
+* Auteur: Matthieu Lamidon et Barthelemy Coutard
 * Version: 1.0.0
 * Dernière modification: 2025-03-11
 */
