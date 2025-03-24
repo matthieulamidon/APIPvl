@@ -59,7 +59,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "Ce sont des animauxx",
+            "description": "Ce jeu sorti en 2020 raconte l'histoire de l'ascension du capitalisme sur une petite île, orchestrée par un démoniaque tanuki assoiffé de clochettes.",
             "nb_favoris": null
         },
         {
@@ -144,7 +144,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "C'est des portails 2",
+            "description": "C'est la deuxième fois que vous voyez Glados mais cette fois elle a la patate et voudra vous réduire en purée même si son processeur d'humour n'a plus assez d'énergie.",
             "nb_favoris": null
         },
         {
@@ -161,7 +161,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "Le véritable GOTY 2024",
+            "description": "Tout simplement le véritable GOTY 2024.",
             "nb_favoris": null
         },
         {
@@ -314,7 +314,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "C'est un jeu de survie dans la forêt",
+            "description": "Un simulateur de construction de parking où, accessoirement, on peut aller chercher le petit Timmy entre le massacre de deux indigènes.",
             "nb_favoris": null
         },
         {
@@ -339,7 +339,7 @@
             "nom": "Sid Meier's Civilization VII",
             "src_image": "images/civ-7.jpg",
             "src_image_jaquette": "images/civ7.png",
-            "src_image_jeu": null,
+            "src_image_jeu": "civ-7",
             "date_publication": "2025-02-11T00:00:00.000Z",
             "studio": "NON_DEFINI",
             "editeur": "NON_DEFINI",
@@ -348,7 +348,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "Sid Meier's Civilization VII est un jeu vidéo de stratégie au tour par tour de type 4X et le septième opus de la série Civilization.",
+            "description": "μὴ μὰν ἀσπουδεί γε καὶ ἀκλειῶς ἀπολοίμην μέγα ῥέξας τι καὶ ἐσσομένοισι πυθέσθαι.",
             "nb_favoris": null
         },
         {
@@ -484,7 +484,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "C'est astérix et obélix qui sauvent tous leurs amis à travers le monde Romain (ils sont gros)",
+            "description": "C'est une bonne situation, ça, jeu ? \"- Mais vous savez, moi je ne crois pas qu'il y ait de bonne ou de mauvaise situation…\"",
             "nb_favoris": null
         },
         {
@@ -501,7 +501,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "C'est un moba",
+            "description": "Si vous vous posez des questions sur le truc de la salle de bain qui crache de l'eau et qui se situe à côté de votre lavabo c'est que vous êtes un joueur de LoL.",
             "nb_favoris": null
         },
         {
@@ -553,6 +553,108 @@
             "completionniste": null,
             "allStyle": null,
             "description": "Audentes fortuna iuvat. la fortune souris au audacieux dans ce jeu incarnez un gueux qui a tout perdu suite à la guerre de succession qui se déroulait dans le Saint Empire Romain Germanique.",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 33,
+            "nom": "New Super Mario Bros.",
+            "src_image": "images/nsmb.png",
+            "src_image_jaquette": "images/nsmb-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2006-05-15T00:00:00.000Z",
+            "studio": "NINTENDO",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un jeu Mario, mais sur DS donc c'est pas pareil.",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 34,
+            "nom": "Super Smash Bros. Ultimate",
+            "src_image": "images/ssbu.png",
+            "src_image_jaquette": "images/smashultimate-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2018-12-07T00:00:00.000Z",
+            "studio": "HAL_LABORATORY",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est la bagarre en gros.",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 35,
+            "nom": "Terraria",
+            "src_image": "images/terraria.jpg",
+            "src_image_jaquette": "images/terraria-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2011-05-16T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est Minecraft en 2D",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 36,
+            "nom": "Link: Faces of Evil",
+            "src_image": "images/lfoe.png",
+            "src_image_jaquette": "images/linktfoe-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "1993-12-25T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le meilleur Zelda (SQUALLALA)",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 37,
+            "nom": "Pokémon Jaune",
+            "src_image": "images/pokemon_jaune.png",
+            "src_image_jaquette": "images/pokemon_jaune-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "1998-09-12T00:00:00.000Z",
+            "studio": "GAME_FREAK",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Pokémon rouge et bleu, mais tu dois te taper Pikachu tout le jeu",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 38,
+            "nom": "Pokémon Noir",
+            "src_image": "images/pokemon_noir.png",
+            "src_image_jaquette": "images/pokemon_noir-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2010-09-18T00:00:00.000Z",
+            "studio": "GAME_FREAK",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est écrit pokémon noir mais c'est Reshiram soir la boîte",
             "nb_favoris": null
         }
     ],
@@ -673,7 +775,7 @@
         {
             "id_utilisateur": 3,
             "id_jeux": 13,
-            "statut": "EN_PAUSE",
+            "statut": "EN_COURS",
             "Type_completion": "NON_DEFINI",
             "commentaire": null,
             "note": null
@@ -690,6 +792,30 @@
             "id_utilisateur": 3,
             "id_jeux": 15,
             "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 19,
+            "statut": "EN_PAUSE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 23,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 34,
+            "statut": "EN_COURS",
             "Type_completion": "NON_DEFINI",
             "commentaire": null,
             "note": null
@@ -926,6 +1052,111 @@
             "id": 48,
             "nom": "Course",
             "id_jeux": 31
+        },
+        {
+            "id": 49,
+            "nom": "Plateformes",
+            "id_jeux": 33
+        },
+        {
+            "id": 50,
+            "nom": "Action",
+            "id_jeux": 34
+        },
+        {
+            "id": 52,
+            "nom": "Combat",
+            "id_jeux": 34
+        },
+        {
+            "id": 53,
+            "nom": "Aventure",
+            "id_jeux": 35
+        },
+        {
+            "id": 54,
+            "nom": "Plateformes",
+            "id_jeux": 35
+        },
+        {
+            "id": 55,
+            "nom": "Sandbox",
+            "id_jeux": 35
+        },
+        {
+            "id": 56,
+            "nom": "Sandbox",
+            "id_jeux": 19
+        },
+        {
+            "id": 57,
+            "nom": "Aventure",
+            "id_jeux": 19
+        },
+        {
+            "id": 58,
+            "nom": "Action",
+            "id_jeux": 19
+        },
+        {
+            "id": 59,
+            "nom": "Zombie",
+            "id_jeux": 19
+        },
+        {
+            "id": 60,
+            "nom": "Action",
+            "id_jeux": 36
+        },
+        {
+            "id": 61,
+            "nom": "Aventure",
+            "id_jeux": 36
+        },
+        {
+            "id": 62,
+            "nom": "RPG",
+            "id_jeux": 36
+        },
+        {
+            "id": 64,
+            "nom": "Médiéval",
+            "id_jeux": 36
+        },
+        {
+            "id": 65,
+            "nom": "Médiéval",
+            "id_jeux": 36
+        },
+        {
+            "id": 66,
+            "nom": "JRPG",
+            "id_jeux": 37
+        },
+        {
+            "id": 67,
+            "nom": "Aventure",
+            "id_jeux": 37
+        },
+        {
+            "id": 68,
+            "nom": "Stratégie Au Tour Par Tour",
+            "id_jeux": 37
+        },
+        {
+            "id": 69,
+            "nom": "JRPG",
+            "id_jeux": 38
+        },
+        {
+            "id": 70,
+            "nom": "Aventure",
+            "id_jeux": 38
+        },
+        {
+            "id": 71,
+            "nom": "Stratégie Au Tour Par Tour",
+            "id_jeux": 38
         }
     ],
     "plateformes": [
@@ -1178,6 +1409,116 @@
             "id": 52,
             "nom": "Wii",
             "id_jeux": 31
+        },
+        {
+            "id": 53,
+            "nom": "DS",
+            "id_jeux": 33
+        },
+        {
+            "id": 54,
+            "nom": "Nintendo Switch",
+            "id_jeux": 34
+        },
+        {
+            "id": 55,
+            "nom": "PC",
+            "id_jeux": 35
+        },
+        {
+            "id": 56,
+            "nom": "Nintendo Switch",
+            "id_jeux": 35
+        },
+        {
+            "id": 57,
+            "nom": "3DS",
+            "id_jeux": 35
+        },
+        {
+            "id": 58,
+            "nom": "Nintendo Switch",
+            "id_jeux": 19
+        },
+        {
+            "id": 59,
+            "nom": "3DS",
+            "id_jeux": 19
+        },
+        {
+            "id": 60,
+            "nom": "PC",
+            "id_jeux": 19
+        },
+        {
+            "id": 61,
+            "nom": "Xbox Series X",
+            "id_jeux": 19
+        },
+        {
+            "id": 62,
+            "nom": "Xbox Series S",
+            "id_jeux": 19
+        },
+        {
+            "id": 63,
+            "nom": "Xbox One",
+            "id_jeux": 19
+        },
+        {
+            "id": 64,
+            "nom": "Xbox 360",
+            "id_jeux": 19
+        },
+        {
+            "id": 65,
+            "nom": "PS3",
+            "id_jeux": 19
+        },
+        {
+            "id": 66,
+            "nom": "PS4",
+            "id_jeux": 19
+        },
+        {
+            "id": 67,
+            "nom": "PS5",
+            "id_jeux": 19
+        },
+        {
+            "id": 68,
+            "nom": "Cloud Gaming",
+            "id_jeux": 19
+        },
+        {
+            "id": 69,
+            "nom": "iOS",
+            "id_jeux": 19
+        },
+        {
+            "id": 70,
+            "nom": "Android",
+            "id_jeux": 19
+        },
+        {
+            "id": 71,
+            "nom": "Wii U",
+            "id_jeux": 19
+        },
+        {
+            "id": 72,
+            "nom": "PS Vita",
+            "id_jeux": 19
+        },
+        {
+            "id": 73,
+            "nom": "CD-i",
+            "id_jeux": 36
+        },
+        {
+            "id": 74,
+            "nom": "DS",
+            "id_jeux": 38
         }
     ],
     "jeuxAccueil": [

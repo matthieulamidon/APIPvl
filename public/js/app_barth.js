@@ -239,7 +239,7 @@ function afficherJeux(filteredData, gameBody){
     } else {
         const row = document.createElement('div');
         row.className = 'col-md-2';
-        row.style.marginBottom = '20px';
+        row.style.marginBottom = '400px';
         row.innerHTML = `
             <h6 class="TitreJeu">Aucun résultat</h6>
         `;
