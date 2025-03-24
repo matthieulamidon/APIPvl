@@ -23,6 +23,8 @@
   color: gray;
 }
 
+
+
 .admin {
   background-image:-moz-linear-gradient(top,#aaeeff,#3399cc);
   background-image:-webkit-gradient(linear,left top,left bottom,from(#aaeeff),to(#3399cc));
