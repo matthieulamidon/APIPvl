@@ -93,7 +93,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "C'est un jeu indé",
+            "description": "Cette description vous emplit de détermination",
             "nb_favoris": null
         },
         {
@@ -656,6 +656,244 @@
             "allStyle": null,
             "description": "C'est écrit pokémon noir mais c'est Reshiram soir la boîte",
             "nb_favoris": null
+        },
+        {
+            "id_jeux": 39,
+            "nom": "Pokémon Rouge",
+            "src_image": "images/pokemon_rouge.png",
+            "src_image_jaquette": "images/pokemon_rouge-jaquette.jpg",
+            "src_image_jeu": null,
+            "date_publication": "1996-02-27T00:00:00.000Z",
+            "studio": "GAME_FREAK",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le début d'une grande aventure",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 40,
+            "nom": "Portal",
+            "src_image": "images/portal.jpg",
+            "src_image_jaquette": "images/portal-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2007-10-10T00:00:00.000Z",
+            "studio": "VALVE",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est des portails",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 41,
+            "nom": "Rayman Legends",
+            "src_image": "images/rayman_legends.png",
+            "src_image_jaquette": "images/rayman_legends-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2013-08-29T00:00:00.000Z",
+            "studio": "UBISOFT",
+            "editeur": "UBISOFT",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le dernier jeu d'une saga culte",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 42,
+            "nom": "Rayman Origins",
+            "src_image": "images/rayman_origins.png",
+            "src_image_jaquette": "images/rayman_origins-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2011-11-15T00:00:00.000Z",
+            "studio": "UBISOFT",
+            "editeur": "UBISOFT",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le retour de Rayman en 2D après tant d'années",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 43,
+            "nom": "Red Dead Redemption II",
+            "src_image": "images/rdr2.png",
+            "src_image_jaquette": "images/rdr2-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2018-10-26T00:00:00.000Z",
+            "studio": "ROCKSTAR",
+            "editeur": "TAKE_TWO_INTERACTIVE",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est un jeu dans le Far-West II",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 44,
+            "nom": "Stardew Valley",
+            "src_image": "images/stardewvalley.png",
+            "src_image_jaquette": "images/stardewvalley-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2016-02-26T00:00:00.000Z",
+            "studio": "CONCERNEDAPE",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Un jeu pour prendre sa retraite à la campagne et fuir le stress (en vrai c'est encore plus stressant mais bon).",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 45,
+            "nom": "Satisfactory",
+            "src_image": "images/satisfactory.jfif",
+            "src_image_jaquette": "images/satisfactory-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2019-03-19T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "On verra bien pour la description",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 46,
+            "nom": "Dofus",
+            "src_image": "images/dofus.png",
+            "src_image_jaquette": "images/dofus-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2004-09-01T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Montez votre dragodindon et partez sur l’île des Wabbit pour obtenir votre Dofus Cawot, grâce aux gelées (ou plutôt à la chasse sans fin et aux combats épiques).",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 47,
+            "nom": "Tetris (NES)",
+            "src_image": "images/tetrisnes.png",
+            "src_image_jaquette": "images/tetrisnes-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "1984-06-06T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Tetris",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 48,
+            "nom": "The Legend of Zelda: Ocarina of Time",
+            "src_image": "images/zelda_oot.png",
+            "src_image_jaquette": "images/zelda_oot-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "1998-11-21T00:00:00.000Z",
+            "studio": "NINTENDO",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Press \"A\" pour skip Gaebora Kaepora.",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 49,
+            "nom": "Wii Sports",
+            "src_image": "images/wii_sports.png",
+            "src_image_jaquette": "images/wii_sports-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2006-11-19T00:00:00.000Z",
+            "studio": "NINTENDO",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le Sport",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 50,
+            "nom": "Valorant",
+            "src_image": "images/valorant.jpg",
+            "src_image_jaquette": "images/valorant.png",
+            "src_image_jeu": null,
+            "date_publication": "2020-06-02T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "CS mais avec des pouvoirs",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 51,
+            "nom": "The Witcher 3: Wild Hunt",
+            "src_image": "images/the_witcher_3.png",
+            "src_image_jaquette": "images/the_witcher_3-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2015-05-18T00:00:00.000Z",
+            "studio": "NON_DEFINI",
+            "editeur": "NON_DEFINI",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Soyons honnête, personne n'a joué aux 2 premiers",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 52,
+            "nom": "Persona 4 Golden",
+            "src_image": "images/persona4golden.png",
+            "src_image_jaquette": "images/persona4golden-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2012-06-14T00:00:00.000Z",
+            "studio": "ATLUS",
+            "editeur": "SEGA",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "It's time to make history, yeah !",
+            "nb_favoris": null
         }
     ],
     "forums": [
@@ -816,6 +1054,30 @@
             "id_utilisateur": 3,
             "id_jeux": 34,
             "statut": "EN_COURS",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 41,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 44,
+            "statut": "EN_PAUSE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 52,
+            "statut": "COMPLETE",
             "Type_completion": "NON_DEFINI",
             "commentaire": null,
             "note": null
@@ -1157,6 +1419,201 @@
             "id": 71,
             "nom": "Stratégie Au Tour Par Tour",
             "id_jeux": 38
+        },
+        {
+            "id": 72,
+            "nom": "JRPG",
+            "id_jeux": 39
+        },
+        {
+            "id": 73,
+            "nom": "Aventure",
+            "id_jeux": 39
+        },
+        {
+            "id": 74,
+            "nom": "Stratégie Au Tour Par Tour",
+            "id_jeux": 39
+        },
+        {
+            "id": 75,
+            "nom": "Puzzle",
+            "id_jeux": 40
+        },
+        {
+            "id": 76,
+            "nom": "Plateformes",
+            "id_jeux": 40
+        },
+        {
+            "id": 77,
+            "nom": "Solo",
+            "id_jeux": 40
+        },
+        {
+            "id": 78,
+            "nom": "Plateformes",
+            "id_jeux": 41
+        },
+        {
+            "id": 79,
+            "nom": "Action",
+            "id_jeux": 41
+        },
+        {
+            "id": 80,
+            "nom": "Solo",
+            "id_jeux": 41
+        },
+        {
+            "id": 81,
+            "nom": "Multijoueur",
+            "id_jeux": 41
+        },
+        {
+            "id": 83,
+            "nom": "Plateformes",
+            "id_jeux": 42
+        },
+        {
+            "id": 84,
+            "nom": "Action",
+            "id_jeux": 42
+        },
+        {
+            "id": 86,
+            "nom": "Aventure",
+            "id_jeux": 43
+        },
+        {
+            "id": 87,
+            "nom": "Western",
+            "id_jeux": 43
+        },
+        {
+            "id": 88,
+            "nom": "Open World",
+            "id_jeux": 43
+        },
+        {
+            "id": 89,
+            "nom": "Aventure",
+            "id_jeux": 6
+        },
+        {
+            "id": 90,
+            "nom": "Western",
+            "id_jeux": 6
+        },
+        {
+            "id": 91,
+            "nom": "Open World",
+            "id_jeux": 6
+        },
+        {
+            "id": 92,
+            "nom": "Gestion",
+            "id_jeux": 45
+        },
+        {
+            "id": 93,
+            "nom": "Aventure",
+            "id_jeux": 45
+        },
+        {
+            "id": 94,
+            "nom": "Open World",
+            "id_jeux": 45
+        },
+        {
+            "id": 95,
+            "nom": "MMORPG",
+            "id_jeux": 46
+        },
+        {
+            "id": 96,
+            "nom": "Puzzle",
+            "id_jeux": 47
+        },
+        {
+            "id": 97,
+            "nom": "Aventure",
+            "id_jeux": 48
+        },
+        {
+            "id": 98,
+            "nom": "Médiéval",
+            "id_jeux": 48
+        },
+        {
+            "id": 99,
+            "nom": "RPG",
+            "id_jeux": 48
+        },
+        {
+            "id": 100,
+            "nom": "Sport",
+            "id_jeux": 49
+        },
+        {
+            "id": 101,
+            "nom": "Multijoueur",
+            "id_jeux": 49
+        },
+        {
+            "id": 102,
+            "nom": "Multijoueur",
+            "id_jeux": 50
+        },
+        {
+            "id": 103,
+            "nom": "Coopératif",
+            "id_jeux": 50
+        },
+        {
+            "id": 104,
+            "nom": "FPS",
+            "id_jeux": 50
+        },
+        {
+            "id": 105,
+            "nom": "Aventure",
+            "id_jeux": 51
+        },
+        {
+            "id": 106,
+            "nom": "RPG",
+            "id_jeux": 51
+        },
+        {
+            "id": 107,
+            "nom": "Médiéval",
+            "id_jeux": 51
+        },
+        {
+            "id": 108,
+            "nom": "Open World",
+            "id_jeux": 51
+        },
+        {
+            "id": 109,
+            "nom": "JRPG",
+            "id_jeux": 52
+        },
+        {
+            "id": 110,
+            "nom": "Stratégie Au Tour Par Tour",
+            "id_jeux": 52
+        },
+        {
+            "id": 111,
+            "nom": "Narratif",
+            "id_jeux": 52
+        },
+        {
+            "id": 112,
+            "nom": "Anime",
+            "id_jeux": 52
         }
     ],
     "plateformes": [
@@ -1519,6 +1976,176 @@
             "id": 74,
             "nom": "DS",
             "id_jeux": 38
+        },
+        {
+            "id": 75,
+            "nom": "Game Boy",
+            "id_jeux": 39
+        },
+        {
+            "id": 76,
+            "nom": "PC",
+            "id_jeux": 40
+        },
+        {
+            "id": 77,
+            "nom": "Wii U",
+            "id_jeux": 41
+        },
+        {
+            "id": 78,
+            "nom": "Nintendo Switch",
+            "id_jeux": 41
+        },
+        {
+            "id": 79,
+            "nom": "PC",
+            "id_jeux": 41
+        },
+        {
+            "id": 80,
+            "nom": "PC",
+            "id_jeux": 42
+        },
+        {
+            "id": 81,
+            "nom": "3DS",
+            "id_jeux": 42
+        },
+        {
+            "id": 82,
+            "nom": "PC",
+            "id_jeux": 6
+        },
+        {
+            "id": 83,
+            "nom": "PS4",
+            "id_jeux": 6
+        },
+        {
+            "id": 85,
+            "nom": "PC",
+            "id_jeux": 43
+        },
+        {
+            "id": 86,
+            "nom": "PS4",
+            "id_jeux": 43
+        },
+        {
+            "id": 87,
+            "nom": "Xbox One",
+            "id_jeux": 43
+        },
+        {
+            "id": 88,
+            "nom": "Xbox 360",
+            "id_jeux": 6
+        },
+        {
+            "id": 89,
+            "nom": "PS3",
+            "id_jeux": 6
+        },
+        {
+            "id": 90,
+            "nom": "Nintendo Switch",
+            "id_jeux": 6
+        },
+        {
+            "id": 91,
+            "nom": "PC",
+            "id_jeux": 45
+        },
+        {
+            "id": 92,
+            "nom": "PC",
+            "id_jeux": 46
+        },
+        {
+            "id": 93,
+            "nom": "NES",
+            "id_jeux": 47
+        },
+        {
+            "id": 94,
+            "nom": "N64",
+            "id_jeux": 48
+        },
+        {
+            "id": 95,
+            "nom": "Wii",
+            "id_jeux": 49
+        },
+        {
+            "id": 96,
+            "nom": "PC",
+            "id_jeux": 50
+        },
+        {
+            "id": 97,
+            "nom": "PC",
+            "id_jeux": 51
+        },
+        {
+            "id": 98,
+            "nom": "PS4",
+            "id_jeux": 51
+        },
+        {
+            "id": 99,
+            "nom": "Xbox One",
+            "id_jeux": 51
+        },
+        {
+            "id": 100,
+            "nom": "Nintendo Switch",
+            "id_jeux": 51
+        },
+        {
+            "id": 101,
+            "nom": "PS Vita",
+            "id_jeux": 52
+        },
+        {
+            "id": 102,
+            "nom": "Nintendo Switch",
+            "id_jeux": 52
+        },
+        {
+            "id": 103,
+            "nom": "PS4",
+            "id_jeux": 52
+        },
+        {
+            "id": 104,
+            "nom": "PS3",
+            "id_jeux": 52
+        },
+        {
+            "id": 105,
+            "nom": "PS2",
+            "id_jeux": 52
+        },
+        {
+            "id": 106,
+            "nom": "PC",
+            "id_jeux": 52
+        },
+        {
+            "id": 107,
+            "nom": "Xbox One",
+            "id_jeux": 52
+        },
+        {
+            "id": 108,
+            "nom": "Xbox Series X",
+            "id_jeux": 52
+        },
+        {
+            "id": 109,
+            "nom": "Xbox Series S",
+            "id_jeux": 52
         }
     ],
     "jeuxAccueil": [
