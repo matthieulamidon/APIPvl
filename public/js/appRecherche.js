@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
 
-    // Récupérer les données depuis un fichier JSON (ou une URL)
-    fetch('http://localhost:3000/TestGetJeux') // Remplace par l'URL où se trouve ton fichier JSON
-        .then(response => response.json()) // Convertir la réponse en JSON
+    // Récupére les données depuis un fichier JSON (ou une URL)
+    fetch('http://localhost:3000/TestGetJeux') 
+        .then(response => response.json()) // Convertit la réponse en JSON
         .then(data => {
 
             const sortedData = trierJeuxParAlphabet(data);
@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             searchBox.addEventListener('input', function(event) {
                 const query = event.target.value.trim().toLowerCase();
-                gameBody.innerHTML = ''; // Effacer les anciens résultats
+                gameBody.innerHTML = ''; // Efface les anciens résultats
 
                 if (query.length >= 3) {
-                    // Filtrer les données en fonction de la requête
+                    // Filtre les données en fonction de la requête
                     const filteredData = sortedData.filter(item => 
                         item.nom.toLowerCase().includes(query.toLowerCase()) // Vérifie le nom
                     );
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 gameBody.innerHTML = ''; // Effacer les anciens résultats
 
                 if (query.length >= 4) {
-                    // Filtrer les données en fonction de la requête
+                    // Filtre les données en fonction de la requête
                     const filteredData = sortedData.filter(item => 
                         JSON.stringify(item.date_publication)?.toLowerCase().includes(query.toLowerCase()) // Vérifie l'année
                     );
@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             editeurSearch.addEventListener('input', function(event) {
                 const query = event.target.value.trim().toLowerCase();
-                gameBody.innerHTML = ''; // Effacer les anciens résultats
+                gameBody.innerHTML = ''; // Efface les anciens résultats
 
                 if (query.length >= 3) {
-                    // Filtrer les données en fonction de la requête
+                    // Filtre les données en fonction de la requête
                     const filteredData = sortedData.filter(item => 
                         JSON.stringify(item.editeur)?.toLowerCase().includes(query.toLowerCase()) || // Vérifie l'énum editeur
                         JSON.stringify(item.studio)?.toLowerCase().includes(query.toLowerCase()) // Vérifie l'énum studio
@@ -226,7 +226,7 @@ function afficherJeux(filteredData, gameBody){
             row.addEventListener('click', function() {
                 // Récupérer l'image et son nom (ou un attribut data ou alt)
                 const imageSource = item.src_image_jaquette; // URL de l'image
-                const imageName = item.nom || "Nom non défini"; // Utilisez alt pour récupérer le nom
+                const imageName = item.nom || "Nom non défini"; // Utilise alt pour récupérer le nom
     
                 console.log("Image sélectionnée: " + imageName);
                 console.log("Source de l'image: " + imageSource);
