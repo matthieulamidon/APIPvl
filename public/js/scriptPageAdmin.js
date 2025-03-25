@@ -41,7 +41,7 @@ document.getElementById("btnAjoutJeuALAccuil").addEventListener("click", async f
         }
 
         const result = await response.json();
-        alert("le jeu a bien ete lier a l'accueil !");
+        alert("Le jeu a bien été lié à l'accueil !");
         console.log("Réponse API :", result);
 
     } catch (error) {
@@ -131,7 +131,7 @@ document.getElementById("btnSuprimerDeLaPageDaccueil").addEventListener("click",
         }
 
         const result = await response.json();
-        alert("le jeu n'est plus afficher sur la page d'accueil !");
+        alert("Le jeu n'est plus affiché sur la page d'accueil !");
         console.log("Réponse API :", result);
 
     } catch (error) {
