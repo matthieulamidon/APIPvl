@@ -34,9 +34,9 @@ async function exportData() {
         };
 
         fs.writeFileSync('export.json', JSON.stringify(data, null, 4), 'utf8');
-        console.log("✅Exportation réussie ! Données enregistrées dans export.json");
+        console.log("✅ Exportation réussie ! Données enregistrées dans export.json");
     } catch (error) {
-        console.error("❌Erreur lors de l'exportation :", error);
+        console.error("❌ Erreur lors de l'exportation :", error);
     } finally {
         await prisma.$disconnect();
     }

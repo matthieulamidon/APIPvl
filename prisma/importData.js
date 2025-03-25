@@ -14,7 +14,7 @@ const prisma = new PrismaClient();
 async function importData() {
     try {
         if (!fs.existsSync('export.json')) {
-            console.error("❌fichier export.json introuvable !");
+            console.error("❌ Fichier export.json introuvable !");
             return;
         }
 
@@ -42,10 +42,10 @@ async function importData() {
         await prisma.plateforme.createMany({ data: data.plateformes });
         await prisma.jeuxAccueil.createMany({ data: data.jeuxAccueil });
 
-        console.log("✅Importation réussie !");
+        console.log("✅ Importation réussie !");
 
     } catch (error) {
-        console.error("❌Erreur d'importation :", error);
+        console.error("❌ Erreur d'importation :", error);
     } finally {
         await prisma.$disconnect();
     }
