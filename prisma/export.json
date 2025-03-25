@@ -25,6 +25,19 @@
             "date_inscription": "2025-03-11T14:54:06.678Z",
             "icone_profil": "Ico1",
             "role": "ADMINISTRATEUR"
+        },
+        {
+            "id_utilisateur": 6,
+            "pseudo": "dio brando",
+            "nom": null,
+            "prenom": null,
+            "date_naissance": null,
+            "adresse_email": "dio@jotaro.com",
+            "mot_de_passe": "$argon2id$v=19$m=65536,t=3,p=4$e0/tUwpDLntZk92MEN+0Gg$3iyuLKHKjj3QGcSx/wVlT21PMBCW0ag1Cckp8aKPOMI",
+            "description": null,
+            "date_inscription": "2025-03-25T08:45:52.309Z",
+            "icone_profil": "Ico1",
+            "role": "MEMBRE"
         }
     ],
     "jeux": [
@@ -339,7 +352,7 @@
             "nom": "Sid Meier's Civilization VII",
             "src_image": "images/civ-7.jpg",
             "src_image_jaquette": "images/civ7.png",
-            "src_image_jeu": "civ-7",
+            "src_image_jeu": "images\\civ-7-img1.jpeg",
             "date_publication": "2025-02-11T00:00:00.000Z",
             "studio": "NON_DEFINI",
             "editeur": "NON_DEFINI",

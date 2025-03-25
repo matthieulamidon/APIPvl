@@ -1,8 +1,8 @@
 Pour pouvoir utiliser correctement, voici quelques informations qu'il est utile de savoir:
 
--Toutes les images de notre sites sont issues de la base de données, il est donc nécessaire de l'importer pour une meilleure expérience (Fichier sauvegarde.sql).
+-Toutes les images de notre sites sont issues de la base de données, il est donc nécessaire de l'importer pour une meilleure expérience (Fichier sauvegarde.sql ou importData.js).
 
--Seul le compte administrateur peut poster ou modifier des jeux sur le site via la page administrateur (taper admin.html manuellement pour l'instant pour y accéder)
+-Seul le compte administrateur peut poster ou modifier des jeux sur le site via la page administrateur (email : admin@apipvl.com ;mots de pass : Ceci est le mot de passe admin)
 
 -Ce site est un site de gestion de ludothèque virtuelle, pour ajouter un jeu à votre ludothèque, allez dans l'onglet "Recherche", taper le nom du jeu souhaité puis cliquez sur l'image du jeu qui s'affiche. Sur la page du jeu, cliquez sur "Ajouter à ma ludothèque" et définissez un statut (nécessaire pour que le jeu s'affiche dans la ludothèque). Vous pourrez ainsi le consulter dans la ludothèque dans la catégorie choisie. Pour supprimer le jeu de la ludothèque, cliquez simplement sur "Supprimer de ma ludothèque".
 
