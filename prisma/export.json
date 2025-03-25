@@ -250,7 +250,7 @@
             "nom": "The Legend of Zelda: Tears of the Kingdom",
             "src_image": "images/zeldatotk.png",
             "src_image_jaquette": "images/zeldatotk-jaquette.png",
-            "src_image_jeu": "images/totk-img1.jpg",
+            "src_image_jeu": "images/zelda-totk-img1.jpg",
             "date_publication": "2023-05-12T00:00:00.000Z",
             "studio": "NINTENDO",
             "editeur": "NINTENDO",
@@ -503,7 +503,7 @@
         {
             "id_jeux": 29,
             "nom": "League of Legends",
-            "src_image": "images/league_of_legends.jpg",
+            "src_image": "images/league_of_legend.png",
             "src_image_jaquette": "images/league_of_legends-jaquette.jpg",
             "src_image_jeu": "images/league-of-legends-img1.jpg",
             "date_publication": "2009-10-27T00:00:00.000Z",
