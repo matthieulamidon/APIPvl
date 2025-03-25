@@ -86,6 +86,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     const EditeurMod = document.getElementById("editeur-jeu-select").value.trim();
     const StudioMod = document.getElementById("studio-jeu-select").value.trim();
     const grandeImage = document.getElementById("recupereGrandeSrcModJeu").value.trim();
+    const autresImages = document.getElementById("recupereAutreSrcModJeu").value.trim();
 
     const userData = {};
 
@@ -97,6 +98,7 @@ document.getElementById("btnModJeu").addEventListener("click", async function ()
     if (EditeurMod) userData.editeur = EditeurMod;
     if (StudioMod) userData.studio = StudioMod;
     if (grandeImage) userData.src_image = grandeImage;
+    if (autresImages) userData.src_image_jeu = autresImages;
 
     console.log("id:", id);
 

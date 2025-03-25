@@ -132,6 +132,7 @@ router.put('/TestPutJeu/:id',
 	  body('nom').optional().isLength({ min: 3, max: 40 }).withMessage('Le nom doit contenir entre 3 et 40 caractères.'),
 	  body('src_image').optional().isString(),
 	  body('src_image_jaquette').optional().isString(),
+	  body('src_image_jeu').optional().isString(),
 	  body('date_publication').optional().isISO8601().withMessage('Date invalide').toDate(),
 	  body('studio').optional().isString(),
 	  body('editeur').optional().isString(),
@@ -154,7 +155,7 @@ router.put('/TestPutJeu/:id',
   
 		// Récupérer seulement les champs qui sont fournis dans le body
 		const fields = [
-		  'nom', 'date_publication', 'src_image', 'src_image_jaquette', 'studio', 
+		  'nom', 'date_publication', 'src_image', 'src_image_jaquette', 'src_image_jeu', 'studio', 
 		  'editeur', 'note', 'any_pourcent', 'main_plus_extra', 'completionniste', 
 		  'allStyle', 'nb_favoris', 'description'
 		];
