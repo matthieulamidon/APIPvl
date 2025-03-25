@@ -63,7 +63,7 @@
             "nom": "Animal Crossing : New Horizons",
             "src_image": "images/acnh.png",
             "src_image_jaquette": "images/acnh-jaquette.png",
-            "src_image_jeu": null,
+            "src_image_jeu": "images/animal-crossing-new-horizon-img1.jpg",
             "date_publication": "2020-03-19T00:00:00.000Z",
             "studio": "NINTENDO",
             "editeur": "NINTENDO",
@@ -182,7 +182,7 @@
             "nom": "Persona 5 Royal",
             "src_image": "images/persona_5_royal.png",
             "src_image_jaquette": "images/persona5royal-jaquette.png",
-            "src_image_jeu": null,
+            "src_image_jeu": "images/persona-5-royal-img1.jpg",
             "date_publication": "2019-10-31T00:00:00.000Z",
             "studio": "ATLUS",
             "editeur": "SEGA",
@@ -250,7 +250,7 @@
             "nom": "The Legend of Zelda: Tears of the Kingdom",
             "src_image": "images/zeldatotk.png",
             "src_image_jaquette": "images/zeldatotk-jaquette.png",
-            "src_image_jeu": null,
+            "src_image_jeu": "images/totk-img1.jpg",
             "date_publication": "2023-05-12T00:00:00.000Z",
             "studio": "NINTENDO",
             "editeur": "NINTENDO",
@@ -505,7 +505,7 @@
             "nom": "League of Legends",
             "src_image": "images/league_of_legends.jpg",
             "src_image_jaquette": "images/league_of_legends-jaquette.jpg",
-            "src_image_jeu": null,
+            "src_image_jeu": "images/league-of-legends-img1.jpg",
             "date_publication": "2009-10-27T00:00:00.000Z",
             "studio": "NON_DEFINI",
             "editeur": "NON_DEFINI",
@@ -907,6 +907,40 @@
             "allStyle": null,
             "description": "It's time to make history, yeah !",
             "nb_favoris": null
+        },
+        {
+            "id_jeux": 53,
+            "nom": "Call of Duty: Modern Warfare",
+            "src_image": "images/codmw.png",
+            "src_image_jaquette": "images/codmw-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2019-10-25T00:00:00.000Z",
+            "studio": "INFINITY_YARD",
+            "editeur": "ACTIVISION_BLIZZARD",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "C'est des pans pans",
+            "nb_favoris": null
+        },
+        {
+            "id_jeux": 54,
+            "nom": "Fire emblem: Awakening",
+            "src_image": "images/fe13.png",
+            "src_image_jaquette": "images/fe13-jaquette.png",
+            "src_image_jeu": null,
+            "date_publication": "2012-04-19T00:00:00.000Z",
+            "studio": "INTELLIGENT_SYSTEMS",
+            "editeur": "NINTENDO",
+            "note": null,
+            "any_pourcent": null,
+            "main_plus_extra": null,
+            "completionniste": null,
+            "allStyle": null,
+            "description": "Le Fire Emblem qui a sauvé la licence.",
+            "nb_favoris": null
         }
     ],
     "forums": [
@@ -971,6 +1005,14 @@
             "id_utilisateur": 3,
             "id_jeux": 1,
             "statut": "PREVU",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 2,
+            "statut": "ABANDON",
             "Type_completion": "NON_DEFINI",
             "commentaire": null,
             "note": null
@@ -1090,6 +1132,14 @@
         {
             "id_utilisateur": 3,
             "id_jeux": 52,
+            "statut": "COMPLETE",
+            "Type_completion": "NON_DEFINI",
+            "commentaire": null,
+            "note": null
+        },
+        {
+            "id_utilisateur": 3,
+            "id_jeux": 54,
             "statut": "COMPLETE",
             "Type_completion": "NON_DEFINI",
             "commentaire": null,
@@ -1627,6 +1677,36 @@
             "id": 112,
             "nom": "Anime",
             "id_jeux": 52
+        },
+        {
+            "id": 113,
+            "nom": "FPS",
+            "id_jeux": 53
+        },
+        {
+            "id": 114,
+            "nom": "Guerre",
+            "id_jeux": 53
+        },
+        {
+            "id": 115,
+            "nom": "JRPG",
+            "id_jeux": 54
+        },
+        {
+            "id": 116,
+            "nom": "Stratégie Au Tour Par Tour",
+            "id_jeux": 54
+        },
+        {
+            "id": 117,
+            "nom": "Tactique",
+            "id_jeux": 54
+        },
+        {
+            "id": 118,
+            "nom": "Médiéval",
+            "id_jeux": 54
         }
     ],
     "plateformes": [
@@ -2159,6 +2239,21 @@
             "id": 109,
             "nom": "Xbox Series S",
             "id_jeux": 52
+        },
+        {
+            "id": 110,
+            "nom": "PC",
+            "id_jeux": 53
+        },
+        {
+            "id": 111,
+            "nom": "PS4",
+            "id_jeux": 53
+        },
+        {
+            "id": 112,
+            "nom": "Xbox One",
+            "id_jeux": 53
         }
     ],
     "jeuxAccueil": [
