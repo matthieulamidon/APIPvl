@@ -259,7 +259,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "C'est Link il plane",
+            "description": "Zelda: Tears of the Kingdom : un sauvetage de princesse, oui… mais surtout un simulateur de torture pour Korogus ! Catapultes, prisons volantes, bûchers motorisés… amuse-toi bien ! 😈",
             "nb_favoris": null
         },
         {
@@ -429,7 +429,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "JRPG le plus populaire de tout les temps.",
+            "description": "devenient un éco-terroriste, fait péter des réacteurs Mako, et lutter contre la Shinra. En maniant une épée plus grande que toi et en invoquant des divinités qui rase des galaxies entières.",
             "nb_favoris": null
         },
         {
@@ -786,7 +786,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "On verra bien pour la description",
+            "description": "Propager l'industrialisation et la démocratie aux autres planètes au nom de FICSIT pour continuer de nourrir une industrie décadente",
             "nb_favoris": null
         },
         {
@@ -820,7 +820,7 @@
             "main_plus_extra": null,
             "completionniste": null,
             "allStyle": null,
-            "description": "Tetris",
+            "description": "Un enfer où des blocs tombent sans fin, t’obligeant à les empiler sous une pression croissante. Une erreur, et tout s’effondre. La musique s’accélère… jusqu’à l’inévitable écrasement.",
             "nb_favoris": null
         },
         {
@@ -2163,24 +2163,9 @@
     ],
     "jeuxAccueil": [
         {
-            "id": 1,
-            "champs": "GRAND_CARROUSEL",
-            "id_jeux": 9
-        },
-        {
             "id": 2,
             "champs": "GRAND_CARROUSEL",
             "id_jeux": 10
-        },
-        {
-            "id": 3,
-            "champs": "GRAND_CARROUSEL",
-            "id_jeux": 12
-        },
-        {
-            "id": 5,
-            "champs": "CLASSIQUE",
-            "id_jeux": 13
         },
         {
             "id": 6,
@@ -2208,19 +2193,74 @@
             "id_jeux": 14
         },
         {
-            "id": 11,
-            "champs": "CLASSIQUE",
-            "id_jeux": 1
-        },
-        {
             "id": 12,
             "champs": "CLASSIQUE",
             "id_jeux": 17
         },
         {
-            "id": 14,
+            "id": 15,
             "champs": "GRAND_CARROUSEL",
-            "id_jeux": 15
+            "id_jeux": 14
+        },
+        {
+            "id": 16,
+            "champs": "GRAND_CARROUSEL",
+            "id_jeux": 2
+        },
+        {
+            "id": 17,
+            "champs": "GRAND_CARROUSEL",
+            "id_jeux": 29
+        },
+        {
+            "id": 18,
+            "champs": "CLASSIQUE",
+            "id_jeux": 48
+        },
+        {
+            "id": 19,
+            "champs": "CLASSIQUE",
+            "id_jeux": 39
+        },
+        {
+            "id": 20,
+            "champs": "CLASSIQUE",
+            "id_jeux": 21
+        },
+        {
+            "id": 21,
+            "champs": "CLASSIQUE",
+            "id_jeux": 1
+        },
+        {
+            "id": 22,
+            "champs": "CLASSIQUE",
+            "id_jeux": 31
+        },
+        {
+            "id": 23,
+            "champs": "CLASSIQUE",
+            "id_jeux": 19
+        },
+        {
+            "id": 24,
+            "champs": "NOUVEAUTE",
+            "id_jeux": 22
+        },
+        {
+            "id": 25,
+            "champs": "NOUVEAUTE",
+            "id_jeux": 14
+        },
+        {
+            "id": 26,
+            "champs": "NOUVEAUTE",
+            "id_jeux": 50
+        },
+        {
+            "id": 27,
+            "champs": "NOUVEAUTE",
+            "id_jeux": 9
         }
     ]
 }
