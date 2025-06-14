@@ -4,7 +4,7 @@ Pour pouvoir utiliser correctement, voici quelques informations qu'il est utile 
 
 -il faut pour le lancé ouvrir le terminal vous deplacer dans le dossier principale et executer la commande:
 
-  - npm run dev
+  - npm run server
 
 -Toutes les images de notre sites sont issues de la base de données, il est donc nécessaire de l'importer pour une meilleure expérience (Fichier sauvegarde.sql ou importData.js).
 
